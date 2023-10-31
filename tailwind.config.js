@@ -9,6 +9,7 @@ export default {
       transparent: 'transparent',
       current: 'currentColor',
       'white': '#ffffff',
+      'black': '#0000',
       'gray400': '#8B8B8B',
       'gray500': '#545454',
     },
