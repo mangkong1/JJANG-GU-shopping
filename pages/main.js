@@ -2,7 +2,7 @@ import '../style.css'
 import '../index.css';
 
 // 배너 슬라이드
-function slide() {
+function initSlide(time) {
 
     let currentIndex = 0;
     const sliderWrap = document.querySelector('.sliderWrap');
@@ -36,9 +36,9 @@ function slide() {
           currentIndex = 0;
         }, 700)
       }
-    }, 3000)
+    }, time)
   }
-  slide();
+  initSlide(3000);
 
   
 // 아이템 마우스 올렸을 때 장바구니 아이콘 보이고, 사라지고
