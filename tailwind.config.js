@@ -12,6 +12,7 @@ export default {
       'black': '#0000',
       'gray400': '#8B8B8B',
       'gray500': '#545454',
+      'red': '#F13737',
     },
   },
   plugins: [],
