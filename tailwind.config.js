@@ -18,6 +18,10 @@ export default {
       'test': '#97caf6',
       'test1': '#fff7c8',
     },
+    backgroundImage: {
+      'banner_1': "url('./public/imgs/banner_1.svg')",
+      'banner_2': "url('./public/imgs/banner_2.svg')",
+    }
   },
   plugins: [],
 }

@@ -56,6 +56,7 @@ productItemThumb.addEventListener('mouseout', () => {
 // 버튼 클릭시 최상단으로 스크롤
 const scrollTopBtn = document.querySelector('.Scroll_top');
 
-scrollTopBtn.addEventListener('click', () => {
-    window.scroll({ top: 0, behavior: "smooth" });  
+scrollTopBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scroll({ top: 0, behavior: "smooth" });  
 })
