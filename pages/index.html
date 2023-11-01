@@ -15,12 +15,71 @@
       <ul class="login">
         <li class="inline-block"><a href="#">로그인</a></li>
         <li class="inline-block pl-10"><a href="#">회원가입</a></li>
-        <li class="inline-block pl-10"><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        <li class="inline-block pl-10 relative">
+          <a href="#">
+            <i class="fa-solid fa-cart-shopping text-lg"></i>
+            <span class="block w-4 h-4 bg-red rounded-full absolute top-0 right-[-10px] hidden" ></span>
+          </a>
+        </li>
       </ul>
     </div>
 
+    <div id="slider" class="overflow-hidden relative w-full h-[600px]">
+      <div class="sliderWrap flex w-[300%]">
+        <div class="slider relative">
+          <img src="./imgs/banner_1.svg" alt="배너1">
+        </div>
+        <div class="slider relative">
+          <img src="./imgs/banner_2.svg" alt="배너2">
+        </div>
+      </div>
+      <div class="slider_circle absolute left-2/4 bottom-10 transform flex">
+        <p class="w-3 h-3 rounded-full bg-black"></p>
+        <p class="w-3 h-3 ml-3 rounded-full bg-black/30"></p>
+      </div>
+    </div>
+      
+    <div id="container" class="mx-auto my-28 w-4/6">
+      <div class="category_content m-full mb-16">
+        <ul class="category_tab_list m-full">
+          <li class="inline-block bg-red rounded-full py-1.5 px-7 mr-2.5 text-white"><a href="/">전체상품</a></li>
+          <li class="inline-block border border-gray400 hover:border-red rounded-full py-1.5 px-7 mr-3 text-gray400 hover:text-red"><a href="/">디자인문구</a></li>
+          <li class="inline-block border border-gray400 hover:border-red rounded-full py-1.5 px-7 mr-3 text-gray400 hover:text-red"><a href="/">오피스용품</a></li>
+          <li class="inline-block border border-gray400 hover:border-red rounded-full py-1.5 px-7 mr-3 text-gray400 hover:text-red"><a href="/">패션잡화</a></li>
+          <li class="inline-block border border-gray400 hover:border-red rounded-full py-1.5 px-7 mr-3 text-gray400 hover:text-red"><a href="/">키친/유아식기</a></li>
+          <li class="inline-block border border-gray400 hover:border-red rounded-full py-1.5 px-7 mr-3 text-gray400 hover:text-red"><a href="/">완구/인형</a></li>
+          <li class="inline-block border border-gray400 hover:border-red rounded-full py-1.5 px-7 mr-3 text-gray400 hover:text-red"><a href="/">필기구/학습용품</a></li>
+        </ul>
+      </div>
+      
+      <div class="All_product_content m-full">
+        <ul class="All_product_list grid grid-cols-4 gap-x-4 gap-y-8">
+          <li class="All_product_item">
 
-    <div id="footer" class="w-full flex-col flex justify-center items-center border-t-2 border-gray400 h-72">
+              <div class="All_product_item_thumb h-[360px] w-full rounded-2xl overflow-hidden relative">
+                <div class="view_cart w-14 h-14 bg-white90 flex justify-center items-center rounded-full hidden cursor-pointer absolute left-[50%] bottom-[40px] translate-x-[-50%]">
+                  <i class="fa-solid fa-cart-shopping text-2xl text-red"></i>
+                </div>
+                <a href="#" target="_blank">
+                  <img class="h-full" src="./imgs/test-img.jpg" alt="2024 벽걸이 캘린더">
+                </a>
+              </div>
+
+              <div class="All_product_item_info pl-1">
+                <p class="price pt-2 inline-blocks font-semibold text-lg">23,000원</p>
+                <p>2024 벽걸이 캘린더</p>
+              </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="footer" class="w-full flex-col flex justify-center items-center border-t border-gray400 h-72 relative">
+
+      <div class="Scroll_top absolute top-10 right-10 w-12 h-12 rounded-full border border-gray500 flex justify-center items-center cursor-pointer">
+        <i class="fa-solid fa-arrow-up text-xl test-gray500"></i>
+      </div>
+
       <ul class="link_list pb-10">
         <h3 class="hidden">떡잎마을 상점 정책 및 약관</h3>
         <li class="link_item inline-block px-3 border-r-2 border-gray400"><a href="#" class="text-gray500">이용약관</a></li>

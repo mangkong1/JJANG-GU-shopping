@@ -1,25 +1,61 @@
 import '../style.css'
 import '../index.css';
-// import javascriptLogo from './javascript.svg'
-// import viteLogo from '/vite.svg'
-// import { setupCounter } from './counter.js'
 
-// document.querySelector('#app').innerHTML = `
-//   <div>
-//     <a href="https://vitejs.dev" target="_blank">
-//       <img src="${viteLogo}" class="logo" alt="Vite logo" />
-//     </a>
-//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-//       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-//     </a>
-//     <h1>Hello Vite!</h1>
-//     <div class="card">
-//       <button id="counter" type="button"></button>
-//     </div>
-//     <p class="read-the-docs">
-//       Click on the Vite logo to learn more
-//     </p>
-//   </div>
-// `
+// 배너 슬라이드
+function slide() {
 
-// setupCounter(document.querySelector('#counter'))
+    let currentIndex = 0;
+    const sliderWrap = document.querySelector('.sliderWrap');
+    const sliderClone = sliderWrap.firstElementChild.cloneNode(true);
+    sliderWrap.appendChild(sliderClone);  
+
+    const sliderCircle = document.querySelectorAll('.slider_circle p');
+  
+    setInterval(() => {
+      currentIndex += 1;
+      sliderWrap.style.marginLeft = -currentIndex * 100 + "%";
+      sliderWrap.style.transition = 'all 0.6s';
+
+      if(currentIndex === 1) {
+        sliderCircle[0].classList.add('bg-black/30');
+        sliderCircle[0].classList.remove('bg-black');
+        sliderCircle[1].classList.add('bg-black');
+        sliderCircle[1].classList.remove('bg-black/30');
+      }
+  
+      if(currentIndex === 2) {
+        setTimeout(() => {
+          sliderWrap.style.marginLeft = '0';
+          sliderWrap.style.transition = '0s';
+
+          sliderCircle[0].classList.add('bg-black');
+          sliderCircle[0].classList.remove('bg-black/30');
+          sliderCircle[1].classList.add('bg-black/30');
+          sliderCircle[1].classList.remove('bg-black');
+  
+          currentIndex = 0;
+        }, 700)
+      }
+    }, 3000)
+  }
+  slide();
+
+  
+// 아이템 마우스 올렸을 때 장바구니 아이콘 보이고, 사라지고
+const productItemThumb = document.querySelector('.All_product_item_thumb');
+const viewCart = document.querySelector('.view_cart');
+
+productItemThumb.addEventListener('mouseover', () => {
+    viewCart.classList.remove('hidden');
+});
+productItemThumb.addEventListener('mouseout', () => {
+    viewCart.classList.add('hidden');
+});
+
+
+// 버튼 클릭시 최상단으로 스크롤
+const scrollTopBtn = document.querySelector('.Scroll_top');
+
+scrollTopBtn.addEventListener('click', () => {
+    window.scroll({ top: 0, behavior: "smooth" });  
+})
