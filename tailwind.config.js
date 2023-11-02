@@ -9,9 +9,19 @@ export default {
       transparent: 'transparent',
       current: 'currentColor',
       'white': '#ffffff',
+      'black': '#000000',
+      'white90': '#fff9',
+      'gray200': '#cfcfcf',
       'gray400': '#8B8B8B',
       'gray500': '#545454',
+      'red': '#F13737',
+      'test': '#97caf6',
+      'test1': '#fff7c8',
     },
+    backgroundImage: {
+      'banner_1': "url('./public/imgs/banner_1.svg')",
+      'banner_2': "url('./public/imgs/banner_2.svg')",
+    }
   },
   plugins: [],
 }
