@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "image": "img\\picnic.jpg",
+        "name": "푹신푹신 피크닉매트(소)",
+        "price":"10000",
+        "quantity": 1
+    },
+    {
+        "id":2,
+        "image": "img\\picnic.jpg",
+        "name": "푹신푹신 피크닉매트(대)",
+        "price":"20000",
+        "quantity": 1
+    },
+    {
+        "id":3,
+        "image": "img\\picnic.jpg",
+        "name": "푹신푹신 피크닉매트(중)",
+        "price":"8000",
+        "quantity": 1
+    }
+]
