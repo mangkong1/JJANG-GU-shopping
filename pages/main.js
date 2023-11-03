@@ -36,9 +36,10 @@ document.querySelector('#footerWrap').innerHTML=`
       </ul>
       <div class="link_address">
         <h3 class="hidden">떡잎마을 상점</h3>
-        <a href="#" class="inline-block text-gray400 text-sm"><img class="inline-block pr-3 h-6" src="./imgs/f-logo.svg" alt="">Copyright © 2023. 떡잎마을 상점 All Rights Reserved.</a>
+        <a href="#" class="inline-block text-gray400 text-sm"><img class="inline-block pr-3 h-6" src="./imgs/f-logo.svg" alt="떡잎마을 상점 로고">Copyright © 2023. 떡잎마을 상점 All Rights Reserved.</a>
       </div>
     </div>`
+
 
 
 
