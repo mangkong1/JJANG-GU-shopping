@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./purchase.css" />
+    <link rel="stylesheet" href="./userInfo.css" />
     <script
       src="https://kit.fontawesome.com/a3379ca11a.js"
       crossorigin="anonymous"
@@ -18,92 +18,50 @@
       id="userInfo_container"
       class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
     >
-      <div class="userInfo_left">
-        <h2 class="text-4xl font-semibold pb-6">마이페이지</h2>
-        <div
-          class="userInfo_list w-[236px] h-[532px] border border-gray200 rounded-2xl px-[25px] py-[36px] box-border"
-        >
-          <ul>
-            <li class="font-semibold text-2xl mb-[87px]">
-              쇼핑 정보
-              <ul class="mt-[10px]">
-                <li>
-                  <a class="text-xl font-normal text-gray400" href=""
-                    >상품 등록</a
-                  >
-                </li>
-                <li>
-                  <a class="text-xl font-normal text-gray400" href=""
-                    >구매 내역</a
-                  >
-                </li>
-                <li>
-                  <a class="text-xl font-normal text-gray400" href=""
-                    >판매 내역</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="font-semibold text-2xl">
-              내 정보
-              <ul class="mt-[10px]">
-                <li>
-                  <a class="text-xl font-normal text-gray400" href=""
-                    >프로필 정보</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <div id="mypage_menu"></div>
 
-      <div class="w-[1011px] h-[481px]">
+      <div class="w-[1011px] pd-[10px]">
         <h2 class="pb-6 text-4xl text-black font-semibold">구매 내역</h2>
 
-        <div class="w-[1011px] h-[481px] bg-white rounded-[15px] border">
-          <div
-            class="grid grid-cols-4 text-center w-[1011px] h-[76px] bg-[#F2F2F2]"
-          >
-            <div class="text-black text-[17px] font-normal font-['Inter']">
+        <div
+          class="py-[20px] w-[1011px] bg-white border border-gray200 rounded-2xl"
+        >
+          <div class="grid grid-cols-4 gap-4 text-center flex items-center">
+            <p class="text-black text-[17px] font-normal">
               주문일자<br />[주문번호]
-            </div>
-            <div class="text-black text-[17px] font-normal font-['Inter']">
-              주문정보
-            </div>
-            <div class="text-black text-[17px] font-normal font-['Inter']">
-              상태
-            </div>
-            <div class="text-black text-[17px] font-normal font-['Inter']">
-              신청
-            </div>
-          </div>
+            </p>
+            <p class="text-black text-[17px] font-normal">주문정보</p>
+            <p class="text-black text-[17px] font-normal">상태</p>
+            <p class="text-black text-[17px] font-normal">신청</p>
 
-          <div class="grid grid-cols-4 text-center w-[1011px]">
-            <div class="text-black text-[17px] font-normal font-['Inter']">
+            <p class="text-black text-[17px] font-normal">
               2023-11-01<br />[68dfsd523s1f...
-            </div>
-            <div class="text-black text-[17px] font-normal font-['Inter']">
+            </p>
+            <p class="text-black text-[17px] font-normal">
               푹신푹신 피그닉매트(소)
-            </div>
-            <div class="text-black text-[17px] font-normal font-['Inter']">
-              상품 준비중
-            </div>
-            <div class="w-[99px] h-[34px] rounded-[50px] border border-black">
-              <p>주문취소</p>
-            </div>
+            </p>
+            <p class="text-black text-[17px] font-normal">상품 준비중</p>
+            <p class="flex items-center justify-center">
+              <button
+                class="w-[99px] h-[34px] rounded-[50px] border border-black"
+              >
+                주문취소
+              </button>
+            </p>
 
-            <div class="text-black text-[17px] font-normal font-['Inter']">
+            <p class="text-black text-[17px] font-normal">
               2023-11-01<br />[68dfsd523s1f...
-            </div>
-            <div class="text-black text-[17px] font-normal font-['Inter']">
+            </p>
+            <p class="text-black text-[17px] font-normal">
               푹신푹신 피그닉매트(소)
-            </div>
-            <div class="text-black text-[17px] font-normal font-['Inter']">
-              상품 준비중
-            </div>
-            <div class="w-[99px] h-[34px] rounded-[50px] border border-black">
-              <p>주문취소</p>
+            </p>
+            <p class="text-black text-[17px] font-normal">상품 준비중</p>
+            <div class="flex items-center justify-center">
+              <button
+                class="w-[99px] h-[34px] rounded-[50px] border border-black"
+              >
+                주문취소
+              </button>
             </div>
           </div>
         </div>
@@ -112,5 +70,6 @@
     <div id="footerWrap" class="w-full h-[300px]"></div>
   </body>
 </html>
-<script type="module" src="./purchase.js"></script>
+
 <script type="module" src="../main.js"></script>
+<script type="module" src="../userInfo/userInfo.js"></script>
