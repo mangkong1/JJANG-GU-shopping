@@ -8,8 +8,8 @@ document.querySelector('#headerWrap').innerHTML = `
       </a></h1>
       <ul class="login">
         <li class="inline-block"><a href="#">로그인</a></li>
-        <li class="inline-block"><a href="#">회원가입</a></li>
-        <li class="inline-block relative">
+        <li class="inline-block pl-10"><a href="#">회원가입</a></li>
+        <li class="inline-block relative pl-10">
           <a href="#">
             <i class="fa-solid fa-cart-shopping text-lg"></i>
             <span class="block w-4 h-4 bg-red rounded-full absolute top-0 right-[-10px]" ></span>
@@ -22,8 +22,8 @@ document.querySelector('#headerWrap').innerHTML = `
 document.querySelector('#footerWrap').innerHTML=`
 <div id="footer" class="w-full flex-col flex justify-center items-center relative">
 
-      <div class="Scroll_top cursor-pointer">
-        <i class="fa-solid fa-arrow-up"></i>
+      <div class="Scroll_top absolute top-10 right-10 w-12 h-12 rounded-full border border-gray500 flex justify-center items-center cursor-pointer">
+      <i class="fa-solid fa-arrow-up text-xl test-gray500"></i>
       </div>
 
       <ul class="link_list pb-10">
