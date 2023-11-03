@@ -32,7 +32,7 @@ document.querySelector('#footerWrap').innerHTML=`
         <li class="link_item inline-block"><a href="#" class="text-gray500">전자금융거래 이용약관</a>|</li>
         <li class="link_item inline-block"><a href="#" class="text-gray500">개인정보처리방침</a>|</li>
         <li class="link_item inline-block"><a href="#" class="text-gray500">안전거래 가이드</a>|</li>
-        <li class="link_item inline-block"><a href="#" class="text-gray500">고객센터</a>|</li>
+        <li class="link_item inline-block"><a href="#" class="text-gray500">고객센터</a></li>
       </ul>
       <div class="link_address">
         <h3 class="hidden">떡잎마을 상점</h3>

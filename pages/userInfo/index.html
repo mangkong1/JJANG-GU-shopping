@@ -2,29 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./userInfo.css" />
     <script src="https://kit.fontawesome.com/a3379ca11a.js" crossorigin="anonymous"></script>
     <title>떡잎마을 상점</title>
   </head>
   <body>
     <div id="headerWrap" class="w-full"></div>
 
-    <div id="userInfo_container">
+    <div id="userInfo_container" class="w-[1274px] mx-auto bg-test">
         <div class="userInfo_left">
             <h2>마이페이지</h2>
             <div class="userInfo_list">
                 <ul>
-                    <li><h3>쇼핑 정보</h3></li>
-                    <li><a href="">상품 등록</a></li>
-                    <li><a href="">구매 내역</a></li>
-                    <li><a href="">판매 내역</a></li>
+                    <li>쇼핑 정보
+                        <ul>
+                            <li><a href="">상품 등록</a></li>
+                            <li><a href="">구매 내역</a></li>
+                            <li><a href="">판매 내역</a></li>
+                        </ul>
+                    </li>
+                    <li>내 정보
+                        <ul>
+                            <li><a href="">프로필 정보</a></li>
+                        </ul>
+                    </li>
                 </ul>
-                <ul>
-                    <li><h3>내 정보</h3></li>
-                    <li><a href="">프로필 정보</a></li>
-                    <li><a href="">주소록</a></li>
-                </ul>
+                
             </div>
         </div>
 
@@ -33,7 +38,7 @@
                 <div class="user_thumb">
                     <img src="../../imgs/맹구.jpg" alt="">
                 </div>
-                <div class="user_name">
+                <div class="user_name"> 
                     <p>엘리스</p>
                     <p>님 반가워요!</p>
                     <p>test@test.com</p>
@@ -43,12 +48,49 @@
                 </div>
             </div>
 
-            <div class="userBy_list"></div>
-            <div class="userSell_list"></div>
+            <div class="userBy_list">
+                <div class="userBy_title">
+                    <p>구매내역</p>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                 <ul class="userBy_item">
+                    <li>
+                        <a href="">
+                        <p>푹신푹신 피그닉매트(소)</p>
+                        <span>상품 준비중</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                        <p>푹신푹신 피그닉매트(소)</p>
+                        <span>상품 준비중</span>
+                        </a>
+                    </li>
+                 </ul>
+            </div>
+            <div class="userSell_list">
+                <div class="userSell_title">
+                    <p>판매내역</p>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                 <ul class="userSell_item">
+                    <div class="userSell_title">
+                        <p>구매내역</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                     <ul class="userSell_item">
+                        <li class="none_item">
+                            판매내역이 없습니다.
+                        </li>
+                     </ul>
+                 </ul>
+            </div>
         </div>
     </div>
 
     <div id="footerWrap" class="w-full h-[300px] flex border-t border-gray400 "></div>
   </body>
 </html>
-<script type="module" src="../main.js"></script>
+<!-- <script type="module" src="../main.js"></script> -->
+<script type="module" src="./userInfo.js"></script>
+
