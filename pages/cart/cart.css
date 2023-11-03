@@ -6,3 +6,8 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+
+.cartComponent{
+    transform: scale(1.07)
+}
