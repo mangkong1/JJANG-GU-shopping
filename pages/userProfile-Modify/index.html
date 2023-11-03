@@ -61,7 +61,7 @@
                         <img class="w-full" src="../imgs/맹구.jpg" alt="맹구 이미지 프로필">
                     </div>
                 </div>
-                <button type="submit" class="user_thumb_btn border rounded-full px-6 py-1 mt-[20px] mb-[60px] hover:bg-red hover:border-transparent hover:text-white">아이콘 변경</button>
+                <button type="submit" class="user_thumb_btn border rounded-full px-6 py-1 mt-[20px] mb-[60px] hover:bg-red hover:border-transparent hover:text-white">캐릭터 변경</button>
 
                 <form method="get">
                     <label for="name" class="block text-xl pl-[5px] pb-2 ">이름</label>
@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    <div id="modifyCheck_popup" class=" hidden absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-[654px] p-9 text-center bg-white rounded-2xl box-border">
+    <div id="modifyCheck_popup" class=" hidden absolute top-1/2 left-1/2 z-40 translate-x-[-50%] translate-y-[-50%] w-[654px] p-9 text-center bg-white rounded-2xl box-border">
 
         <h2 class="text-2xl font-semibold">프로필 정보 수정을 진행합니다.</h2>
         <form class="my-[50px] text-left ">
@@ -96,9 +96,11 @@
         </div>
     </div>
 
+    <div class="popup_bg hidden w-full h-[185%] bg-black/50 absolute left-0 top-0 z-0"></div>
+
     <div id="footerWrap" class="w-full h-[300px]"></div>
   </body>
 </html>
-<!-- <script type="module" src="../main.js"></script> -->
+<script type="module" src="../main.js"></script>
 <script type="module" src="./userProfile_Modify.js"></script>
 
