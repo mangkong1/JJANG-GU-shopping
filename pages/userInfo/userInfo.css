@@ -1,15 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
 
 body {
-  width: 100%;
   font-family: "Noto Sans KR", sans-serif;
 }
 
 img {
   vertical-align: top;
 }
-
-h1 {
-  height: 40px;
-}
-

@@ -15,6 +15,7 @@ export default {
       'gray400': '#8B8B8B',
       'gray500': '#545454',
       'red': '#F13737',
+      'yellow': '#FCD973',
       'test': '#97caf6',
       'test1': '#fff7c8',
     },
