@@ -1,5 +1,5 @@
 import '../style.css';
-import '../index.css';
+// import '../index.css';
 
 document.querySelector('#headerWrap').innerHTML = `
 <div id="header" class="w-4/6 h-[100px] flex mx-auto justify-between items-center">
@@ -39,10 +39,6 @@ document.querySelector('#footerWrap').innerHTML=`
         <a href="#" class="inline-block text-gray400 text-sm"><img class="inline-block pr-3 h-6" src="../imgs/f-logo.svg" alt="떡잎마을 상점 로고">Copyright © 2023. 떡잎마을 상점 All Rights Reserved.</a>
       </div>
     </div>`
-
-
-
-
 
 
 // 버튼 클릭시 최상단으로 스크롤
