@@ -1,122 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./cart.css">
+    <link rel="stylesheet" href="./cart.css" />
     <script src="https://kit.fontawesome.com/a3379ca11a.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+  </head>
+  <body>
     <div id="headerWrap" class="w-full"></div>
-    <div class="m2-cartComponent flex justify-center items-center my-[50px] mb-[300px]">
-    <div class="mx-[18%]">
-        <div class="flex items-baseline pl-[5px] my-4">
-                <p class="text-[40px] font-extrabold content-baseline mx-2">
-                    장바구니 
-               </p>
-                    <i class="w-[11px] h-[18px] text-sm text-gray400 front-bold mx-2 fa-solid fa-chevron-right"></i>
-                <p class="text-lg text-gray400">
-                    주문결제
-                </p>
-                <i class="text-sm text-gray400 front-bold mx-2 fa-solid fa-chevron-right"></i>
-                <p class="text-lg text-gray400">
-                    주문완료
-                </p>
-        </div>
-        <div class="flex grid-cols-2">
-        <div class="goods-container rounded-2xl border-solid border border-gray200 basis-9/12" >
-                    <div class="flex justify-between p-2 pt-6">
-                        <button class="border-solid border-gray200 border bg-white hover:bg-red hover:text-white hover:border-0 py-2 px-4 rounded-full ml-4 my-2 mt-2 text-sm h-[2.1rem] flex items-center">전체삭제</button>
-                        <button class="border-solid border-gray200 border bg-white hover:bg-red hover:text-white hover:border-0 py-2 px-4 rounded-full mr-4 my-2 mt-2 text-sm h-[2.1rem] flex items-center">선택삭제</button>
-                    </div>
-                <div class="grid grid-cols-3 grid-cols-[4fr_1fr_2fr] border-y border-solid border-gray200 justify-items-center items-center p-2">
-                        <p class="mr-[13rem]">
-                            제품
-                        </p>
-                        <p >
-                            수량
-                        </p>
-                        <p > 
-                            가격
-                        </p>
-                </div>
-                <div class="p-2">
-                    <div class="grid grid-cols-3 grid-cols-[4fr_1fr_2fr] auto-cols-auto auto-rows-auto justify-items-center items-center pb-10">
-                            <div class="flex items-center ">
-                                <input checked id="check" type="checkbox" class="w-[10%] h-[10%] text-gray200 border-gray200">
-                                    <div class="h-[40%] w-[40%] m-2 mt-4">
-                                    <img class="2xl object-fit rounded-2xl" src="/picnic.jpg" alt="cartImg">
-                                    </div>
-                                <label for="check" class="mx-2">푹신푹신 피크닉매트(소)</label>
-                            </div>
-                            <div class="flex justify-center items-center">
-                                <input type="number" min="1" class="w-[2.5rem] h-[1.3rem] border border-solid border-gray200 rounded-sm"/>
-                            </div>
-                                <p class="flex justify-center items-center font-bold ml-2">10,000원</p>    
-                                <div class="flex items-center">
-                                    <input checked id="check" type="checkbox" class="w-[10%] h-[10%] text-gray200 border-gray200">
-                                        <div class="h-[40%] w-[40%] m-2 mt-4">
-                                        <img class="2xl object-fit rounded-2xl" src="/picnic.jpg" alt="cartImg">
-                                        </div>
-                                    <label for="check" class="mx-2">푹신푹신 피크닉매트(소)</label>
-                                </div>
-                                <div class="flex justify-center items-center">
-                                    <input type="number" min="1" class="w-[2.5rem] h-[1.3rem] border border-solid border-gray200 rounded-sm"/>
-                                </div>
-                                    <p class="flex justify-center items-center font-bold ml-2">10,000원</p>    
-                                    <div class="flex items-center">
-                                        <input checked id="check" type="checkbox" class="w-[10%] h-[10%] text-gray200 border-gray200">
-                                            <div class="h-[40%] w-[40%] m-2 mt-4">
-                                            <img class="2xl object-fit rounded-2xl" src="/picnic.jpg" alt="cartImg">
-                                            </div>
-                                        <label for="check" class="mx-2">푹신푹신 피크닉매트(소)</label>
-                                    </div>
-                                    <div class="flex justify-center items-center">
-                                        <input type="number" min="1" class="w-[2.5rem] h-[1.3rem] border border-solid border-gray200 rounded-sm"/>
-                                    </div>
-                                        <p class="flex justify-center items-center font-bold ml-2">10,000원</p>    
-                                       
-                                   
-                    </div>
-
-                    
-                </div>
-                </div>
-
-        <div class="pay-container rounded-2xl border-solid border border-gray200 basis-3/12 ml-2 flex flex-col h-[23rem] ">
-            
-                <div class="section1 text-xl ml-2 pt-4 mb p-2">
-                    결제 정보
-                </div>
-                <div class="border-gray200 border-solid grid grid-cols-2 grid-rows-3 p-4 justify-item-center pl-2 border-y border-solid border-gray200">
-                        <p class="p-3">상품 수</p>
-                        <p class="justify-self-end p-3">2개</p>
-                        <p class="p-3">상품 총액</p>
-                        <p class="justify-self-end p-3">20,000원</p>
-                        <p class="p-3">배송비</p>
-                        <p class="justify-self-end p-3">무료</p>
-                    
-                </div>
-                <div class="flex p-4 mb-2 justify-between">
-                <p class="ml-2">총 금액</p>
-                <p class="justify-self-end font-bold text-lg mr-2">20,000원</p>
+    <div class="cartComponent mx-auto mt-[50px] mb-[350px] w-[1274px]">
+      <div class="flex items-baseline pl-[5px] my-4">
+        <p class="text-[40px] font-extrabold content-baseline mx-2">장바구니</p>
+        <i class="text-sm text-gray400 front-bold mx-2 fa-solid fa-chevron-right"></i>
+        <p class="text-lg text-gray400">주문결제</p>
+        <i class="text-sm text-gray400 front-bold mx-2 fa-solid fa-chevron-right"></i>
+        <p class="text-lg text-gray400">주문완료</p>
+      </div>
+      <div class="flex justify-between">
+        <div class="goods-container rounded-2xl border-solid border border-gray200 w-[889px]">
+          <div class="flex justify-between p-2 pt-6">
+            <button class="border-solid border-gray200 border bg-white hover:bg-red hover:text-white hover:border-0 py-2 px-4 rounded-full ml-4 my-2 mt-2 text-sm h-[2.1rem] flex items-center">전체삭제</button>
+            <button class="border-solid border-gray200 border bg-white hover:bg-red hover:text-white hover:border-0 py-2 px-4 rounded-full mr-4 my-2 mt-2 text-sm h-[2.1rem] flex items-center">선택삭제</button>
+          </div>
+          <div class="grid grid-cols-3 grid-cols-[4fr_1fr_2fr] border-y border-solid border-gray200 justify-items-center items-center p-2">
+            <p class="mr-[13rem]">제품</p>
+            <p>수량</p>
+            <p>가격</p>
+          </div>
+          <div class="p-2">
+            <ul>
+              <div id="cartItem" class="grid grid-cols-3 grid-cols-[4fr_1fr_2fr] auto-cols-auto auto-rows-auto justify-items-center items-center pb-10">
+                <div class="flex items-center">
+                  <input checked id="check" type="checkbox" class="w-[10%] h-[10%] text-gray200 border-gray200" />
+                  <div class="h-[40%] w-[40%] m-2 mt-4">
+                    <img class="2xl object-fit rounded-2xl" src="/picnic.jpg" alt="cartImg" />
+                  </div>
+                  <label for="check" class="mx-2">푹신푹신 피크닉매트(소)</label>
                 </div>
                 <div class="flex justify-center items-center">
-                <button class="w-[95%] h-[55%] rounded-md text-sm p-2 font-bold text-white bg-red m-4">구매하기</button>
-                </div>   
-            
+                  <input type="number" min="1" class="w-[2.5rem] h-[1.3rem] border border-solid border-gray200 rounded-sm" />
                 </div>
-            </div>
+                <p class="flex justify-center items-center font-bold ml-2">10,000원</p>
+                <div class="flex items-center">
+                  <input checked id="check" type="checkbox" class="w-[10%] h-[10%] text-gray200 border-gray200" />
+                  <div class="h-[40%] w-[40%] m-2 mt-4">
+                    <img class="2xl object-fit rounded-2xl" src="/picnic.jpg" alt="cartImg" />
+                  </div>
+                  <label for="check" class="mx-2">푹신푹신 피크닉매트(소)</label>
+                </div>
+                <div class="flex justify-center items-center">
+                  <input type="number" min="1" class="w-[2.5rem] h-[1.3rem] border border-solid border-gray200 rounded-sm" />
+                </div>
+                <p class="flex justify-center items-center font-bold ml-2">10,000원</p>
+                <div class="flex items-center">
+                  <input checked id="check" type="checkbox" class="w-[10%] h-[10%] text-gray200 border-gray200" />
+                  <div class="h-[40%] w-[40%] m-2 mt-4">
+                    <img class="2xl object-fit rounded-2xl" src="/picnic.jpg" alt="cartImg" />
+                  </div>
+                  <label for="check" class="mx-2">푹신푹신 피크닉매트(소)</label>
+                </div>
+                <div class="flex justify-center items-center">
+                  <input type="number" min="1" class="w-[2.5rem] h-[1.3rem] border border-solid border-gray200 rounded-sm" />
+                </div>
+                <p class="flex justify-center items-center font-bold ml-2">10,000원</p>
+              </div>
+            </ul>
+          </div>
         </div>
+
+        <div class="pay-container rounded-2xl border-solid border border-gray200 ml-2 flex flex-col w-[369px] h-[23rem]">
+          <div class="section1 text-xl ml-2 pt-4 mb p-2">결제 정보</div>
+          <div class="border-gray200 border-solid grid grid-cols-2 grid-rows-3 p-4 justify-item-center pl-2 border-y border-solid border-gray200">
+            <p class="p-3">상품 수</p>
+            <p class="justify-self-end p-3">2개</p>
+            <p class="p-3">상품 총액</p>
+            <p class="justify-self-end p-3">20,000원</p>
+            <p class="p-3">배송비</p>
+            <p class="justify-self-end p-3">무료</p>
+          </div>
+          <div class="flex p-4 mb-2 justify-between">
+            <p class="ml-2">총 금액</p>
+            <p class="justify-self-end font-bold text-lg mr-2">20,000원</p>
+          </div>
+          <div class="flex justify-center items-center">
+            <button class="w-[95%] h-[55%] rounded-md text-sm p-2 font-bold text-white bg-red m-4">구매하기</button>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-</div>
-        <div id="footerWrap" class="w-full h-[300px] flex border-t border-gray400 "></div> 
-</body>
-<script type="module" src="./cart.js"></script>
-<script type="module" src=".././main.js"></script>
+    <div id="footerWrap" class="w-full h-[300px] flex border-t border-gray400"></div>
+  </body>
+  <script type="module" src="./cart.js"></script>
+  <script type="module" src=".././main.js"></script>
 </html>

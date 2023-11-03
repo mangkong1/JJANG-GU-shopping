@@ -1,8 +1,8 @@
-import '../style.css';
-import '../index.css';
+import "../style.css";
+import "../index.css";
 
-document.querySelector('#headerWrap').innerHTML = `
-<div id="header" class="w-4/6 h-[100px] flex mx-auto justify-between items-center">
+document.querySelector("#headerWrap").innerHTML = `
+<div id="header" class="w-[1274px] h-[100px] flex mx-auto justify-between items-center">
       <h1 class="h-10"><a href="/">
         <img class="h-full" src="../imgs/logo.svg" alt="떡잎마을 상점 로고" />
       </a></h1>
@@ -17,9 +17,9 @@ document.querySelector('#headerWrap').innerHTML = `
         </li>
       </ul>
     </div>
-    `
+    `;
 
-document.querySelector('#footerWrap').innerHTML=`
+document.querySelector("#footerWrap").innerHTML = `
 <div id="footer" class="w-full flex-col flex justify-center items-center relative">
 
       <div class="Scroll_top cursor-pointer">
@@ -38,14 +38,11 @@ document.querySelector('#footerWrap').innerHTML=`
         <h3 class="hidden">떡잎마을 상점</h3>
         <a href="#" class="inline-block text-gray400 text-sm"><img class="inline-block" src="../imgs/f-logo.svg" alt="떡잎마을 상점 로고">Copyright © 2023. 떡잎마을 상점 All Rights Reserved.</a>
       </div>
-    </div>`
-
-
-
+    </div>`;
 
 // 버튼 클릭시 최상단으로 스크롤
-const scrollTopBtn = document.querySelector('.Scroll_top');
+const scrollTopBtn = document.querySelector(".Scroll_top");
 
-scrollTopBtn.addEventListener('click', () => {
-    window.scroll({ top: 0, behavior: "smooth" });  
-})
+scrollTopBtn.addEventListener("click", () => {
+  window.scroll({ top: 0, behavior: "smooth" });
+});

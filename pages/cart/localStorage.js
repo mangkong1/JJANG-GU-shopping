@@ -77,7 +77,6 @@ function getTotalAmount(){
 
 localStorage.setItem("cart","[]") 
 addItem(1);
-deleteItem(1);
 // removeItem(1); 
 
 
