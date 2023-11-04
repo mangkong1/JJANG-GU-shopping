@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>판매내역</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="./userInfo.css" />
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
+    <div id="headerWrap" class="w-full"></div>
+    <div
+      id="userInfo_container"
+      class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
+    >
+      <div id="mypage_menu"></div>
+
+      <div class="w-[1011px] pd-[10px]">
+        <h2 class="pb-6 text-4xl text-black font-semibold">구매 내역</h2>
+
+        <div
+          class="p-[15px] w-[1011px] bg-white border border-gray200 rounded-2xl"
+        >
+          <div class="flex items-center py-[20px]">
+            <img
+              class="mx-[40px] rounded-[15px] w-[115px] h-[115px]"
+              src="/imgs/sss.jpeg"
+              alt="사진"
+            />
+            <p class="mx-[3px]">
+              2024 데스크 캘린더<br />
+              디자인문구
+            </p>
+            <p class="mx-[150px]">20,000</p>
+            <button
+              class="mx-[15px] w-[98px] h-[38px] bg-white rounded-[50px] border border-black"
+            >
+              수정
+            </button>
+            <button
+              class="mx-[15px] w-[98px] h-[38px] bg-white rounded-[50px] border border-black"
+            >
+              삭제
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footerWrap" class="w-full h-[300px]"></div>
+  </body>
+</html>
+<script type="module" src="../main.js"></script>
+<script type="module" src="../userInfo/userInfo.js"></script>
