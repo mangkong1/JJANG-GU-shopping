@@ -10,17 +10,17 @@ document.querySelector("#mypage_menu").innerHTML = `<div class="userInfo_left">
       쇼핑 정보
       <ul class="mt-[10px]">
         <li>
-          <a class="text-xl font-normal text-gray400" href=""
+          <a class="text-xl font-normal text-gray400" href="/register/"
             >상품 등록</a
           >
         </li>
         <li>
-          <a class="text-xl font-normal text-gray400" href=""
+          <a class="text-xl font-normal text-gray400" href="/purchase/"
             >구매 내역</a
           >
         </li>
         <li>
-          <a class="text-xl font-normal text-gray400" href=""
+          <a class="text-xl font-normal text-gray400" href="/sell/"
             >판매 내역</a
           >
         </li>
