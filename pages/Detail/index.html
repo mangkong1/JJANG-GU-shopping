@@ -12,7 +12,10 @@
     <title>상세페이지</title>
   </head>
   <body>
-    <div class="flex justify-center mt-[123px]">
+    <div id="headerWrap" class="w-full"></div>
+
+
+    <div class="flex justify-center mt-[123px] mb-[288px]">
       <img
         src="/imgs/ss.jpeg"
         alt="사진"
@@ -26,12 +29,12 @@
         
         <div class="flex justify-center absolute bottom-0">
             <button
-              class="w-[270px] h-[60px] border border-solid border-black rounded-[15px] flex flex-col justify-center items-center mr-[25px]"
+              class="Add_cart w-[270px] h-[60px] border border-solid border-black rounded-[15px] flex flex-col justify-center items-center mr-[25px]"
             onclick="">
               <p class="font-bold text-[20px]">장바구니 담기</p>
             </button>
             <button
-              class="w-[270px] h-[60px] border border-solid border-[#F13637] rounded-[15px] bg-[#F13637] flex flex-col justify-center items-center"
+              class="Direct_purchase w-[270px] h-[60px] border border-solid border-[#F13637] rounded-[15px] bg-[#F13637] flex flex-col justify-center items-center"
             >
               <p class="text-[#FFFFFF] font-bold text-[20px]">
                 바로 구매하기
@@ -41,6 +44,11 @@
         </div>
       </div>
     </div>
+    <div id="footerWrap" class="w-full h-[300px]"></div>
+
   </body>
 </html>
+<script type="module" src="../main.js"></script>
+<script type="module" src="../userInfo/userInfo.js"></script>
 <script type="module" src="./detail.js"></script>
+
