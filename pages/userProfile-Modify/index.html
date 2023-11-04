@@ -1,106 +1,186 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="./userProfile_Modify.css" />
-    <script src="https://kit.fontawesome.com/a3379ca11a.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>떡잎마을 상점</title>
   </head>
   <body>
     <div id="headerWrap" class="w-full"></div>
 
-    <div id="userProfile_container" class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]">
-        <div class="userProfile_left">
-            <h2 class="text-4xl font-semibold pb-6 pl-[5px]">마이페이지</h2>
-            <div class="userInfo_list w-[236px] h-[532px] border border-gray200 rounded-2xl px-[25px] py-[36px] box-border" >
-                <ul>
-                    <li class="font-semibold text-2xl mb-[87px]">쇼핑 정보
-                        <ul class="mt-[10px]">
-                            <li><a class="text-xl font-normal text-gray400" href="">상품 등록</a></li>
-                            <li><a class="text-xl font-normal text-gray400" href="">구매 내역</a></li>
-                            <li><a class="text-xl font-normal text-gray400" href="">판매 내역</a></li>
-                        </ul>
-                    </li>
-                    <li class="font-semibold text-2xl">내 정보
-                        <ul class="mt-[10px]">
-                            <li><a class="text-xl font-semibold " href="">프로필 정보</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                
+    <div
+      id="userProfile_container"
+      class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
+    >
+      <div id="mypage_menu"></div>
+
+      <div class="userProfile-right w-[1011px]">
+        <h2 class="text-4xl font-semibold pb-6 pl-[5px]">프로필 정보</h2>
+
+        <div
+          class="userProfile_Modify_Container w-[1011px] border border-gray200 rounded-2xl px-[41px] py-[10px] box-border"
+        >
+          <div class="userProfile flex items-center">
+            <div
+              class="user_thumb inline-block w-[185px] h-[185px] overflow-hidden rounded-full"
+            >
+              <img
+                class="w-full"
+                src="../../imgs/맹구.jpg"
+                alt="사용자 프로필 이미지"
+              />
             </div>
-        </div>
-
-        <div class="userProfile-right w-[1011px]">
-            <h2 class="text-4xl font-semibold pb-6 pl-[5px]">프로필 정보 </h2>
-
-            <div class="userProfile_Modify_Container w-[1011px] border border-gray200 rounded-2xl px-[41px] py-[10px] box-border">
-
-                <div class="userProfile flex items-center">
-                    <div class="user_thumb inline-block w-[185px] h-[185px] overflow-hidden rounded-full">
-                        <img class="w-full" src="../../imgs/맹구.jpg" alt="사용자 프로필 이미지" />
-                    </div>
-                    <p class="inline-block text-[28px] font-semibold underline ">엘리스</p>
-                    <p class="inline-block text-[28px] font-semibold ">님 환영합니다!</p>
-                </div>
-                <div class="user_thumb_other hidden w-4/5 border border-gray200 rounded-2xl flex">
-
-                    <div class="inline-block  w-1/4 h-[140px] rounded-full overflow-hidden mx-2 cursor-pointer" >
-                        <img class="w-full" src="../imgs/짱구.jpg" alt="짱구 이미지 프로필">
-                    </div>
-                    <div class="inline-block w-1/4 rounded-full overflow-hidden mx-2 cursor-pointer">
-                        <img class="w-full" src="../imgs/유리.jpg" alt="유리 이미지 프로필">
-                    </div>
-                    <div class="inline-block  w-1/4 rounded-full overflow-hidden mx-2 cursor-pointer">
-                        <img class="w-full" src="../imgs/철수.jpg" alt="철수 이미지 프로필">
-                    </div>
-                    <div class="inline-block  w-1/4 rounded-full overflow-hidden mx-2 cursor-pointer">
-                        <img class="w-full" src="../imgs/맹구.jpg" alt="맹구 이미지 프로필">
-                    </div>
-                </div>
-                <button type="submit" class="user_thumb_btn border rounded-full px-6 py-1 mt-[20px] mb-[60px] hover:bg-red hover:border-transparent hover:text-white">캐릭터 변경</button>
-
-                <form method="get">
-                    <label for="name" class="block text-xl pl-[5px] pb-2 ">이름</label>
-                    <input type="text" id="name" name="user_name" value="엘리스" class="border rounded-xl border-gray200 inline-block w-[646px] py-2 pl-3 mb-[20px] "/>
-                    
-                    <label for="email" class="block text-xl pl-[5px] pb-2 ">이메일</label>
-                    <input type="email" id="email" name="user_email" value="test@test.com" class="border rounded-xl border-gray200 inline-block w-[646px] py-2 pl-3  mb-[20px] "/>
-
-                    <label for="password" class="block text-xl pl-[5px] pb-2 ">비밀번호</label>
-                    <input type="password" id="password" name="user_password" value="helloelice" class="border rounded-xl border-gray200 inline-block w-[646px] py-2 pl-3  mb-[20px] "/>
-
-                    <label for="passwordCheck" class="block text-xl pl-[5px] pb-2 ">비밀번호 확인</label>
-                    <input type="password" id="passwordCheck" name="user_passwordCheck" value="helloelice" class="border rounded-xl border-gray200 inline-block w-[646px] py-2 pl-3  mb-[20px] "/>
-                </form>
-
-                <button type="submit" class="modify_btn mt-[56px] w-[186px] py-3 bg-red rounded-2xl text-white mb-6">수정하기</button>
+            <p class="inline-block text-[28px] font-semibold underline">
+              엘리스
+            </p>
+            <p class="inline-block text-[28px] font-semibold">님 환영합니다!</p>
+          </div>
+          <div
+            class="user_thumb_other hidden w-4/5 border border-gray200 rounded-2xl flex"
+          >
+            <div
+              class="inline-block w-1/4 h-[140px] rounded-full overflow-hidden mx-2 cursor-pointer"
+            >
+              <img
+                class="w-full"
+                src="../imgs/짱구.jpg"
+                alt="짱구 이미지 프로필"
+              />
             </div>
+            <div
+              class="inline-block w-1/4 rounded-full overflow-hidden mx-2 cursor-pointer"
+            >
+              <img
+                class="w-full"
+                src="../imgs/유리.jpg"
+                alt="유리 이미지 프로필"
+              />
+            </div>
+            <div
+              class="inline-block w-1/4 rounded-full overflow-hidden mx-2 cursor-pointer"
+            >
+              <img
+                class="w-full"
+                src="../imgs/철수.jpg"
+                alt="철수 이미지 프로필"
+              />
+            </div>
+            <div
+              class="inline-block w-1/4 rounded-full overflow-hidden mx-2 cursor-pointer"
+            >
+              <img
+                class="w-full"
+                src="../imgs/맹구.jpg"
+                alt="맹구 이미지 프로필"
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="user_thumb_btn border rounded-full px-6 py-1 mt-[20px] mb-[60px] hover:bg-red hover:border-transparent hover:text-white"
+          >
+            캐릭터 변경
+          </button>
+
+          <form method="get">
+            <label for="name" class="block text-xl pl-[5px] pb-2">이름</label>
+            <input
+              type="text"
+              id="name"
+              name="user_name"
+              value="엘리스"
+              class="border rounded-xl border-gray200 inline-block w-[646px] py-2 pl-3 mb-[20px]"
+            />
+
+            <label for="email" class="block text-xl pl-[5px] pb-2"
+              >이메일</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="user_email"
+              value="test@test.com"
+              class="border rounded-xl border-gray200 inline-block w-[646px] py-2 pl-3 mb-[20px]"
+            />
+
+            <label for="password" class="block text-xl pl-[5px] pb-2"
+              >비밀번호</label
+            >
+            <input
+              type="password"
+              id="password"
+              name="user_password"
+              value="helloelice"
+              class="border rounded-xl border-gray200 inline-block w-[646px] py-2 pl-3 mb-[20px]"
+            />
+
+            <label for="passwordCheck" class="block text-xl pl-[5px] pb-2"
+              >비밀번호 확인</label
+            >
+            <input
+              type="password"
+              id="passwordCheck"
+              name="user_passwordCheck"
+              value="helloelice"
+              class="border rounded-xl border-gray200 inline-block w-[646px] py-2 pl-3 mb-[20px]"
+            />
+          </form>
+
+          <button
+            type="submit"
+            class="modify_btn mt-[56px] w-[186px] py-3 bg-red rounded-2xl text-white mb-6"
+          >
+            수정하기
+          </button>
         </div>
+      </div>
     </div>
 
-    <div id="modifyCheck_popup" class=" hidden absolute top-1/2 left-1/2 z-40 translate-x-[-50%] translate-y-[-50%] w-[654px] p-9 text-center bg-white rounded-2xl box-border">
+    <div
+      id="modifyCheck_popup"
+      class="hidden absolute top-1/2 left-1/2 z-40 translate-x-[-50%] translate-y-[-50%] w-[654px] p-9 text-center bg-white rounded-2xl box-border"
+    >
+      <h2 class="text-2xl font-semibold">프로필 정보 수정을 진행합니다.</h2>
+      <form class="my-[50px] text-left">
+        <label for="currnetPass" class="block text-xl pl-[5px] pb-2"
+          >현재 비밀번호</label
+        >
+        <input
+          type="password"
+          id="currnetPass"
+          name="user_pass"
+          placeholder="현재 비밀번호를 입력하세요."
+          class="border rounded-xl border-gray200 w-[577px] py-3 pl-3"
+        />
+      </form>
 
-        <h2 class="text-2xl font-semibold">프로필 정보 수정을 진행합니다.</h2>
-        <form class="my-[50px] text-left ">
-            <label for="currnetPass" class="block text-xl pl-[5px] pb-2 ">현재 비밀번호</label>
-            <input type="password" id="currnetPass" name="user_pass" placeholder="현재 비밀번호를 입력하세요." class="border rounded-xl border-gray200 w-[577px] py-3 pl-3"/>
-        </form>
-
-        <div class="popup_btns w-full flex justify-between">
-            <button type="reset" class="w-[276px] border rounded-2xl h-[49px]" >뒤로가기</button>
-            <button type="submit" class="w-[276px] bg-red text-white rounded-2xl h-[49px]" >수정하기</button>
-        </div>
+      <div class="popup_btns w-full flex justify-between">
+        <button type="reset" class="w-[276px] border rounded-2xl h-[49px]">
+          뒤로가기
+        </button>
+        <button
+          type="submit"
+          class="w-[276px] bg-red text-white rounded-2xl h-[49px]"
+        >
+          수정하기
+        </button>
+      </div>
     </div>
 
-    <div class="popup_bg hidden w-full h-[185%] bg-black/50 absolute left-0 top-0 z-0"></div>
+    <div
+      class="popup_bg hidden w-full h-[185%] bg-black/50 absolute left-0 top-0 z-0"
+    ></div>
 
     <div id="footerWrap" class="w-full h-[300px]"></div>
   </body>
 </html>
 <script type="module" src="../main.js"></script>
 <script type="module" src="./userProfile_Modify.js"></script>
-
+<script type="module" src="../userInfo/userInfo.js"></script>
