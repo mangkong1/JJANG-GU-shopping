@@ -7,7 +7,7 @@ document.querySelector("#headerWrap").innerHTML = `
         <img class="h-full" src="../imgs/logo.svg" alt="떡잎마을 상점 로고" />
       </a></h1>
       <ul class="login">
-        <li class="inline-block"><a href="#">로그인</a></li>
+        <li class="inline-block"><a href="/login/">로그인</a></li>
         <li class="inline-block"><a href="#">회원가입</a></li>
         <li class="inline-block relative">
           <a href="#">
