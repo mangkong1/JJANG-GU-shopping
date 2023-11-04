@@ -1,12 +1,13 @@
-import { addItem, removeItem, removeAllItem, getTotalPrice, updateQuantity, getTotalAmount } from "./localStorage.js";
+import { addItem, removeItem, removeAllItems, updateAmount } from "./localStorage.js";
 
 const deleteAllBtn = document.getElementById("deleteAllBtn");
-const deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
+const deleteChosenBtn = document.getElementById("deleteChosenBtn");
 const totalAmount = document.getElementById("totalAmount");
 const totalItemPrice = document.getElementById("totalItemPrice");
+const cartItem = document.getElementById("cartItem");
 const shipPrice = document.getElementById("shipPrice");
 const totalPrice = document.getElementById("totalPrice");
-const cartItem = document.getElementById("cartItem");
+const cartItems = document.getElementsByClassName("cartItems");
 
 fetch("./items.json")
   .then((res) => {
@@ -21,11 +22,12 @@ fetch("./items.json")
 
 let items = JSON.parse(localStorage.getItem("items"));
 let cart = JSON.parse(localStorage.getItem("cart"));
-
-function showIteminCart() {
-  cartItem.innerHTML = cart
-    .map((item, i) => {
-      ` <div id="cartItem-${item.id}" class="grid grid-cols-3 grid-cols-[4fr_1fr_2fr]  justify-items-center items-center"> 
+console.log(cart);
+console.log(items);
+const showItem = cart
+  .map((item) => {
+    console.log(item.id);
+    return ` <div id="cartItem-${item.id}" class="cartItems grid grid-cols-3 grid-cols-[4fr_1fr_2fr]  justify-items-center items-center"> 
           <div class="flex items-center">
             <input checked id="check-${item.id}" type="checkbox" class="w-[10%] h-[10%] text-gray200 border-gray200">
                 <div class="h-[40%] w-[40%] m-2 mt-4">
@@ -38,26 +40,78 @@ function showIteminCart() {
           </div>
           <p class="flex justify-center items-center font-bold ml-2">${item.price}</p>
         </div>`;
-    })
-    .join("");
-}
+  })
+  .join("");
+// console.log(showItem);
+cartItem.innerHTML = showItem;
 
-function showPayInfo() {
-  totalAmount.innerHTML = getTotalAmount();
-  totalItemPrice.inner;
-}
+const checkBox = document.querySelectorAll('input[type="checkbox"]');
+const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
-function getitemId(itemId) {
+console.log(checkBox);
+console.log(checkedBoxes);
+
+function getItemId(itemId) {
   const splitId = itemId.split("-");
   return splitId[1];
 }
 
-function removeChosenItem() {
-  const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
-  checkedBoxes.forEach((checkedBox) => {
-    const itemId = getitemId(checkedBox.id);
-    const cartItem = document.getElementById(`cartItem-${idNumber}`);
-    cartItem.remove();
-    removeItem(itemId);
+function getCheckedElements() {
+  const checkedItems = Array.from(checkedBoxes).forEach((checkedBox) => {
+    const itemId = getItemId(checkedBox.id);
+    const cartItem = document.getElementById(`cartItem-${itemId}`);
+    return cartItem;
   });
+  return checkedItems;
 }
+
+function deleteChosenIteminCart() {
+  Array.from(getCheckedElements()).forEach((element) => {
+    element.remove();
+    removeItem(getItemId(element.id));
+  });
+  console.log("getChecked", getCheckedElements());
+  console.log("deleted Selected Item");
+}
+
+function deleteAllIteminCart() {
+  removeAllItems();
+  Array.from(cartItems).forEach((element) => element.remove());
+  console.log("deleted All Item");
+}
+
+function showTotalItemPrice() {}
+
+function showTotalAmount() {}
+
+function getShipPrice() {
+  if (checkedBoxes === null) {
+    return shipPrice;
+  }
+}
+
+//(지금은 없는데 추후에 넣을 수도 있음)
+function chooseAllItem() {
+  const isAllChecked = Array.from(checkBox).every((item) => item.checked);
+  if (isAllChecked) {
+    Array.from(checkBox).forEach((item) => {
+      item.checked = false;
+    });
+  } else {
+    Array.from(checkBox).forEach((item) => {
+      item.checked = true;
+    });
+  }
+}
+
+function showtotalItemPrice() {}
+
+function showtotalPrice() {}
+
+function showQuantity() {}
+
+deleteAllBtn.addEventListener("click", deleteAllIteminCart);
+deleteChosenBtn.addEventListener("click", deleteChosenIteminCart);
+
+addItem(1);
+addItem(1);
