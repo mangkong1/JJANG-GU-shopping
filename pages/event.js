@@ -49,3 +49,4 @@ productItemThumb.addEventListener('mouseover', () => {
 });
 productItemThumb.addEventListener('mouseout', () => {
     viewCart.classList.add('hidden');
+});

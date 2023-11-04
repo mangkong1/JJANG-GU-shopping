@@ -15,10 +15,7 @@ export default {
       'gray400': '#8B8B8B',
       'gray500': '#545454',
       'red': '#F13737',
-<<<<<<< HEAD
       'yellow': '#FCD973',
-=======
->>>>>>> feature/cart
       'test': '#97caf6',
       'test1': '#fff7c8',
     },
