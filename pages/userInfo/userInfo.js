@@ -30,7 +30,7 @@ document.querySelector("#mypage_menu").innerHTML = `<div class="userInfo_left">
       내 정보
       <ul class="mt-[10px]">
         <li>
-          <a class="text-xl font-normal text-gray400" href=""
+          <a class="text-xl font-normal text-gray400" href="/userInfo/"
             >프로필 정보</a
           >
         </li>
