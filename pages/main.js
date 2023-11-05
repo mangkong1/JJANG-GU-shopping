@@ -7,14 +7,16 @@ document.querySelector("#headerWrap").innerHTML = `
         <img class="h-full" src="../imgs/logo.svg" alt="떡잎마을 상점 로고" />
       </a></h1>
       <ul class="login">
-        <li class="inline-block"><a href="/login/">로그인</a></li>
-        <li class="inline-block"><a href="#">회원가입</a></li>
-        <li class="inline-block relative hidden">
+        <li class="inline-block px-4"><a href="/login/">로그인</a></li>
+        <li class="inline-block px-4"><a href="#">회원가입</a></li>
+        <li class="inline-block px-4 hidden"><a href="#">로그아웃</a></li>
+        <li class="inline-block px-4 hidden"><a href="#">관리자</a></li>
+        <li class="inline-block px-4 relative hidden">
           <a href="/userInfo/">
             <i class="fa-solid fa-user text-lg"></i>
           </a>
         </li>
-        <li class="inline-block relative">
+        <li class="inline-block px-4 relative">
           <a href="/cart/">
             <i class="fa-solid fa-cart-shopping text-lg"></i>
             <span class="cartOn hidden block w-4 h-4 bg-red rounded-full absolute top-0 right-[-10px]" ></span>
