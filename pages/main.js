@@ -9,10 +9,15 @@ document.querySelector("#headerWrap").innerHTML = `
       <ul class="login">
         <li class="inline-block"><a href="/login/">로그인</a></li>
         <li class="inline-block"><a href="#">회원가입</a></li>
+        <li class="inline-block relative hidden">
+          <a href="/userInfo/">
+            <i class="fa-solid fa-user text-lg"></i>
+          </a>
+        </li>
         <li class="inline-block relative">
-          <a href="#">
+          <a href="/cart/">
             <i class="fa-solid fa-cart-shopping text-lg"></i>
-            <span class="block w-4 h-4 bg-red rounded-full absolute top-0 right-[-10px]" ></span>
+            <span class="cartOn hidden block w-4 h-4 bg-red rounded-full absolute top-0 right-[-10px]" ></span>
           </a>
         </li>
       </ul>

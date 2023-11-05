@@ -49,13 +49,3 @@ productItemThumb.addEventListener("mouseover", () => {
 productItemThumb.addEventListener("mouseout", () => {
   viewCart.classList.add("hidden");
 });
-
-//아이콘 버튼 클릭시 장바구니로 이동
-document.addEventListener("DOMContentLoaded", function () {
-  var addCartButton = document.querySelector(".Add_cart");
-  if (addCartButton) {
-    addCartButton.addEventListener("click", function () {
-      window.location.href = "http://localhost:8080/cart/";
-    });
-  }
-});
