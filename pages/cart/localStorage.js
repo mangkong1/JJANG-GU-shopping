@@ -13,21 +13,41 @@ let items = JSON.parse(localStorage.getItem("items"));
 let cart = JSON.parse(localStorage.getItem("cart"));
 
 function addItem(itemId) {
+  if (typeof itemId !== "string") {
+    console.log("item Id need to be type string");
+    return;
+  }
   let item = items.find((item) => {
+    console.log("istrue", item.id === itemId);
     return item.id === itemId;
   });
+  if (item == null) {
+    console.log("id not found");
+    return;
+  }
+
+  console.log(item);
   if (cart.length === 0) {
     cart.push(item);
   } else {
-    let cartItem = cart.find((item) => item.id === itemId);
-    if (cartItem === undefined) {
+    let foundItem = cart.find((item) => item.id === itemId);
+    if (foundItem === undefined) {
       cart.push(item);
+    } else {
+      if (foundItem.quantity < 99) {
+        foundItem.quantity += 1;
+      } else {
+        foundItem.quantity = 99;
+      }
     }
   }
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 function removeItem(itemId) {
+  if (typeof itemId != "string") {
+    console.log("id is not in string form");
+  }
   let temp = cart.filter((item) => item.id !== itemId);
   localStorage.setItem("cart", JSON.stringify(temp));
 }
@@ -45,16 +65,41 @@ function updateAmount(itemId, quantity) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function getTotal(property) {
-  let temp = cart.map((item) => {
-    return parseInt(item[property]);
-  });
+function updateChecked(itemId, isChecked) {
+  for (let item of cart) {
+    if (item.id === itemId) {
+      item.checked = isChecked;
+    }
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
+function getisCheckedAmount() {
+  let temp = cart
+    .filter((item) => {
+      return item.checked === true;
+    })
+    .map((item) => {
+      return parseInt(item.quantity);
+    });
   let sum = temp.reduce((acc, current) => {
     return acc + current;
   }, 0);
-
   return sum;
 }
 
-export { addItem, removeItem, removeAllItems, updateAmount };
+function getisCheckedPrice() {
+  let temp = cart
+    .filter((item) => {
+      return item.checked === true;
+    })
+    .map((item) => {
+      return parseInt(item.price) * parseInt(item.quantity);
+    });
+  let sum = temp.reduce((acc, current) => {
+    return acc + current;
+  }, 0);
+  return sum;
+}
+
+export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount };
