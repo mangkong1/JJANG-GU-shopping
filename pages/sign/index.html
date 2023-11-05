@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>떡잎마을 상점</title>
+  </head>
+  <body>
+    <div id="headerWrap" class="w-full"></div>
+
+    <div class="mt-[123px] mb-[288px] flex flex-col items-center">
+      <div class="mb-[38px] text-black text-[45px] font-bold">회원가입</div>
+
+      <div
+        class="relative border border-gray-200 px-[26px] py-[39px] w-[626px] h-[551px] bg-white rounded-[15px]"
+      >
+        <div class="mb-[26px] flex justify-between items-center">
+          <p class="text-black text-xl font-semibold">이름</p>
+          <input
+            class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
+            type="text"
+            placeholder="Name"
+          />
+        </div>
+        <div class="mb-[26px] flex justify-between items-center">
+          <p class="text-black text-xl font-semibold">이메일</p>
+          <input
+            class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
+            type="email"
+            placeholder="Email"
+          />
+        </div>
+        <div class="mb-[26px] flex justify-between items-center">
+          <p class="text-black text-xl font-semibold">비밀번호</p>
+          <input
+            class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
+            type="password"
+            placeholder="Password"
+          />
+        </div>
+        <div class="mb-[26px] flex justify-between items-center">
+          <p class="text-black text-xl font-semibold">비밀번호 확인</p>
+          <input
+            class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
+            type="password"
+            placeholder="Confirm password"
+          />
+        </div>
+
+        <button
+          class="absolute bottom-[39px] text-[20px] font-semibold flex justify-center items-center text-white w-[576px] h-[61px] bg-red-500 rounded-[15px]"
+        >
+          회원가입 하기
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="footerWrap"
+      class="w-full h-[300px] flex border-t border-gray400"
+    ></div>
+  </body>
+</html>
+<script type="module" src="./sign.js"></script>
+<script type="module" src="../main.js"></script>
+<script type="module" src="../event.js"></script>

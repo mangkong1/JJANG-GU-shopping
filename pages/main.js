@@ -8,7 +8,7 @@ document.querySelector("#headerWrap").innerHTML = `
       </a></h1>
       <ul class="login">
         <li class="inline-block px-4"><a href="/login/">로그인</a></li>
-        <li class="inline-block px-4"><a href="#">회원가입</a></li>
+        <li class="inline-block px-4"><a href="/sign/">회원가입</a></li>
         <li class="inline-block px-4 hidden"><a href="#">로그아웃</a></li>
         <li class="inline-block px-4 hidden"><a href="#">관리자</a></li>
         <li class="inline-block px-4 relative hidden">
