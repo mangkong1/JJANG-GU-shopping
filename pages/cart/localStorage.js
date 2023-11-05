@@ -13,7 +13,6 @@ let items = JSON.parse(localStorage.getItem("items"));
 let cart = JSON.parse(localStorage.getItem("cart"));
 
 function addItem(itemId) {
-  console.log("whatis", typeof itemId);
   if (typeof itemId !== "string") {
     console.log("item Id need to be type string");
     return;
@@ -35,7 +34,11 @@ function addItem(itemId) {
     if (foundItem === undefined) {
       cart.push(item);
     } else {
-      foundItem.quantity += 1;
+      if (foundItem.quantity < 99) {
+        foundItem.quantity += 1;
+      } else {
+        foundItem.quantity = 99;
+      }
     }
   }
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -71,24 +74,32 @@ function updateChecked(itemId, isChecked) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function getisCheckedTotal(property) {
-  console.log("property", property);
-  console.log("cart", cart.length);
-  if (cart.length) {
-    console.log("conditional");
-    let temp = cart
-      .filter((item) => {
-        return item.checked === true;
-      })
-      .map((item) => {
-        return parseInt(item[property]);
-      });
-    let sum = temp.reduce((acc, current) => {
-      return acc + current;
-    }, 0);
-    return sum;
-  }
-  return 0;
+function getisCheckedAmount() {
+  let temp = cart
+    .filter((item) => {
+      return item.checked === true;
+    })
+    .map((item) => {
+      return parseInt(item.quantity);
+    });
+  let sum = temp.reduce((acc, current) => {
+    return acc + current;
+  }, 0);
+  return sum;
 }
 
-export { addItem, removeItem, removeAllItems, getisCheckedTotal, updateAmount, updateChecked };
+function getisCheckedPrice() {
+  let temp = cart
+    .filter((item) => {
+      return item.checked === true;
+    })
+    .map((item) => {
+      return parseInt(item.price) * parseInt(item.quantity);
+    });
+  let sum = temp.reduce((acc, current) => {
+    return acc + current;
+  }, 0);
+  return sum;
+}
+
+export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount };
