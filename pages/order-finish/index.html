@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./userInfo.css" />
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>주문완료</title>
+  </head>
+  <body>
+    <div id="headerWrap" class="w-full"></div>
+
+    <div class="mt-[50px] mb-[350px] w-[949px] mx-auto">
+      <div class="flex items-baseline pl-[5px] my-4">
+        <p class="text-lg text-gray400">장바구니</p>
+        <i
+          class="text-sm text-gray400 front-bold mx-2 fa-solid fa-chevron-right"
+        ></i>
+        <p class="text-lg text-gray400">주문결제</p>
+        <i
+          class="text-sm text-gray400 front-bold mx-2 fa-solid fa-chevron-right"
+        ></i>
+        <p class="text-[40px] font-extrabold content-baseline mx-2">주문완료</p>
+      </div>
+
+      <div
+        class="flex flex-col w-[949px] h-[532px] bg-white rounded-[15px] border"
+      >
+        <div class="flex flex-col items-center">
+          <div class="my-[112px] w-[503px] h-[50px] flex items-center">
+            <i class="fa-solid fa-circle-check text-3xl"></i>
+            <div class="mx-[13px] text-black text-3xl">
+              주문이 성공적으로 완료되었습니다!
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <button
+              class="Order_list mb-[14px] w-[531px] h-[61px] rounded-[10px] border border-black text-2xl"
+            >
+              주문내역 보기
+            </button>
+            <button
+              class="Return_main w-[531px] h-[61px] bg-red rounded-[10px] border border-red text-2xl text-white"
+            >
+              쇼핑 계속하기
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="footerWrap"
+      class="w-full h-[300px] flex border-t border-gray400"
+    ></div>
+  </body>
+</html>
+<script type="module" src="../main.js"></script>
+<script type="module" src="./order-finish.js"></script>

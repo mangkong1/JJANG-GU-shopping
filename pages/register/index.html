@@ -2,18 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>상품등록</title>
-  </head>
-  <body>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./register.css" />
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./userInfo.css" />
     <script
       src="https://kit.fontawesome.com/a3379ca11a.js"
       crossorigin="anonymous"
     ></script>
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>상품등록</title>
+  </head>
+  <body>
     <div id="headerWrap" class="w-full"></div>
+
     <div
       id="userInfo_container"
       class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
@@ -40,43 +47,46 @@
           <div>
             <p class="pl-[5px] text-xl mb-[8px]">작성자</p>
             <input
-              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray200"
+              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
               type="text"
               placeholder="작성자를 입력하세요"
             />
             <p class="pl-[5px] text-xl mb-[8px]">상품 이름</p>
             <input
-              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray200"
+              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
               type="text"
               placeholder="상품 이름을 입력하세요"
             />
             <p class="pl-[5px] text-xl mb-[8px]">가격</p>
             <input
-              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray200"
+              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
               type="text"
               placeholder="가격을 입력하세요(숫자만)"
             />
             <p class="pl-[5px] text-xl mb-[8px]">카테고리</p>
             <input
-              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray200"
+              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
               type="text"
               placeholder="디자인문구"
             />
+
             <p class="pl-[5px] text-xl mb-[8px]">상품 이미지 업로드</p>
             <input
-              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray200"
-              type="text"
-              placeholder="디자인문구"
+              class="mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer"
+              id="file_input"
+              type="file"
             />
+
             <p class="pl-[5px] text-xl mb-[8px]">상세정보 이미지 업로드</p>
             <input
-              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray200"
-              type="text"
-              placeholder="디자인문구"
+              class="mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer"
+              id="file_input"
+              type="file"
             />
+
             <div class="flex justify-end">
               <button
-                class="my-[50px] w-[255px] h-[49px] bg-[#F13737] rounded-[10px] border border-[#F13737] text-[#ffffff]"
+                class="my-[50px] w-[255px] h-[49px] bg-[#F13737] rounded-[10px] border border-[#F13737] text-white cursor-pointer bg-gray"
               >
                 상품 등록하기
               </button>
@@ -86,8 +96,12 @@
       </div>
     </div>
 
-    <div id="footerWrap" class="w-full h-[300px]"></div>
+    <div
+      id="footerWrap"
+      class="w-full h-[300px] flex border-t border-gray400"
+    ></div>
   </body>
 </html>
 <script type="module" src="../main.js"></script>
 <script type="module" src="../userInfo/userInfo.js"></script>
+<script type="module" src="./register.js"></script>

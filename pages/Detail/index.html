@@ -2,22 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./userinfo.css" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./detail.css" />
     <script
       src="https://kit.fontawesome.com/a3379ca11a.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>상세페이지</title>
   </head>
   <body>
-    <div class="flex justify-center mt-[123px]">
+    <div id="headerWrap" class="w-full"></div>
+
+    <div class="flex justify-center mt-[123px] mb-[288px]">
       <img
-        src="/imgs/ss.jpeg"
+        src="/imgs/test.jpg"
         alt="사진"
         class="w-[570px] h-[570px] rounded-[20px] rounded-lg mr-[50px]"
       />
+
       <div class="w-[570px] h-[570px] border border-0 border-t-4 relative">
         <p class="text-[35px] font-bold my-[35px]">
           짱구, 흰둥이 미니글라스
@@ -26,21 +30,25 @@
         
         <div class="flex justify-center absolute bottom-0">
             <button
-              class="w-[270px] h-[60px] border border-solid border-black rounded-[15px] flex flex-col justify-center items-center mr-[25px]"
-            onclick="">
-              <p class="font-bold text-[20px]">장바구니 담기</p>
+            class="Add_cart w-[270px] h-[60px] border border-solid border-black rounded-[15px] flex flex-col justify-center items-center mr-[25px]"
+            >
+              <a class="font-bold text-[20px]">장바구니 담기</a>
             </button>
             <button
-              class="w-[270px] h-[60px] border border-solid border-[#F13637] rounded-[15px] bg-[#F13637] flex flex-col justify-center items-center"
+              class="Direct_purchase w-[270px] h-[60px] border border-solid border-[#F13637] rounded-[15px] bg-[#F13637] flex flex-col justify-center items-center"
             >
-              <p class="text-[#FFFFFF] font-bold text-[20px]">
+              <a href="/order/" class="text-[#FFFFFF] font-bold text-[20px]">
                 바로 구매하기
-              </p>
+              </a>
             </button>
           </div>
         </div>
       </div>
     </div>
-  </body>
+
+    <div id="footerWrap" class="w-full h-[300px] flex border-t border-gray400"></div>  </body>
 </html>
+<script type="module" src="../main.js"></script>
+<script type="module" src="../userInfo/userInfo.js"></script>
 <script type="module" src="./detail.js"></script>
+

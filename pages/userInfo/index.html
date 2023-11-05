@@ -9,30 +9,31 @@
       src="https://kit.fontawesome.com/a3379ca11a.js"
       crossorigin="anonymous"
     ></script>
-    <title>떡잎마을 상점</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>마이페이지</title>
   </head>
   <body>
     <div id="headerWrap" class="w-full"></div>
 
-    <div id="userInfo_container" class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]">
-        <div class="userInfo_left">
-            <h2 class="text-4xl font-semibold pb-6 pl-[5px]">마이페이지</h2>
-            <div class="userInfo_list w-[236px] h-[532px] border border-gray200 rounded-2xl px-[25px] py-[36px] box-border" >
-                <ul>
-                    <li class="font-semibold text-2xl mb-[87px]">쇼핑 정보
-                        <ul class="mt-[10px]">
-                            <li><a class="text-xl font-normal text-gray400" href="">상품 등록</a></li>
-                            <li><a class="text-xl font-normal text-gray400" href="">구매 내역</a></li>
-                            <li><a class="text-xl font-normal text-gray400" href="">판매 내역</a></li>
-                        </ul>
-                    </li>
-                    <li class="font-semibold text-2xl">내 정보
-                        <ul class="mt-[10px]">
-                            <li><a class="text-xl font-normal text-gray400" href="">프로필 정보</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                
+    <div
+      id="userInfo_container"
+      class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
+    >
+      <div id="mypage_menu"></div>
+
+      <div class="userInfo-right w-[1011px] mt-[64px]">
+        <div
+          class="user_box w-full h-[222px] border border-gray200 rounded-2xl flex items-center justify-between px-[54px] box-border"
+        >
+          <div class="user_profile flex items-center">
+            <div
+              class="user_thumb w-[185px] h-[185px] overflow-hidden rounded-full"
+            >
+              <img
+                class="w-full"
+                src="../../imgs/맹구.jpg"
+                alt="사용자 프로필 이미지"
+              />
             </div>
             <div class="user_name ml-5">
               <p class="inline-block text-[28px] font-semibold underline">
@@ -90,7 +91,7 @@
       </div>
     </div>
 
-    <div id="footerWrap" class="w-full h-[300px]"></div>
+    <div id="footerWrap" class="w-full"></div>
   </body>
 </html>
 <script type="module" src="../main.js"></script>

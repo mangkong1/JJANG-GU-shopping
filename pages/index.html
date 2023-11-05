@@ -8,6 +8,7 @@
       src="https://kit.fontawesome.com/a3379ca11a.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>떡잎마을 상점</title>
   </head>
   <body>
@@ -71,12 +72,10 @@
             <div
               class="All_product_item_thumb h-[360px] w-full rounded-2xl overflow-hidden relative"
             >
-              <div
-                class="view_cart w-14 h-14 bg-white90 flex justify-center items-center rounded-full hidden cursor-pointer absolute left-[50%] bottom-[40px] translate-x-[-50%]"
-              >
-                <i class="fa-solid fa-cart-shopping text-2xl text-red"></i>
-              </div>
-              <a href="#" target="_blank">
+              <i
+                class="addCartItem fa-solid fa-cart-shopping text-2xl text-red Add_cart view_cart w-14 h-14 bg-white90 flex justify-center items-center rounded-full hidden cursor-pointer block absolute left-[50%] bottom-[40px] translate-x-[-50%]"
+              ></i>
+              <a href="detail/">
                 <img
                   class="h-full"
                   src="./imgs/test.jpg"
@@ -96,7 +95,10 @@
       </div>
     </div>
 
-    <div id="footerWrap" class="w-full"></div>
+    <div
+      id="footerWrap"
+      class="w-full h-[300px] flex border-t border-gray400"
+    ></div>
   </body>
 </html>
 <script type="module" src="./main.js"></script>
