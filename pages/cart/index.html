@@ -31,22 +31,22 @@
             <p>수량</p>
             <p>가격</p>
           </div>
-          <div id="cartItem" class="p-2 pb-10"></div>
+          <div id="cartItemWrap" class="p-2 pb-10"></div>
         </div>
 
         <div class="pay-container rounded-2xl border-solid border border-gray200 ml-2 flex flex-col w-[369px] h-[23rem]">
           <div class="section1 text-xl ml-2 pt-4 mb p-2">결제 정보</div>
           <div class="border-gray200 border-solid grid grid-cols-2 grid-rows-3 p-4 justify-item-center pl-2 border-y border-solid border-gray200">
             <p class="p-3">상품 수</p>
-            <p class="justify-self-end p-3">0개</p>
+            <p id="totalAmount" class="justify-self-end p-3">0개</p>
             <p class="p-3">상품 총액</p>
-            <p class="justify-self-end p-3">0원</p>
+            <p id="totalItemPrice" class="justify-self-end p-3">0원</p>
             <p class="p-3">배송비</p>
-            <p class="justify-self-end p-3">무료</p>
+            <p id="shipPrice" class="justify-self-end p-3">무료</p>
           </div>
           <div class="flex p-4 mb-2 justify-between">
             <p class="ml-2">총 금액</p>
-            <p class="justify-self-end font-bold text-lg mr-2">0원</p>
+            <p id="totalPrice" class="justify-self-end font-bold text-lg mr-2">0원</p>
           </div>
           <div class="flex justify-center items-center">
             <button class="w-[95%] h-[55%] rounded-md text-sm p-2 font-bold text-white bg-red m-4">구매하기</button>
