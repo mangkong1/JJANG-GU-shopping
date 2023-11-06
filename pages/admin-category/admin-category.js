@@ -19,6 +19,9 @@ categoryAddBtn.addEventListener("click", () => {
 
   if (categoryNum.value !== "" && categoryName.value !== "") {
     alert("카테고리가 추가되었습니다.");
+
+    categoryNum.value = "";
+    categoryName.value = "";
   }
 });
 
