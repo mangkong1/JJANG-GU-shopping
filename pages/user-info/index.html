@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="./userInfo.css" />
+    <link rel="stylesheet" href="./user-info.css" />
     <script
       src="https://kit.fontawesome.com/a3379ca11a.js"
       crossorigin="anonymous"
@@ -16,18 +16,18 @@
     <div id="headerWrap" class="w-full"></div>
 
     <div
-      id="userInfo_container"
+      id="userInfoWrap"
       class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
     >
-      <div id="mypage_menu"></div>
+      <div id="mypageMenu"></div>
 
-      <div class="userInfo-right w-[1011px] mt-[64px]">
+      <div class="userInfoRight w-[1011px] mt-[64px]">
         <div
-          class="user_box w-full h-[222px] border border-gray200 rounded-2xl flex items-center justify-between px-[54px] box-border"
+          class="userBox w-full h-[222px] border border-gray200 rounded-2xl flex items-center justify-between px-[54px] box-border"
         >
-          <div class="user_profile flex items-center">
+          <div class="userProfile flex items-center">
             <div
-              class="user_thumb w-[185px] h-[185px] overflow-hidden rounded-full"
+              class="userThumb w-[185px] h-[185px] overflow-hidden rounded-full"
             >
               <img
                 class="w-full"
@@ -35,7 +35,7 @@
                 alt="사용자 프로필 이미지"
               />
             </div>
-            <div class="user_name ml-5">
+            <div class="userName ml-5">
               <p class="inline-block text-[28px] font-semibold underline">
                 엘리스
               </p>
@@ -45,21 +45,21 @@
           </div>
 
           <div
-            class="user_type bg-test w-[152px] h-[91px] rounded-2xl bg-yellow flex items-center justify-center"
+            class="userType bg-test w-[152px] h-[91px] rounded-2xl bg-yellow flex items-center justify-center"
           >
             <span class="text-lg font-medium">일반 사용자</span>
           </div>
         </div>
 
-        <div class="user_listBox w-full mt-10 flex justify-between">
+        <div class="userListBox w-full mt-10 flex justify-between">
           <div class="userBy_list w-[494px]">
             <div
-              class="userBy_title border-b-2 flex justify-between items-center box-border"
+              class="userByTitle border-b-2 flex justify-between items-center box-border"
             >
               <p class="text-2xl font-medium pl-[5px] pb-3">구매내역</p>
               <a href=""><i class="fa-solid fa-plus text-xl"></i></a>
             </div>
-            <ul class="userBy_item mt-[34px] pl-[5px]">
+            <ul class="userByItem mt-[34px] pl-[5px]">
               <li class="mb-[20px]">
                 <a href="" class="flex justify-between">
                   <p>푹신푹신 피그닉매트(소)</p>
@@ -71,19 +71,6 @@
                   <p>푹신푹신 피그닉매트(소)</p>
                   <span>상품 준비중</span>
                 </a>
-              </li>
-            </ul>
-          </div>
-          <div class="userSell_list w-[494px]">
-            <div
-              class="userSell_title border-b-2 flex justify-between items-center box-border"
-            >
-              <p class="text-2xl font-medium pl-[5px] pb-3">판매내역</p>
-              <a href=""><i class="fa-solid fa-plus text-xl"></i></a>
-            </div>
-            <ul class="userSell_item mt-[34px] pl-[5px]">
-              <li class="none_item text-sm text-gray400 text-center">
-                판매내역이 없습니다.
               </li>
             </ul>
           </div>
@@ -98,4 +85,4 @@
   </body>
 </html>
 <script type="module" src="../main.js"></script>
-<script type="module" src="./userInfo.js"></script>
+<script type="module" src="./user-info.js"></script>

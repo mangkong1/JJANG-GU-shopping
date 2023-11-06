@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="./userProfile_Modify.css" />
+    <link rel="stylesheet" href="./user-profile-modify.css" />
     <script
       src="https://kit.fontawesome.com/a3379ca11a.js"
       crossorigin="anonymous"
@@ -16,20 +16,20 @@
     <div id="headerWrap" class="w-full"></div>
 
     <div
-      id="userProfile_container"
+      id="userProfileWrap"
       class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
     >
-      <div id="mypage_menu"></div>
+      <div id="mypageMenu"></div>
 
       <div class="userProfile-right w-[1011px]">
         <h2 class="text-4xl font-semibold pb-6 pl-[5px]">프로필 정보</h2>
 
         <div
-          class="userProfile_Modify_Container w-[1011px] border border-gray200 rounded-2xl px-[41px] py-[10px] box-border"
+          class="userProfileModifyWrap w-[1011px] border border-gray200 rounded-2xl px-[41px] py-[10px] box-border"
         >
           <div class="userProfile flex items-center">
             <div
-              class="user_thumb inline-block w-[185px] h-[185px] overflow-hidden rounded-full"
+              class="userThumb inline-block w-[185px] h-[185px] overflow-hidden rounded-full"
             >
               <img
                 class="w-full"
@@ -43,7 +43,7 @@
             <p class="inline-block text-[28px] font-semibold">님 환영합니다!</p>
           </div>
           <div
-            class="user_thumb_other hidden w-4/5 border border-gray200 rounded-2xl flex"
+            class="userThumbOther hidden w-4/5 border border-gray200 rounded-2xl flex"
           >
             <div
               class="inline-block w-1/4 h-[140px] rounded-full overflow-hidden mx-2 cursor-pointer"
@@ -84,7 +84,7 @@
           </div>
           <button
             type="submit"
-            class="user_thumb_btn border rounded-full px-6 py-1 mt-[20px] mb-[60px] hover:bg-red hover:border-transparent hover:text-white"
+            class="userThumbBtn border rounded-full px-6 py-1 mt-[20px] mb-[60px] hover:bg-red hover:border-transparent hover:text-white"
           >
             캐릭터 변경
           </button>
@@ -135,7 +135,7 @@
 
           <button
             type="submit"
-            class="modify_btn mt-[56px] w-[186px] py-3 bg-red rounded-2xl text-white mb-6"
+            class="modifyBtn mt-[56px] w-[186px] py-3 bg-red rounded-2xl text-white mb-6"
           >
             수정하기
           </button>
@@ -144,7 +144,7 @@
     </div>
 
     <div
-      id="modifyCheck_popup"
+      id="modifyCheckPopup"
       class="hidden absolute top-1/2 left-1/2 z-40 translate-x-[-50%] translate-y-[-50%] w-[654px] p-9 text-center bg-white rounded-2xl box-border"
     >
       <h2 class="text-2xl font-semibold">프로필 정보 수정을 진행합니다.</h2>
@@ -161,7 +161,7 @@
         />
       </form>
 
-      <div class="popup_btns w-full flex justify-between">
+      <div class="popupBtns w-full flex justify-between">
         <button type="reset" class="w-[276px] border rounded-2xl h-[49px]">
           뒤로가기
         </button>
@@ -175,12 +175,13 @@
     </div>
 
     <div
-      class="popup_bg hidden w-full h-[185%] bg-black/50 absolute left-0 top-0 z-0"
+      class="popupBg hidden w-full h-[185%] bg-black/50 absolute left-0 top-0 z-0"
     ></div>
 
     <div id="footerWrap" class="w-full"></div>
   </body>
 </html>
+
 <script type="module" src="../main.js"></script>
-<script type="module" src="./userProfile_Modify.js"></script>
-<script type="module" src="../userInfo/userInfo.js"></script>
+<script type="module" src="./user-profile-modify.js"></script>
+<script type="module" src="../user-info/user-info.js"></script>
