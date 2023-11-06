@@ -1,9 +1,9 @@
 import "../../index.css";
 
-document.querySelector("#mypage_menu").innerHTML = `<div class="userInfo_left">
+document.querySelector("#mypageMenu").innerHTML = `<div class="userInfo_left">
 <h2 class="text-4xl font-semibold pb-6">마이페이지</h2>
 <div
-  class="userInfo_list w-[236px] h-[532px] border border-gray200 rounded-2xl px-[25px] py-[36px] box-border"
+  class="userInfoList w-[236px] h-[532px] border border-gray200 rounded-2xl px-[25px] py-[36px] box-border"
 >
   <ul>
     <li class="font-semibold text-2xl mb-[87px]">
