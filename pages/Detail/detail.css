@@ -1,4 +1,9 @@
-* {
-  font-family: "Nanum Gothic", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
+
+body {
   font-family: "Noto Sans KR", sans-serif;
+}
+
+img {
+  vertical-align: top;
 }
