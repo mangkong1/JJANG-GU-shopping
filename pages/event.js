@@ -40,8 +40,8 @@ function initSlide(time) {
 initSlide(3000);
 
 // 아이템 마우스 올렸을 때 장바구니 아이콘 보이고, 사라지고
-const productItemThumb = document.querySelector(".All_product_item_thumb");
-const viewCart = document.querySelector(".view_cart");
+const productItemThumb = document.querySelector(".productItemThumb");
+const viewCart = document.querySelector(".addCart");
 
 productItemThumb.addEventListener("mouseover", () => {
   viewCart.classList.remove("hidden");
