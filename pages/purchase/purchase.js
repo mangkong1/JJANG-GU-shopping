@@ -13,7 +13,7 @@ fetch("purchase-item.json")
           </p>
           <p class="text-black text-[17px] font-normal">${item.state}</p>
           <p class="flex items-center justify-center">
-            <button class="w-[99px] h-[34px] rounded-[50px] border border-black">
+            <button id="${item.num}" class="deleteBtn w-[99px] h-[34px] rounded-[50px] border border-black">
               주문취소
             </button>
           </p>
