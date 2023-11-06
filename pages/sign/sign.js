@@ -1,41 +1,79 @@
 import "../../index.css";
 
-document.querySelector("#mypage_menu").innerHTML = `<div class="userInfo_left">
-<h2 class="text-4xl font-semibold pb-6">마이페이지</h2>
-<div
-  class="userInfo_list w-[236px] h-[532px] border border-gray200 rounded-2xl px-[25px] py-[36px] box-border"
->
-  <ul>
-    <li class="font-semibold text-2xl mb-[87px]">
-      쇼핑 정보
-      <ul class="mt-[10px]">
-        <li>
-          <a class="text-xl font-normal text-gray400" href=""
-            >상품 등록</a
-          >
-        </li>
-        <li>
-          <a class="text-xl font-normal text-gray400" href=""
-            >구매 내역</a
-          >
-        </li>
-        <li>
-          <a class="text-xl font-normal text-gray400" href=""
-            >판매 내역</a
-          >
-        </li>
-      </ul>
-    </li>
-    <li class="font-semibold text-2xl">
-      내 정보
-      <ul class="mt-[10px]">
-        <li>
-          <a class="text-xl font-normal text-gray400" href=""
-            >프로필 정보</a
-          >
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
-</div>`;
+// function check() {
+// const email = document.querySelector('[name="email"]').value;
+// if(^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$.test(email)){
+//   alert('이메일 형식이 올바르지 않습니다.');
+//   return false;
+// }
+// }
+
+// function signUpCheck(){
+
+//   let email = document.getElementById("email").value
+//   let name = document.getElementById("name").value
+//   let password = document.getElementById("password").value
+//   let passwordCheck = document.getElementById("passwordCheck").value
+//   let check = true;
+
+//   // 이메일확인
+//   if(email.includes('@')){
+//     let emailId = email.split('@')[0]
+//     let emailServer = email.split('@')[1]
+//     if(emailId === "" || emailServer === ""){
+//       document.getElementById("emailError").innerHTML="이메일이 올바르지 않습니다."
+//       check = false
+//     }
+//     else{
+//       document.getElementById("emailError").innerHTML=""
+//     }
+//   }else{
+//     document.getElementById("emailError").innerHTML="이메일이 올바르지 않습니다."
+//     check = false
+//   }
+
+
+//   // 이름확인
+//   if(name===""){
+//     document.getElementById("nameError").innerHTML="이름이 올바르지 않습니다."
+//     check = false
+//   }else{
+//     document.getElementById("nameError").innerHTML=""
+//   }
+
+
+//   // 비밀번호 확인
+//   if(password !== passwordCheck){
+//     document.getElementById("passwordError").innerHTML=""
+//     document.getElementById("passwordCheckError").innerHTML="비밀번호가 동일하지 않습니다."
+//     check = false
+//   }else{
+//     document.getElementById("passwordError").innerHTML=""
+//     document.getElementById("passwordCheckError").innerHTML=""
+//   }
+
+//   if(password===""){
+//     document.getElementById("passwordError").innerHTML="비밀번호를 입력해주세요."
+//     check = false
+//   }else{
+//     //document.getElementById("passwordError").innerHTML=""
+//   }
+//   if(passwordCheck===""){
+//     document.getElementById("passwordCheckError").innerHTML="비밀번호를 다시 입력해주세요."
+//     check = false
+//   }else{
+//     //document.getElementById("passwordCheckError").innerHTML=""
+//   }
+
+//   if(check){
+//     document.getElementById("emailError").innerHTML=""
+//     document.getElementById("nameError").innerHTML=""
+//     document.getElementById("passwordError").innerHTML=""
+//     document.getElementById("passwordCheckError").innerHTML=""
+//     //비동기 처리이벤트
+//     setTimeout(function() {
+//       alert("가입이 완료되었습니다.")
+//   },0);
+//   }
+// }
+
