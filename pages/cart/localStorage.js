@@ -21,23 +21,30 @@ function addItem(itemId) {
     console.log("istrue", item.id === itemId);
     return item.id === itemId;
   });
+  item.checked = true;
+  item.quantity = 1;
   if (item == null) {
     console.log("id not found");
     return;
   }
 
-  console.log(item);
   if (cart.length === 0) {
     cart.push(item);
+    const updatedData = JSON.stringify(cart);
+    localStorage.setItem("cart", updatedData);
   } else {
     let foundItem = cart.find((item) => item.id === itemId);
     if (foundItem === undefined) {
       cart.push(item);
     } else {
-      if (foundItem.quantity < 99) {
+      let quantityLimit = item.stock;
+      if (item.stock > 99) {
+        quantityLimit = 99;
+      }
+      if (foundItem.quantity < quantityLimit) {
         foundItem.quantity += 1;
       } else {
-        foundItem.quantity = 99;
+        foundItem.quantity = quantityLimit;
       }
     }
   }
