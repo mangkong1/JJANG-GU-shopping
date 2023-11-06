@@ -6,13 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       src="https://kit.fontawesome.com/a3379ca11a.js"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous">
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./detail.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+    <script src="signup.js"></script>
     <title>떡잎마을 상점</title>
+
+  <script>
+    function validateForm() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            alert("올바른 이메일 주소 형식이 아닙니다.");
+            return false;
+        }
+
+        if (password.length < 8) {
+            alert("비밀번호는 최소 8자 이상이어야 합니다.");
+            return false;
+        }
+
+        if (password !== confirmPassword) {
+            alert("비밀번호와 비밀번호 확인란이 일치하지 않습니다.");
+            return false;
+        }
+
+        alert("회원가입을 축하합니다!");
+    }
+</script>
   </head>
   <body>
     <div id="headerWrap" class="w-full"></div>
+<!-- action 주소에 뭘넣어야하는지? 백엔드 db서버인가? -->
+    <form action="/users" method="post" onsubmit="return validateForm()">
 
     <div class="mt-[123px] mb-[288px] flex flex-col items-center">
       <div class="mb-[38px] text-black text-[45px] font-bold">회원가입</div>
@@ -21,46 +52,66 @@
         class="relative border border-gray-200 px-[26px] py-[39px] w-[626px] h-[551px] bg-white rounded-[15px]"
       >
         <div class="mb-[26px] flex justify-between items-center">
-          <p class="text-black text-xl font-semibold">이름</p>
+          <p class="text-black text-xl font-semibold">
+            <label for="username">이름</label></p>
           <input
             class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
             type="text"
             placeholder="Name"
+            required
           />
         </div>
         <div class="mb-[26px] flex justify-between items-center">
-          <p class="text-black text-xl font-semibold">이메일</p>
+          <p class="text-black text-xl font-semibold">
+            <label for="email">
+ 
+              이메일
+             </label></p>
           <input
             class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
             type="email"
+            name="email"
+            id="email" 
+            size="12" 
             placeholder="Email"
+            required
           />
         </div>
         <div class="mb-[26px] flex justify-between items-center">
-          <p class="text-black text-xl font-semibold">비밀번호</p>
+          <p class="text-black text-xl font-semibold">
+            <label for="password">비밀번호</label></p>
           <input
             class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
             type="password"
+            id="password"
+            name="password"
             placeholder="Password"
+            required
           />
         </div>
         <div class="mb-[26px] flex justify-between items-center">
-          <p class="text-black text-xl font-semibold">비밀번호 확인</p>
+          <p class="text-black text-xl font-semibold">
+            <label for="confirmPassword">비밀번호 확인</label></p>
           <input
             class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
             type="password"
-            placeholder="Confirm password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="confirmPassword"
+            required
           />
         </div>
+      </div>
 
+      <div>
         <button
-          class="absolute bottom-[39px] text-[20px] font-semibold flex justify-center items-center text-white w-[576px] h-[61px] bg-red-500 rounded-[15px]"
-        >
-          회원가입 하기
+          class="absolute bottom-[249px] left-[830px]
+          text-[20px] font-semibold flex justify-center items-center text-white w-[576px] h-[61px] bg-red-500 rounded-[15px]">
+          <input
+          type="submit" value="회원가입하기">
         </button>
       </div>
-    </div>
-
+  </form>
     <div
       id="footerWrap"
       class="w-full h-[300px] flex border-t border-gray400"
