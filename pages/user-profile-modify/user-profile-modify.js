@@ -12,7 +12,7 @@ userThumbChangeBtn.addEventListener("click", (e) => {
 
 // 캐릭터 이미지 클릭시 변경
 const userThumb = document.querySelector(".userThumb>img");
-const otherThumbs = document.querySelectorAll(".userThumb_other div");
+const otherThumbs = document.querySelectorAll(".userThumbOther div");
 const otherThumbList = Array.from(otherThumbs);
 
 otherThumbList.map((list) => {
