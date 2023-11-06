@@ -41,7 +41,7 @@ function addItem(itemId) {
       if (item.stock > 99) {
         quantityLimit = 99;
       }
-      if (foundItem.quantity <= quantityLimit) {
+      if (foundItem.quantity < quantityLimit) {
         foundItem.quantity += 1;
       } else {
         foundItem.quantity = quantityLimit;
