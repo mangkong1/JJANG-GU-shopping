@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./admin-category.css" />
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>마이페이지</title>
+  </head>
+  <body>
+    <div id="headerWrap" class="w-full"></div>
+
+    <div
+      id="userProfileWrap"
+      class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
+    >
+      <div id="adminList"></div>
+
+      <div class="adminPageCont w-[1011px]">
+        <h2 class="text-4xl font-semibold pb-6">카테고리 관리</h2>
+        <div
+          class="categoryList w-[1011px] border border-gray200 rounded-2xl box-border"
+        >
+          <ul class="text-center">
+            <li class="border-b border-gray200 grid-cols-3 py-4">
+              <input
+                type="text"
+                value="100"
+                class="text-xl w-[134px] mr-[27px] py-2 rounded-2xl"
+              />
+              <input
+                type="text"
+                value="디자인용품"
+                class="text-xl w-[500px] mr-[52px] py-2 rounded-2xl"
+              />
+              <button
+                class="categoryUpdateBtn w-[98px] h-[38px] bg-white rounded-[50px] border border-black mr-4 hover:border-red hover:text-red"
+              >
+                수정
+              </button>
+              <button
+                class="categoryDelBtn w-[98px] h-[38px] bg-white rounded-[50px] border border-black hover:border-red hover:text-red"
+              >
+                삭제
+              </button>
+            </li>
+          </ul>
+          <div class="categoryAdd mt-36 text-center grid-cols-3 py-5">
+            <input
+              type="text"
+              placeholder="번호"
+              class="categoryNum w-[134px] mr-[27px] py-2 rounded-2xl border border-gray400 px-3"
+            />
+            <input
+              type="text"
+              placeholder="카테고리명"
+              class="categoryName w-[647px] mr-[27px] py-2 rounded-2xl border border-gray400 px-3"
+            />
+            <button
+              class="categoryAddBtn mx-[15px] w-[98px] h-[38px] bg-white rounded-[50px] border border-black hover:border-red hover:text-red"
+            >
+              추가
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="footerWrap"
+      class="w-full h-[300px] flex border-t border-gray400"
+    ></div>
+  </body>
+</html>
+<script type="module" src="../main.js"></script>
+<script type="module" src="./admin-category.js"></script>
