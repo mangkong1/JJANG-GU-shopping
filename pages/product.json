@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "img": "./imgs/test.jpg",
+    "name": "2024 벽걸이 캘린더",
+    "price": "23,000",
+    "category": "디자인문구"
+  },
+  {
+    "id": "2",
+    "img": "./imgs/test.jpg",
+    "name": "2024 턱걸이 캘린더",
+    "price": "23,000",
+    "category": "오피스용품"
+  },
+  {
+    "id": "3",
+    "img": "./imgs/test.jpg",
+    "name": "2024 데스크 캘린더",
+    "price": "23,000",
+    "category": "디자인문구"
+  },
+  {
+    "id": "4",
+    "img": "./imgs/test.jpg",
+    "name": "2024 미니 캘린더",
+    "price": "23,000",
+    "category": "필기류/학습용품"
+  }
+]

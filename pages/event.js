@@ -49,3 +49,15 @@ productItemThumb.addEventListener("mouseover", () => {
 productItemThumb.addEventListener("mouseout", () => {
   viewCart.classList.add("hidden");
 });
+
+// 카테고리
+fetch("./product.json")
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
