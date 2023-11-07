@@ -21,7 +21,7 @@ const shipPriceElem = document.getElementById("shipPrice");
 const totalPriceElem = document.getElementById("totalPrice");
 const cartItemElems = document.getElementsByClassName("cartItems");
 
-fetch("./items.json")
+fetch("../items.json")
   .then((res) => {
     return res.json();
   })
@@ -35,12 +35,15 @@ fetch("./items.json")
 let items = JSON.parse(localStorage.getItem("items"));
 let cart = JSON.parse(localStorage.getItem("cart"));
 
+const formattedNumber = new Intl.NumberFormat().format();
+
 cart.forEach((item) => {
+  console.log("image", item.images);
   cartItemWrap.innerHTML += ` <div id="cartItem-${item.id}" class="cartItems grid grid-cols-3 grid-cols-[4fr_1fr_2fr]  justify-items-center items-center"> 
             <div class="flex items-center">
               <input id="check-${item.id}" type="checkbox" class="checkboxes w-[10%] h-[10%] text-gray200 border-gray200">
                   <div class="h-[40%] w-[40%] m-2 mt-4">
-                  <img class="itemImg 2xl object-fit rounded-2xl" src="${item.image}" alt="cartImg">
+                  <img class="itemImg 2xl object-fit rounded-2xl" src="${item.images[0]}" alt="cartImg">
                   </div>
               <label for="check-${item.id}" class="mx-2">${item.name}</label>
             </div>
@@ -176,3 +179,7 @@ window.addEventListener("load", () => {
   showtotalPrice();
   showCheckBox();
 });
+
+addItem("1");
+addItem("2");
+addItem("3");

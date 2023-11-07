@@ -1,4 +1,4 @@
-fetch("../cart/items.json")
+fetch("../items.json")
   .then((res) => {
     return res.json();
   })
