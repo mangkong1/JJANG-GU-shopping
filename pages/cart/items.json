@@ -1,6 +1,7 @@
 [
   {
     "id": "1",
+    "categories._id": "a1",
     "image": "/picnic.jpg",
     "name": "푹신푹신 피크닉매트(소)",
     "price": 8000,
@@ -9,6 +10,7 @@
   },
   {
     "id": "2",
+    "categories._id": "a2",
     "image": "/picnic.jpg",
     "name": "푹신푹신 피크닉매트(대)",
     "price": 20000,
@@ -17,6 +19,7 @@
   },
   {
     "id": "3",
+    "categories._id": "a3",
     "image": "/picnic.jpg",
     "name": "푹신푹신 피크닉매트(중)",
     "description": "중간 사이즈의 짱구 피크닉 매트입니다.",

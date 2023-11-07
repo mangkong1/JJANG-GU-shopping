@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var orderButton = document.getElementById("orderBtn");
   if (orderButton) {
     orderButton.addEventListener("click", function () {
-      window.location.href = "http://localhost:8080/order/";
+      window.location.href = "../order/";
     });
   }
 });
@@ -37,24 +37,29 @@ let cart = JSON.parse(localStorage.getItem("cart"));
 
 cart.forEach((item) => {
   cartItemWrap.innerHTML += ` <div id="cartItem-${item.id}" class="cartItems grid grid-cols-3 grid-cols-[4fr_1fr_2fr]  justify-items-center items-center"> 
-          <div class="flex items-center">
-            <input id="check-${item.id}" type="checkbox" class="checkboxes w-[10%] h-[10%] text-gray200 border-gray200">
-                <div class="h-[40%] w-[40%] m-2 mt-4">
-                <img class="itemImg 2xl object-fit rounded-2xl" src="${item.image}" alt="cartImg">
-                </div>
-            <label for="check-${item.id}" class="mx-2">${item.name}</label>
-          </div>
-          <div class="flex justify-center items-center">
-            <input id="itemNum-${item.id}" type="number" value="${item.quantity}" min="1" max="99" class="w-[2.5rem] h-[1.3rem] border border-solid border-gray200 rounded-sm"/>
-          </div>
-          <p id="itemPrice-${item.id}" class="itemPrices flex justify-center items-center font-bold ml-2">${item.price}</p>
-        </div>`;
-  const checkElems = document.getElementById(`check-${item.id}`);
-  checkElems.checked = item.checked;
+            <div class="flex items-center">
+              <input id="check-${item.id}" type="checkbox" class="checkboxes w-[10%] h-[10%] text-gray200 border-gray200">
+                  <div class="h-[40%] w-[40%] m-2 mt-4">
+                  <img class="itemImg 2xl object-fit rounded-2xl" src="${item.image}" alt="cartImg">
+                  </div>
+              <label for="check-${item.id}" class="mx-2">${item.name}</label>
+            </div>
+            <div class="flex justify-center items-center">
+              <input id="itemNum-${item.id}" type="number" value="${item.quantity}" min="1" max="99" class="w-[2.5rem] h-[1.3rem] border border-solid border-gray200 rounded-sm"/>
+            </div>
+            <p id="itemPrice-${item.id}" class="itemPrices flex justify-center items-center font-bold ml-2">${item.price}</p>
+          </div>`;
 });
 
 const checkBoxElems = document.querySelectorAll('input[type="checkbox"]');
 const numberBoxElems = document.querySelectorAll('input[type="Number"]');
+
+function showCheckBox() {
+  cart.forEach((item) => {
+    const checkbox = document.getElementById(`check-${item.id}`);
+    checkbox.checked = item.checked;
+  });
+}
 
 function getItemId(itemId) {
   if (typeof itemId == "string") {
@@ -169,6 +174,5 @@ window.addEventListener("load", () => {
   showtotalItemPrice();
   showtotalAmount();
   showtotalPrice();
+  showCheckBox();
 });
-
-addItem("1");
