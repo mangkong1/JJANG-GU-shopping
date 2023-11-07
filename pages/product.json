@@ -30,14 +30,14 @@
   {
     "id": "5",
     "img": "./imgs/test.jpg",
-    "name": "2024 미니 캘린더",
+    "name": "짱구, 짱아 수저세트",
     "price": "23,000",
     "category": "키친/유아식기"
   },
   {
     "id": "6",
     "img": "./imgs/test.jpg",
-    "name": "2024 미니 캘린더",
+    "name": "짱구인형",
     "price": "23,000",
     "category": "완구/인형"
   }

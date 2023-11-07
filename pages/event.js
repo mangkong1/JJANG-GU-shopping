@@ -54,9 +54,9 @@ initSlide(3000);
 const categoryTabList = document.querySelector(".categoryTabList");
 const createCategoryTab = (category) => {
   return `<li
-  class="categoryTab inline-block border border-gray400 rounded-full py-1.5 px-7 mr-3 mb-3 text-gray400"
+  class="categoryTab inline-block border border-gray400 rounded-full mr-3 mb-3 text-gray400 overflow-hidden"
   >
-    <a href="/">${category.name}</a>
+    <a href="/" class="w-full block py-1.5 px-7">${category.name}</a>
   </li>`;
 };
 
@@ -115,9 +115,11 @@ fetch("./product.json")
       const productLi = createProduct(product);
       productList.innerHTML += productLi;
     });
+
+    return productLiList;
   })
   // 카테고리별로 해당 제품 보이게
-  .then((productList) => {
+  .then((productLiList) => {
     const categoryLi = document.querySelectorAll(".categoryTab");
 
     // 카테고리 클릭했을 때 스타일 변경
@@ -135,6 +137,27 @@ fetch("./product.json")
 
         const searchByCategoryProduct = [];
         const clickedCategoryTab = e.target.innerHTML;
+
+        // 전체 상품에선 모든 제품 보이게
+        if (clickedCategoryTab === "전체상품") {
+          searchByCategoryProduct.push(...productLiList);
+        } else {
+          // 특정 카테고리에 대한 필터링
+          productLiList.forEach((product) => {
+            if (product.category === clickedCategoryTab) {
+              searchByCategoryProduct.push(product);
+            }
+          });
+        }
+
+        if (searchByCategoryProduct.length === 0) {
+          productList.innerHTML = `<div class="text-center text-gray400 absolute left-2/4 translate-x-[-50%] ">상품이 없습니다.<div>`;
+        } else {
+          // 모든 상품을 보여줄 때는 forEach 루프를 사용하지 않고, 간단히 모든 상품 목록을 표시합니다.
+          productList.innerHTML = searchByCategoryProduct
+            .map((product) => createProduct(product))
+            .join("");
+        }
       });
     });
   })
