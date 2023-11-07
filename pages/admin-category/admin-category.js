@@ -1,6 +1,6 @@
 import "../../index.css";
 
-// 관리자페이지 모듈
+// 관리자페이지
 document.querySelector("#adminList").innerHTML = `<div id="adminPageLeft">
 <h2 class="text-4xl font-semibold pb-6">관리자 페이지</h2>
 <div
@@ -46,36 +46,63 @@ document.querySelector("#adminList").innerHTML = `<div id="adminPageLeft">
 </div>
 </div>`;
 
+const categoryList = document.querySelector(".categoryList");
+const changeCategoryList = (category) => {
+  return `<li class="border-b border-gray200 grid-cols-3 py-4">
+  <input
+    type="text"
+    value="${category.name}"
+    class="text-xl w-[500px] mr-[52px] py-2 rounded-2xl"
+  />
+  <button
+    class="categoryUpdateBtn w-[98px] h-[38px] bg-white rounded-[50px] border border-black mr-4 hover:border-red hover:text-red"
+  >
+    수정
+  </button>
+  <button
+    class="categoryDelBtn w-[98px] h-[38px] bg-white rounded-[50px] border border-black hover:border-red hover:text-red"
+  >
+    삭제
+  </button>
+</li>`;
+};
+
+fetch("../category.json")
+  .then((res) => {
+    return res.json();
+  })
+  .then((category) => {
+    category.forEach((category) => {
+      const categoryLi = changeCategoryList(category);
+      categoryList.innerHTML += categoryLi;
+    });
+  })
+  .catch((err) => {
+    alert(`에러 : ${err}`);
+  });
+
 // 추가, 수정, 삭제 버튼 클릭 시
-const categoryUpdateBtn = document.querySelector(".categoryUpdateBtn");
-const categoryDelBtn = document.querySelector(".categoryDelBtn");
-const categoryAddBtn = document.querySelector(".categoryAddBtn");
+function btnClicked() {
+  const categoryUpdateBtn = document.querySelector(".categoryUpdateBtn");
+  const categoryAddBtn = document.querySelector(".categoryAddBtn");
 
-categoryAddBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+  categoryAddBtn.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  const categoryName = document.querySelector(".categoryName");
+    const categoryName = document.querySelector(".categoryName");
 
-  if (categoryName.value === "") {
-    alert("카테고리명을 입력해주세요.");
-  } else {
-    alert("카테고리가 추가되었습니다.");
+    if (categoryName.value === "") {
+      alert("카테고리명을 입력해주세요.");
+    } else {
+      alert("카테고리가 추가되었습니다.");
 
-    categoryName.value = "";
-  }
-});
+      categoryName.value = "";
+    }
+  });
 
-categoryDelBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+  categoryUpdateBtn.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  if (confirm("카테고리를 삭제하시겠습니까?")) {
-    const category = e.target.parentElement;
-    category.classList.add("hidden");
-  }
-});
-
-categoryUpdateBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  confirm("카테고리를 수정하시겠습니까?");
-});
+    confirm("카테고리를 수정하시겠습니까?");
+  });
+}

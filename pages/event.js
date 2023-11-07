@@ -42,10 +42,11 @@ initSlide(3000);
 // 카테고리
 const categoryTabList = document.querySelector(".categoryTabList");
 const createCategoryTab = (category) => {
+  const categoryId = category["_id"];
   return `<li
   class="categoryTab inline-block border border-gray400 rounded-full mr-3 mb-3 text-gray400 overflow-hidden"
   >
-    <a href="/" class="w-full block py-1.5 px-7">${category.name}</a>
+    <a href="/" class="w-full block py-1.5 px-7" id="${categoryId}">${category.name}</a>
   </li>`;
 };
 
@@ -67,18 +68,23 @@ fetch("./category.json")
 
 // 제품
 const productList = document.querySelector(".productList");
+let counter = 0;
 const createProduct = (item) => {
-  return `<li class="productItem">
+  counter += 1;
+  const productId = item["categories._id"];
+
+  return `<li class="productItem" id="${productId}">
   <div
-    class="productItemThumb h-[360px] w-full rounded-2xl overflow-hidden relative"
+    id="productItemThumb${counter}" class="productItemThumb h-[360px] w-full rounded-2xl overflow-hidden relative"
   >
     <i
+      id="addCart${counter}"
       class="addCart fa-solid fa-cart-shopping text-2xl text-red w-14 h-14 bg-white90 flex justify-center items-center rounded-full hidden cursor-pointer block absolute left-[50%] bottom-[40px] translate-x-[-50%]"
     ></i>
     <a href="detail/">
       <img
         class="h-full"
-        src="${item.img}"
+        src="${item.images}"
         alt="${item.name}"
       />
     </a>
@@ -111,6 +117,8 @@ fetch("./product.json")
   .then((productLiList) => {
     const categoryLi = document.querySelectorAll(".categoryTab");
 
+    showCartIcon();
+
     // 카테고리 클릭했을 때 스타일 변경
     categoryLi.forEach((category) => {
       category.addEventListener("click", (e) => {
@@ -125,14 +133,15 @@ fetch("./product.json")
         category.children[0].classList.add("clicked");
 
         const searchByCategoryProduct = [];
-        const clickedCategoryTab = e.target.innerHTML;
+        const clickedCategoryTab = e.target.id;
 
         // 카테고리와 연관된 상품을 searchByCategoryProduct 배열에 담기
-        if (clickedCategoryTab === "전체상품") {
+        if (clickedCategoryTab === "63620bfed246d98cfee9ad70") {
           searchByCategoryProduct.push(...productLiList);
         } else {
           productLiList.forEach((product) => {
-            if (product.category === clickedCategoryTab) {
+            const productId = product["categories._id"];
+            if (productId === clickedCategoryTab) {
               searchByCategoryProduct.push(product);
             }
           });
@@ -155,14 +164,16 @@ fetch("./product.json")
   });
 
 // 아이템 마우스 올렸을 때 장바구니 아이콘 보이고, 사라지고
-// document.addEventListener("DOMContentLoaded", function () {
-//   const productItemThumb = document.querySelector(".productItemThumb");
-//   const viewCart = document.querySelector(".addCart");
-
-//   productItemThumb.addEventListener("mouseover", () => {
-//     viewCart.classList.remove("hidden");
-//   });
-//   productItemThumb.addEventListener("mouseout", () => {
-//     viewCart.classList.add("hidden");
-//   });
-// });
+function showCartIcon() {
+  for (let i = 1; i <= counter; i++) {
+    let productItemThumb = document.getElementById(`productItemThumb${i}`);
+    let viewCart = document.getElementById(`addCart${i}`);
+    viewCart.addEventListener("click", (e) => {});
+    productItemThumb.addEventListener("mouseover", () => {
+      viewCart.classList.remove("hidden");
+    });
+    productItemThumb.addEventListener("mouseout", () => {
+      viewCart.classList.add("hidden");
+    });
+  }
+}
