@@ -8,3 +8,11 @@ body {
 img {
   vertical-align: top;
 }
+
+.categoryTab.clicked {
+  background-color: #f13737;
+  border-color: transparent;
+}
+.categoryTab a.clicked {
+  color: #fff;
+}
