@@ -39,7 +39,7 @@
             <span></span>
             <input maxlength="200" id="detailAddrInput" class="input h-[60px] mt-[10.5px] mb-[10.5px] w-[690px] rounded-2xl border-solid border border-gray200 bg-white p-4" id="postalCode" type="text" placeholder="상세주소를 입력해 주세요." />
             <label maxlength="255" class="label ml-[33px] font-bold" for="addressPlace">요청사항</label>
-            <select id="requestInput" class="input mt-[10.5px] h-[60px] w-[690px] rounded-2xl border-solid border border-gray200 p-4" id="postalCode" type="text" placeholder="배송시 요청사항을 선택해 주세요.">
+            <select id="requestSelect" class="input mt-[10.5px] h-[60px] w-[690px] mb-[10.5px] rounded-2xl border-solid border border-gray200 p-4" id="postalCode" type="text" placeholder="배송시 요청사항을 선택해 주세요.">
               <option value="배송시 요청사항을 선택해 주세요.">배송시 요청사항을 선택해 주세요.</option>
               <option value="직접 수령하겠습니다.">직접 수령하겠습니다.</option>
               <option value="배송 전 연락바랍니다.">배송 전 연락바랍니다.</option>
@@ -48,6 +48,8 @@
               <option value="부재 시 택배함에 넣어주세요.">부재 시 택배함에 넣어주세요.</option>
               <option value="직접 입력">직접 입력</option>
             </select>
+            <span></span>
+            <input maxlength="200" id="requestInput" class="hidden input h-[60px] mt-[10.5px] mb-[10.5px] w-[690px] rounded-2xl border-solid border border-gray200 bg-white p-4" id="postalCode" type="text" />
           </div>
         </div>
         <div class="pay-container rounded-2xl border-solid border border-gray200 ml-2 flex flex-col w-[369px]">
