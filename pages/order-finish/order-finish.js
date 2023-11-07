@@ -5,7 +5,7 @@ function returnMain() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  var addReturnButton = document.querySelector(".Return_main");
+  var addReturnButton = document.querySelector(".returnMain");
   if (addReturnButton) {
     addReturnButton.addEventListener("click", returnMain);
   }
