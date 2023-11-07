@@ -5,7 +5,7 @@ const phoneNumInput = document.getElementById("phoneNumInput");
 const postCodeInput = document.getElementById("postCodeInput");
 const addrInput = document.getElementById("addrInput");
 const detailAddrInput = document.getElementById("detailAddrInput");
-const requestInput = document.getElementById("requestInput");
+const requestSelect = document.getElementById("requestSelect");
 const addrFindBtn = document.getElementById("addrFindBtn");
 const orderBtn = document.getElementById("orderBtn");
 
@@ -102,5 +102,19 @@ function validateInput() {
   return;
 }
 
+function selectSelfInput() {
+  const requestSelectVal = requestSelect.value;
+  const requestInput = document.getElementById("requestInput");
+
+  if (requestSelectVal === "직접 입력") {
+    console.log(requestSelectVal);
+    requestInput.classList.remove("hidden");
+  } else {
+    console.log(requestSelectVal);
+    requestInput.classList.add("hidden");
+  }
+}
+
 addrFindBtn.addEventListener("click", searchAddr);
 orderBtn.addEventListener("click", validateInput);
+requestSelect.addEventListener("change", selectSelfInput);

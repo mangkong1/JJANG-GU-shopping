@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "categories._id": "a1",
+    "images": ["/imgs/picnic.jpg", "/imgs/picnic.jpg"],
+    "name": "푹신푹신 피크닉매트(소)",
+    "price": 8000,
+    "description": "작은 사이즈의 짱구 피크닉 매트입니다.",
+    "stock": 100
+  },
+  {
+    "id": "2",
+    "categories._id": "a1",
+    "images": ["/imgs/picnic.jpg", "/imgs/picnic.jpg"],
+    "name": "푹신푹신 피크닉매트(대)",
+    "price": 20000,
+    "description": "큰 사이즈의 짱구 피크닉 매트입니다.",
+    "stock": 100
+  },
+  {
+    "id": "3",
+    "categories._id": "a1",
+    "images": ["/imgs/picnic.jpg", "/imgs/picnic.jpg"],
+    "name": "푹신푹신 피크닉매트(중)",
+    "description": "중간 사이즈의 짱구 피크닉 매트입니다.",
+    "price": 10000,
+    "stock": 100
+  },
+  {
+    "id": "4",
+    "categories._id": "a1",
+    "images": ["/miniglass.jpg", "/miniglass.jpg"],
+    "name": "짱구, 흰둥이 미니글라스",
+    "description": "미니글라스입니다.",
+    "price": 13900,
+    "stock": 100
+  },
+  {
+    "id": "4",
+    "categories._id": "a1",
+    "images": ["/miniglass.jpg", "/miniglass.jpg"],
+    "name": "2024벽걸이 캘린더",
+    "description": "2024 벽걸이 캘린더입니다.",
+    "price": 23000,
+    "stock": 100
+  }
+]
