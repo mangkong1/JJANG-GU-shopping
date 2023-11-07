@@ -138,11 +138,10 @@ fetch("./product.json")
         const searchByCategoryProduct = [];
         const clickedCategoryTab = e.target.innerHTML;
 
-        // 전체 상품에선 모든 제품 보이게
+        // 카테고리와 연관된 상품을 searchByCategoryProduct 배열에 담기
         if (clickedCategoryTab === "전체상품") {
           searchByCategoryProduct.push(...productLiList);
         } else {
-          // 특정 카테고리에 대한 필터링
           productLiList.forEach((product) => {
             if (product.category === clickedCategoryTab) {
               searchByCategoryProduct.push(product);
@@ -150,13 +149,14 @@ fetch("./product.json")
           });
         }
 
+        // searchByCategoryProduct 배열에 상품이 있는지 없는지
         if (searchByCategoryProduct.length === 0) {
           productList.innerHTML = `<div class="text-center text-gray400 absolute left-2/4 translate-x-[-50%] ">상품이 없습니다.<div>`;
         } else {
-          // 모든 상품을 보여줄 때는 forEach 루프를 사용하지 않고, 간단히 모든 상품 목록을 표시합니다.
-          productList.innerHTML = searchByCategoryProduct
+          const newProduct = searchByCategoryProduct
             .map((product) => createProduct(product))
             .join("");
+          productList.innerHTML = newProduct;
         }
       });
     });
