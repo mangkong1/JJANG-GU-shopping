@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart page</title>
     <link rel="stylesheet" href="./cart.css" />
+    <script src="https://kit.fontawesome.com/a3379ca11a.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/a3379ca11a.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <div id="headerWrap" class="w-full"></div>
@@ -21,7 +20,7 @@
         <i class="text-sm text-gray400 front-bold mx-2 fa-solid fa-chevron-right"></i>
         <p class="text-lg text-gray400">주문완료</p>
       </div>
-      <div class="flex justify-between">
+      <div class="flex justify-between items-start">
         <div class="goods-container rounded-2xl border-solid border border-gray200 w-[889px]">
           <div class="flex justify-between p-2 pt-6">
             <button id="deleteAllBtn" class="border-solid border-gray200 border bg-white hover:bg-red hover:text-white hover:border-0 py-2 px-4 rounded-full ml-4 my-2 mt-2 text-sm h-[2.1rem] flex items-center">전체삭제</button>
@@ -35,8 +34,8 @@
           <div id="cartItemWrap" class="p-2 pb-10"></div>
         </div>
 
-        <div class="pay-container rounded-2xl border-solid border border-gray200 ml-2 flex flex-col w-[369px] h-[24.5rem]">
-          <div class="section1 text-xl ml-2 pt-4 mb p-2 font-medium my-2">결제 정보</div>
+        <div class="pay-container rounded-2xl border-solid border border-gray200 ml-2 flex flex-col w-[369px]">
+          <div class="section1 text-xl ml-2 pt-4 p-2 mt mb my-2 text-medium">결제 정보</div>
           <div class="border-gray200 border-solid grid grid-cols-2 grid-rows-3 p-4 justify-item-center pl-2 border-y border-solid border-gray200">
             <p class="p-3">상품 수</p>
             <p id="totalAmount" class="justify-self-end p-3">0개</p>
@@ -50,7 +49,7 @@
             <p id="totalPrice" class="justify-self-end font-bold text-lg mr-3">0원</p>
           </div>
           <div class="flex justify-center items-center">
-            <button id="orderBtn" class="w-[95%] h-[55%] rounded-md text-sm p-2 font-bold text-white bg-red m-4">구매하기</button>
+            <button id="orderBtn" class="w-[95%] h-[50px] rounded-lg text p-2 font-bold text-white bg-red m-4">구매하기</button>
           </div>
         </div>
       </div>
