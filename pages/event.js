@@ -39,7 +39,7 @@ function initSlide(time) {
 }
 initSlide(3000);
 
-// 카테고리 모듈화
+// 카테고리
 const categoryTabList = document.querySelector(".categoryTabList");
 const createCategoryTab = (category) => {
   return `<li
@@ -65,7 +65,7 @@ fetch("./category.json")
     alert(`에러 : ${err}`);
   });
 
-// 제품 모듈화
+// 제품
 const productList = document.querySelector(".productList");
 const createProduct = (item) => {
   return `<li class="productItem">
