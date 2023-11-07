@@ -93,6 +93,9 @@ function updateCategory() {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
 
+      const currentValue = e.target.previousElementSibling.value;
+      console.log(currentValue);
+
       alert("카테고리를 수정되었습니다.");
     });
   });
