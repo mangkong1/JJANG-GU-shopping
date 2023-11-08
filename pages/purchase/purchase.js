@@ -3,7 +3,7 @@ fetch("purchase-item.json")
   .then((data) => {
     const buyList = document.querySelector(".buyList");
 
-    data.items.forEach((item) => {
+    data.forEach((item) => {
       const newItem = document.createElement("div");
       newItem.classList.add(
         "py-[20px]",
@@ -16,10 +16,10 @@ fetch("purchase-item.json")
       );
       newItem.innerHTML = `
         <p class="overflow-hidden text-ellipsis text-black text-[17px] font-normal">
-          ${item.date}<br />${item.num}
+          ${item.date}<br />${item._id}
         </p>
         <p class="overflow-hidden text-ellipsis text-black text-[17px] font-normal">
-          ${item.info}
+          ${item.name}
         </p>
         <p class="text-black text-[17px] font-normal">${item.state}</p>
         <p class="flex items-center justify-center">
