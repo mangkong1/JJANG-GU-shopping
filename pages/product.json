@@ -6,7 +6,9 @@
     "name": "2024 벽걸이 캘린더",
     "price": 23000,
     "description": "중간 사이즈의 짱구 벽걸이 캘린더입니다.",
-    "stock": 100
+    "stock": 100,
+    "state": "상품 준비중",
+    "category": "디자인1"
   },
   {
     "_id": "12ewrjlwkejrlsle2",
@@ -15,7 +17,9 @@
     "name": "2024 턱걸이 캘린더",
     "price": 23000,
     "description": "중간 사이즈의 짱구 벽걸이 캘린더입니다.",
-    "stock": 100
+    "stock": 100,
+    "state": "상품 준비중",
+    "category": "디자인1"
   },
   {
     "_id": "123werjwioerjwkwerm3",
@@ -24,7 +28,9 @@
     "name": "피크닉 매트(소)",
     "price": 10000,
     "description": "작은 사이즈의 피크닉 매트입니다.",
-    "stock": 100
+    "stock": 100,
+    "state": "상품 준비중",
+    "category": "디자인1"
   },
   {
     "_id": "123werjwioerjwkwerm4",
@@ -33,7 +39,9 @@
     "name": "2024 미니 캘린더",
     "price": 23000,
     "description": "중간 사이즈의 짱구 벽걸이 캘린더입니다.",
-    "stock": 100
+    "stock": 100,
+    "state": "상품 준비중",
+    "category": "디자인1"
   },
   {
     "_id": "123werjwioerjwkwerm5",
@@ -42,7 +50,9 @@
     "name": "짱구, 짱아 수저세트",
     "price": 23000,
     "description": "중간 사이즈의 짱구 벽걸이 캘린더입니다.",
-    "stock": 100
+    "stock": 100,
+    "state": "상품 준비중",
+    "category": "디자인1"
   },
   {
     "_id": "123werjwioerwerlwrwerm6",
@@ -51,6 +61,8 @@
     "name": "짱구인형",
     "price": 230000,
     "description": "중간 사이즈의 짱구 벽걸이 캘린더입니다.",
-    "stock": 100
+    "stock": 100,
+    "state": "상품 준비중",
+    "category": "디자인1"
   }
 ]
