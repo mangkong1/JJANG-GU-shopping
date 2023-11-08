@@ -1,6 +1,9 @@
 import "../style.css";
 import "../index.css";
 
+let cart = JSON.parse(localStorage.getItem("cart"));
+let cartNum = cart.length;
+
 document.querySelector("#headerWrap").innerHTML = `
 <div id="header" class="w-[1274px] h-[100px] flex mx-auto justify-between items-center">
       <h1 class="h-10"><a href="/">
@@ -19,7 +22,7 @@ document.querySelector("#headerWrap").innerHTML = `
         <li class="inline-block px-4 relative">
           <a href="/cart/">
             <i id="cartIcon" class="fa-solid fa-cart-shopping text-lg"></i>
-            <span class="cartOn hidden block w-4 h-4 bg-red rounded-full absolute top-0 right-[-10px]" ></span>
+            <span class="cartOn block w-4 h-4 bg-red rounded-full absolute top-[-2px] right-[5px] flex justify-center items-center text-xs text-white" >${cartNum}</span>
           </a>
         </li>
       </ul>

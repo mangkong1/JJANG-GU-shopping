@@ -1,5 +1,13 @@
 import "../../index.css";
-import { addItem, removeItem, removeAllItems, updateChecked, updateAmount, getisCheckedPrice, getisCheckedAmount } from "./localStorage.js";
+import {
+  addItem,
+  removeItem,
+  removeAllItems,
+  updateChecked,
+  updateAmount,
+  getisCheckedPrice,
+  getisCheckedAmount,
+} from "./localStorage.js";
 
 const deleteAllBtn = document.getElementById("deleteAllBtn");
 const deleteChosenBtn = document.getElementById("deleteChosenBtn");
@@ -67,7 +75,9 @@ function getItemId(itemId) {
 }
 
 function getCheckedElements() {
-  const checkedBoxElems = document.querySelectorAll('input[type="checkbox"]:checked');
+  const checkedBoxElems = document.querySelectorAll(
+    'input[type="checkbox"]:checked'
+  );
   const checkedItems = Array.from(checkedBoxElems).map((checkedBox) => {
     const itemId = getItemId(checkedBox.id);
     const cartItem = document.getElementById(`cartItem-${itemId}`);
