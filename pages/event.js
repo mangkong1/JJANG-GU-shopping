@@ -74,12 +74,11 @@ const createProduct = (item) => {
   counter += 1;
   const productId = item["categories._id"];
 
-  return `<li class="productItem" id="${productId}">
+  return `<li class="productItem">
   <div
-    id="productItemThumb${counter}" class="productItemThumb h-[360px] w-full rounded-2xl overflow-hidden relative"
+    class="productItemThumb h-[360px] w-full rounded-2xl overflow-hidden relative"
   >
     <i
-      id="addCart${counter}"
       data-id="${item._id}"
       class="addCart fa-solid fa-cart-shopping text-2xl text-red w-14 h-14 bg-white90 flex justify-center items-center rounded-full hidden cursor-pointer block absolute left-[50%] bottom-[40px] translate-x-[-50%]"
     ></i>
@@ -159,6 +158,8 @@ fetch("./product.json")
             .join("");
           productList.innerHTML = newProduct;
         }
+
+        showCartIcon();
       });
     });
   })
@@ -168,30 +169,24 @@ fetch("./product.json")
 
 // 아이템 마우스 올렸을 때 장바구니 아이콘 보이고, 사라지고
 function showCartIcon() {
-  for (let i = 1; i <= counter; i++) {
-    let productItemThumb = document.getElementById(`productItemThumb${i}`);
-    let viewCart = document.getElementById(`addCart${i}`);
-    viewCart.addEventListener("click", (e) => {
-      addItem(e.target.dataset.id);
-      let isconfirm = confirm(
-        "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
-      );
-      if (isconfirm) {
-        window.location.href = "/cart/";
+  let productItemList = document.querySelectorAll(".productItemThumb");
+  const addCartIcon = document.querySelectorAll(".addCart");
+  console.log(productItemList);
+
+  productItemList.forEach((product) => {
+    product.addEventListener("mouseover", (img) => {
+      const cartIcon = img.target.parentElement.previousElementSibling;
+      if (cartIcon) {
+        cartIcon.classList.remove("hidden");
       }
     });
-
-    productItemThumb.addEventListener("click", (e) => {
-      localStorage.setItem("idTemp", e.target.dataset.id);
+    product.addEventListener("mouseout", (img) => {
+      const cartIcon = img.target.parentElement.previousElementSibling;
+      if (cartIcon) {
+        cartIcon.classList.add("hidden");
+      }
     });
-
-    productItemThumb.addEventListener("mouseover", () => {
-      viewCart.classList.remove("hidden");
-    });
-    productItemThumb.addEventListener("mouseout", () => {
-      viewCart.classList.add("hidden");
-    });
-  }
+  });
 }
 
 localStorage.removeItem("idTemp");
