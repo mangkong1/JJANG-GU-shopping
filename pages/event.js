@@ -70,9 +70,7 @@ fetch("./category.json")
 
 // 제품
 const productList = document.querySelector(".productList");
-let counter = 0;
 const createProduct = (item) => {
-  counter += 1;
   const productId = item["categories._id"];
 
   return `<li class="productItem">
@@ -170,24 +168,33 @@ fetch("./product.json")
 
 // 아이템 마우스 올렸을 때 장바구니 아이콘 보이고, 사라지고
 function showCartIcon() {
-  let productItemList = document.querySelectorAll(".productItemThumb");
-  const addCartIcon = document.querySelectorAll(".addCart");
-  console.log(productItemList);
+  const productItemThumbElList = document.querySelectorAll(".productItemThumb");
 
-  productItemList.forEach((product) => {
-    product.addEventListener("mouseover", (img) => {
-      const cartIcon = img.target.parentElement.previousElementSibling;
-      if (cartIcon) {
-        cartIcon.classList.remove("hidden");
+  for (let i = 0; i < productItemThumbElList.length; i++) {
+    const targetEl = productItemThumbElList[i];
+    const viewCartEl = targetEl.children[0];
+
+    viewCartEl.addEventListener("click", (e) => {
+      addItem(e.target.dataset.id);
+      let isconfirm = confirm(
+        "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
+      );
+      if (isconfirm) {
+        window.location.href = "/cart/";
       }
     });
-    product.addEventListener("mouseout", (img) => {
-      const cartIcon = img.target.parentElement.previousElementSibling;
-      if (cartIcon) {
-        cartIcon.classList.add("hidden");
-      }
+
+    targetEl.addEventListener("click", (e) => {
+      localStorage.setItem("idTemp", e.target.dataset.id);
     });
-  });
+
+    targetEl.addEventListener("mouseover", () => {
+      viewCartEl.classList.remove("hidden");
+    });
+    targetEl.addEventListener("mouseout", () => {
+      viewCartEl.classList.add("hidden");
+    });
+  }
 }
 
 localStorage.removeItem("idTemp");
