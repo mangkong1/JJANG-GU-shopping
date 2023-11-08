@@ -1,5 +1,6 @@
 import "../style.css";
 import "../index.css";
+import { addItem } from "./cart/localStorage.js";
 
 // 배너 슬라이드
 function initSlide(time) {
@@ -79,12 +80,14 @@ const createProduct = (item) => {
   >
     <i
       id="addCart${counter}"
+      data-id="${item._id}"
       class="addCart fa-solid fa-cart-shopping text-2xl text-red w-14 h-14 bg-white90 flex justify-center items-center rounded-full hidden cursor-pointer block absolute left-[50%] bottom-[40px] translate-x-[-50%]"
     ></i>
     <a href="detail/">
       <img
+      data-id="${item._id}"
         class="h-full"
-        src="${item.images}"
+        src="${item.images[0]}"
         alt="${item.name}"
       />
     </a>
@@ -119,11 +122,11 @@ fetch("./product.json")
 
     showCartIcon();
 
-    // 카테고리 클릭했을 때 스타일 변경
     categoryLi.forEach((category) => {
       category.addEventListener("click", (e) => {
         e.preventDefault();
 
+        // 카테고리 클릭했을 때 스타일 변경
         categoryLi.forEach((category) => {
           category.classList.remove("clicked");
           category.children[0].classList.remove("clicked");
@@ -164,11 +167,24 @@ fetch("./product.json")
   });
 
 // 아이템 마우스 올렸을 때 장바구니 아이콘 보이고, 사라지고
-function showCartIcon() {
+async function showCartIcon() {
   for (let i = 1; i <= counter; i++) {
     let productItemThumb = document.getElementById(`productItemThumb${i}`);
     let viewCart = document.getElementById(`addCart${i}`);
-    viewCart.addEventListener("click", (e) => {});
+    viewCart.addEventListener("click", (e) => {
+      addItem(e.target.dataset.id);
+      let isconfirm = confirm(
+        "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
+      );
+      if (isconfirm) {
+        window.location.href = "/cart/";
+      }
+    });
+
+    productItemThumb.addEventListener("click", (e) => {
+      localStorage.setItem("idTemp", e.target.dataset.id);
+    });
+
     productItemThumb.addEventListener("mouseover", () => {
       viewCart.classList.remove("hidden");
     });
@@ -177,3 +193,5 @@ function showCartIcon() {
     });
   }
 }
+
+localStorage.removeItem("idTemp");
