@@ -25,7 +25,7 @@ cart.forEach((item) => {
 
 shipPriceElem.innerHTML = "3000원";
 
-totalItemPriceElem.innerHTML = `${checkedPrice}`;
+totalItemPriceElem.innerHTML = `${checkedPrice}원`;
 totalPriceElem.innerHTML = `${checkedPrice + 3000}원`;
 
 function searchAddr() {
@@ -109,6 +109,7 @@ function selectSelfInput() {
   if (requestSelectVal === "직접 입력") {
     console.log(requestSelectVal);
     requestInput.classList.remove("hidden");
+    requestInput.focus();
   } else {
     console.log(requestSelectVal);
     requestInput.classList.add("hidden");

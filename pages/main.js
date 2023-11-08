@@ -17,8 +17,8 @@ document.querySelector("#headerWrap").innerHTML = `
           </a>
         </li>
         <li class="inline-block px-4 relative">
-          <a href="">
-            <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <a href="/cart/">
+            <i id="cartIcon" class="fa-solid fa-cart-shopping text-lg"></i>
             <span class="cartOn hidden block w-4 h-4 bg-red rounded-full absolute top-0 right-[-10px]" ></span>
           </a>
         </li>

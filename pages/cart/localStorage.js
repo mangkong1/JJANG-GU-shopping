@@ -1,4 +1,4 @@
-fetch("../items.json")
+fetch("../product.json")
   .then((res) => {
     return res.json();
   })
@@ -18,22 +18,22 @@ function addItem(itemId) {
     return;
   }
   let item = items.find((item) => {
-    console.log("istrue", item.id === itemId);
-    return item.id === itemId;
+    console.log("istrue", item._id === itemId);
+    return item._id === itemId;
   });
-  item.checked = true;
-  item.quantity = 1;
   if (item == null) {
     console.log("id not found");
     return;
   }
+  item.checked = true;
+  item.quantity = 1;
 
   if (cart.length === 0) {
     cart.push(item);
     const updatedData = JSON.stringify(cart);
     localStorage.setItem("cart", updatedData);
   } else {
-    let foundItem = cart.find((item) => item.id === itemId);
+    let foundItem = cart.find((item) => item._id === itemId);
     if (foundItem === undefined) {
       cart.push(item);
     } else {
@@ -55,7 +55,7 @@ function removeItem(itemId) {
   if (typeof itemId != "string") {
     console.log("id is not in string form");
   }
-  let temp = cart.filter((item) => item.id !== itemId);
+  let temp = cart.filter((item) => item._id !== itemId);
   localStorage.setItem("cart", JSON.stringify(temp));
 }
 
@@ -63,9 +63,31 @@ function removeAllItems() {
   localStorage.setItem("cart", "[]");
 }
 
+function findThumbImg(itemId) {
+  for (let item of items) {
+    if (item._id === itemId) {
+      console.log("itemImg", item.images[0]);
+      return item.images[0];
+    }
+  }
+  return;
+}
+function findProperty(itemId, property) {
+  if (typeof property != "string") {
+    console.log("property is not in string form");
+    return;
+  }
+  for (let item of items) {
+    if (item._id === itemId) {
+      console.log("itemProperty", item[property]);
+      return item[property];
+    }
+  }
+}
+
 function updateAmount(itemId, quantity) {
   for (let item of cart) {
-    if (item.id === itemId) {
+    if (item._id === itemId) {
       item.quantity = quantity;
     }
   }
@@ -74,7 +96,7 @@ function updateAmount(itemId, quantity) {
 
 function updateChecked(itemId, isChecked) {
   for (let item of cart) {
-    if (item.id === itemId) {
+    if (item._id === itemId) {
       item.checked = isChecked;
     }
   }
@@ -109,4 +131,4 @@ function getisCheckedPrice() {
   return sum;
 }
 
-export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount };
+export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount, findThumbImg, findProperty };
