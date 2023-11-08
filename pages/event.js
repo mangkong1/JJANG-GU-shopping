@@ -95,9 +95,9 @@ const createProduct = (item) => {
 
   <div class="productItemInfo pl-1">
     <p class="price pt-2 inline-blocks font-semibold text-lg">
-    ${item.price}원
+    ${item.name}
     </p>
-    <p>${item.name}</p>
+    <p>${item.price}원</p>
   </div>
 </li>`;
 };
