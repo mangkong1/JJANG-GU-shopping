@@ -173,10 +173,12 @@ function showCartIcon() {
     let viewCart = document.getElementById(`addCart${i}`);
     viewCart.addEventListener("click", (e) => {
       addItem(e.target.dataset.id);
-      // let isconfirm = confirm("아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?");
-      // if (isconfirm) {
-      //   window.location.href = "/cart/";
-      // }
+      let isconfirm = confirm(
+        "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
+      );
+      if (isconfirm) {
+        window.location.href = "/cart/";
+      }
     });
 
     productItemThumb.addEventListener("click", (e) => {
@@ -192,4 +194,4 @@ function showCartIcon() {
   }
 }
 
-// localStorage.removeItem("idTemp");
+localStorage.removeItem("idTemp");

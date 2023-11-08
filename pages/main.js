@@ -19,7 +19,7 @@ document.querySelector("#headerWrap").innerHTML = `
         <li class="inline-block px-4 relative">
           <a href="/cart/">
             <i id="cartIcon" class="fa-solid fa-cart-shopping text-lg"></i>
-            <span class="cartOn hidden block w-4 h-4 bg-red rounded-full absolute top-0 right-[-10px]" ></span>
+            <span class="cartOn block w-4 h-4 bg-red rounded-full absolute top-0 right-[5px] flex justify-center items-center text-xs text-white" >1</span>
           </a>
         </li>
       </ul>
@@ -53,3 +53,6 @@ const scrollTopBtn = document.querySelector(".Scroll_top");
 scrollTopBtn.addEventListener("click", () => {
   window.scroll({ top: 0, behavior: "smooth" });
 });
+
+const cartItemCount = document.querySelector("#itemWrapper");
+console.log(cartItemCount);
