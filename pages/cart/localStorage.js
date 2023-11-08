@@ -131,4 +131,14 @@ function getisCheckedPrice() {
   return sum;
 }
 
-export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount, findThumbImg, findProperty };
+export {
+  addItem,
+  removeItem,
+  removeAllItems,
+  updateAmount,
+  updateChecked,
+  getisCheckedPrice,
+  getisCheckedAmount,
+  findThumbImg,
+  findProperty,
+};
