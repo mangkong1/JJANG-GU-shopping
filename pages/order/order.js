@@ -1,5 +1,5 @@
 import "../../index.css";
-import { getisCheckedPrice } from "../cart/localStorage.js";
+import { getisCheckedPrice, findProperty } from "../cart/localStorage.js";
 const nameInput = document.getElementById("nameInput");
 const phoneNumInput = document.getElementById("phoneNumInput");
 const postCodeInput = document.getElementById("postCodeInput");
@@ -16,17 +16,26 @@ const totalPriceElem = document.getElementById("totalPrice");
 const totalItemPriceElem = document.getElementById("totalItemPrice");
 
 let cart = JSON.parse(localStorage.getItem("cart"));
+console.log(cart);
 const checkedPrice = getisCheckedPrice();
-cart.forEach((item) => {
-  if (item.checked) {
-    itemWrapper.innerHTML += `<p id="items" class="justify-self-end p-3">${item.name} / ${item.quantity}개</p>`;
-  }
-});
 
+const idTemp = localStorage.getItem("idTemp");
 shipPriceElem.innerHTML = "3000원";
 
-totalItemPriceElem.innerHTML = `${checkedPrice}원`;
-totalPriceElem.innerHTML = `${checkedPrice + 3000}원`;
+if (localStorage.getItem("btn") !== null) {
+  itemWrapper.innerHTML += `<p id="items" class="justify-self-end p-3">${findProperty(idTemp, "name")} / 1개</p>`;
+  totalItemPriceElem.innerHTML = `${findProperty(idTemp, "price")}원`;
+  totalPriceElem.innerHTML = `${parseInt(findProperty(idTemp, "price")) + 3000}원`;
+  localStorage.removeItem("btn");
+} else {
+  cart.forEach((item) => {
+    if (item.checked) {
+      itemWrapper.innerHTML += `<p id="items" class="justify-self-end p-3">${item.name} / ${item.quantity}개</p>`;
+    }
+  });
+  totalItemPriceElem.innerHTML = `${checkedPrice}원`;
+  totalPriceElem.innerHTML = `${checkedPrice + 3000}원`;
+}
 
 function searchAddr() {
   new daum.Postcode({

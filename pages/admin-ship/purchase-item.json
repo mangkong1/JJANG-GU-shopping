@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "_id": "12ewrjlwkejrlsle2",
+      "images": ["/imgs/test.jpg", "/imgs/test.jpg"],
+      "date": "2023-11-01",
+      "num": "sdf234sdf342",
+      "info": "테스트 111111",
+      "state": "상품 준비중",
+      "price": 10000
+    },
+
+    {
+      "_id": "12ewrjlwkejrlsle2",
+      "images": ["/imgs/test.jpg", "/imgs/test.jpg"],
+      "date": "2023-01-01",
+      "num": "s2342lkj42",
+      "info": "테스트 2222222",
+      "state": "상품 배송중",
+      "price": 10000
+    },
+    {
+      "_id": "12ewrjlwkejrlsle2",
+      "images": ["/imgs/test.jpg", "/imgs/test.jpg"],
+      "date": "1999-01-01",
+      "num": "ssldfk9992",
+      "info": "테스트 333333",
+      "state": "상품 준비중",
+      "price": 10000
+    }
+  ]
+}

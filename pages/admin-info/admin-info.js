@@ -26,7 +26,7 @@ document.querySelector("#adminList").innerHTML = `<div id="adminPageLeft">
       배송
       <ul class="mt-[10px]">
         <li>
-          <a class="shipBtn text-xl font-normal text-gray400" href=""
+          <a class="shipBtn text-xl font-normal text-gray400" href="/admin-ship/"
             >배송 관리</a
           >
         </li>
@@ -66,7 +66,7 @@ if (location.href.indexOf("http://localhost:8080/register/") > -1) {
   addProductBtn.classList.remove("font-normal");
 }
 
-if (location.href.indexOf("http://localhost:8080//") > -1) {
+if (location.href.indexOf("http://localhost:8080/admin-ship/") > -1) {
   shipBtn.classList.add("text-black");
   shipBtn.classList.add("font-semibold");
   shipBtn.classList.remove("text-gray400");
