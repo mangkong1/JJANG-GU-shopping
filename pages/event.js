@@ -122,11 +122,11 @@ fetch("./product.json")
 
     showCartIcon();
 
+    // 카테고리 클릭했을 때 스타일 변경
     categoryLi.forEach((category) => {
       category.addEventListener("click", (e) => {
         e.preventDefault();
 
-        // 카테고리 클릭했을 때 스타일 변경
         categoryLi.forEach((category) => {
           category.classList.remove("clicked");
           category.children[0].classList.remove("clicked");
@@ -173,12 +173,10 @@ function showCartIcon() {
     let viewCart = document.getElementById(`addCart${i}`);
     viewCart.addEventListener("click", (e) => {
       addItem(e.target.dataset.id);
-      let isconfirm = confirm(
-        "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
-      );
-      if (isconfirm) {
-        window.location.href = "/cart/";
-      }
+      // let isconfirm = confirm("아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?");
+      // if (isconfirm) {
+      //   window.location.href = "/cart/";
+      // }
     });
 
     productItemThumb.addEventListener("click", (e) => {
@@ -194,4 +192,4 @@ function showCartIcon() {
   }
 }
 
-localStorage.removeItem("idTemp");
+// localStorage.removeItem("idTemp");

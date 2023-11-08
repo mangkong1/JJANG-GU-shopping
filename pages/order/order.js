@@ -45,7 +45,8 @@ function searchAddr() {
           extraAddr += data.bname;
         }
         if (data.buildingName !== "" && data.apartment === "Y") {
-          extraAddr += extraAddr !== "" ? ", " + data.buildingName : data.buildingName;
+          extraAddr +=
+            extraAddr !== "" ? ", " + data.buildingName : data.buildingName;
         }
         if (extraAddr !== "") {
           extraAddr = " (" + extraAddr + ")";
@@ -83,7 +84,10 @@ function validatePhoneNumber() {
   const phoneRegexnodash = /^\d{9,11}$/;
   if (phoneRegexnodash.test(phoneNumVal)) {
     console.log("beforeformat", phoneNumVal);
-    phoneNumVal = phoneNumVal.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, "$1-$2-$3");
+    phoneNumVal = phoneNumVal.replace(
+      /^(\d{2,3})(\d{3,4})(\d{4})$/,
+      "$1-$2-$3"
+    );
     console.log("reformatted", phoneNumVal);
   }
   if (!phoneRegex.test(phoneNumVal)) {

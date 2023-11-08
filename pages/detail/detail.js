@@ -35,7 +35,9 @@ console.log(item);
 
 putCartBtn.addEventListener("click", (e) => {
   addItem(itemId);
-  let isconfirm = confirm("아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?");
+  let isconfirm = confirm(
+    "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
+  );
   if (isconfirm) {
     window.location.href = "/cart/";
   }
