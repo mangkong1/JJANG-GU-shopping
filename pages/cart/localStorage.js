@@ -38,7 +38,7 @@ function addItem(itemId) {
       cart.push(item);
     } else {
       let quantityLimit = item.stock;
-      if (item.stock > 99) {
+      if (quantityLimit >= 99) {
         quantityLimit = 99;
       }
       if (foundItem.quantity < quantityLimit) {

@@ -1,15 +1,6 @@
 import "../../index.css";
 import { addItem, removeItem, removeAllItems, updateChecked, updateAmount, getisCheckedPrice, getisCheckedAmount } from "./localStorage.js";
 
-document.addEventListener("DOMContentLoaded", function () {
-  let orderButton = document.getElementById("orderBtn");
-  if (orderButton) {
-    orderButton.addEventListener("click", function () {
-      window.location.href = "../order/";
-    });
-  }
-});
-
 const deleteAllBtn = document.getElementById("deleteAllBtn");
 const deleteChosenBtn = document.getElementById("deleteChosenBtn");
 
@@ -134,9 +125,8 @@ function showtotalAmount() {
 }
 
 function showtotalPrice() {
-  const checkedBoxElems = document.querySelectorAll('input[type="checkbox"]:checked');
   const price = getisCheckedPrice();
-  if (checkedBoxElems.length === 0) {
+  if (price === 0) {
     shipPriceElem.innerHTML = "무료";
     totalPriceElem.innerHTML = `${price}원`;
   } else {
@@ -173,9 +163,22 @@ for (let item of checkBoxElems) {
   item.addEventListener("change", updateCartChecked);
 }
 
-window.addEventListener("load", () => {
+// window.addEventListener("load", () => {
+
+// });
+
+document.addEventListener("DOMContentLoaded", function () {
   showtotalItemPrice();
   showtotalAmount();
   showtotalPrice();
   showCheckBox();
+  let orderButton = document.getElementById("orderBtn");
+
+  orderButton.addEventListener("click", function () {
+    if (getisCheckedPrice() === 0) {
+      alert("구매할 제품을 선택해주세요.");
+    } else {
+      window.location.href = "../order/";
+    }
+  });
 });
