@@ -1,5 +1,13 @@
 import "../../index.css";
-import { addItem, removeItem, removeAllItems, updateChecked, updateAmount, getisCheckedPrice, getisCheckedAmount } from "./localStorage.js";
+import {
+  addItem,
+  removeItem,
+  removeAllItems,
+  updateChecked,
+  updateAmount,
+  getisCheckedPrice,
+  getisCheckedAmount,
+} from "./localStorage.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   let orderButton = document.getElementById("orderBtn");
@@ -76,7 +84,9 @@ function getItemId(itemId) {
 }
 
 function getCheckedElements() {
-  const checkedBoxElems = document.querySelectorAll('input[type="checkbox"]:checked');
+  const checkedBoxElems = document.querySelectorAll(
+    'input[type="checkbox"]:checked'
+  );
   const checkedItems = Array.from(checkedBoxElems).map((checkedBox) => {
     const itemId = getItemId(checkedBox.id);
     const cartItem = document.getElementById(`cartItem-${itemId}`);
@@ -134,7 +144,9 @@ function showtotalAmount() {
 }
 
 function showtotalPrice() {
-  const checkedBoxElems = document.querySelectorAll('input[type="checkbox"]:checked');
+  const checkedBoxElems = document.querySelectorAll(
+    'input[type="checkbox"]:checked'
+  );
   const price = getisCheckedPrice();
   if (checkedBoxElems.length === 0) {
     shipPriceElem.innerHTML = "무료";

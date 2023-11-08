@@ -167,7 +167,7 @@ fetch("./product.json")
   });
 
 // 아이템 마우스 올렸을 때 장바구니 아이콘 보이고, 사라지고
-async function showCartIcon() {
+function showCartIcon() {
   for (let i = 1; i <= counter; i++) {
     let productItemThumb = document.getElementById(`productItemThumb${i}`);
     let viewCart = document.getElementById(`addCart${i}`);
