@@ -4,6 +4,7 @@ import { addItem, findThumbImg, findProperty } from "../cart/localStorage.js";
 //임시방편
 const itemId = localStorage.getItem("idTemp");
 const putCartBtn = document.getElementById("putCartBtn");
+const payInstantBtn = document.getElementById("payInstantBtn");
 
 let item = JSON.parse(localStorage.getItem("item"));
 console.log(item);
@@ -33,16 +34,6 @@ console.log(item);
 //   })
 //   .catch((error) => console.error("Error:", error));
 
-putCartBtn.addEventListener("click", (e) => {
-  addItem(itemId);
-  let isconfirm = confirm(
-    "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
-  );
-  if (isconfirm) {
-    window.location.href = "/cart/";
-  }
-});
-
 fetch("../product.json")
   .then((res) => {
     return res.json();
@@ -55,18 +46,29 @@ fetch("../product.json")
   })
   .then((res) => {
     const itemPrice = document.getElementById("itemPrice");
-    console.log("itemPrice", itemPrice);
-    itemPrice.innerHTML = findProperty(itemId, "price");
-    console.log(findProperty(itemId, "price"));
-    const itemName = document.getElementById("itemPrice");
+
+    itemPrice.innerHTML = `${findProperty(itemId, "price")}원`;
+
+    const itemName = document.getElementById("itemName");
+
     itemName.innerHTML = findProperty(itemId, "name");
 
     document.getElementById("detailImage").src = findThumbImg(itemId);
     console.log(findThumbImg(itemId));
 
-    window.addEventListener("beforeunload", function (event) {});
-
     //href값 받아오면 됨
   });
 
-document.addEventListener("DOMContentLoaded", function () {});
+putCartBtn.addEventListener("click", (e) => {
+  addItem(itemId);
+  let isconfirm = confirm(
+    "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
+  );
+  if (isconfirm) {
+    window.location.href = "/cart/";
+  }
+});
+
+payInstantBtn.addEventListener("click", (e) => {
+  localStorage.setItem("btn", "2");
+});
