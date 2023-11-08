@@ -38,6 +38,7 @@ function initSlide(time) {
     }
   }, time);
 }
+
 initSlide(3000);
 
 // 카테고리
