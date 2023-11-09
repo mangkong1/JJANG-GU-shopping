@@ -43,21 +43,23 @@ document.addEventListener("DOMContentLoaded", function () {
       price: productPrice,
       stock: stock,
       description: description,
-      images: [showItem, showInfo],
+      images: [showItem.src, showInfo.src],
     };
 
-    fetch("https://localhost:5000/products", {
+    fetch("http://kdt-sw-7-team03.elicecoding.com/api/products/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     })
-      .then((response) => {
-        alert("제품이 성공적으로 등록되었습니다!");
+      .then((response) => response.json())
+      .then((data) => {
+        alert("상품 등록이 완료되었습니다!");
       })
       .catch((error) => {
         alert("제품 등록 중 오류가 발생했습니다.");
       });
+    console.log(data);
   });
 });
