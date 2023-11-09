@@ -60,6 +60,5 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         alert("제품 등록 중 오류가 발생했습니다.");
       });
-    console.log(data);
   });
 });
