@@ -2,9 +2,6 @@ import "../style.css";
 import "../index.css";
 import { addItem } from "./cart/localStorage.js";
 
-const adminToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
-
 // 배너 슬라이드
 function initSlide(time) {
   let currentIndex = 0;
@@ -41,21 +38,19 @@ function initSlide(time) {
     }
   }, time);
 }
-
 initSlide(3000);
 
 // 카테고리
 const categoryTabList = document.querySelector(".categoryTabList");
 const createCategoryTab = (category) => {
-  const categoryId = category["_id"];
   return `<li
   class="categoryTab inline-block border border-gray400 rounded-full mr-3 mb-3 text-gray400 overflow-hidden"
   >
-    <a href="/" class="w-full block py-1.5 px-7" id="${categoryId}">${category.name}</a>
+    <a href="/" class="w-full block py-1.5 px-7" id="${category._id}">${category.name}</a>
   </li>`;
 };
 
-// 카테고리 JSON으로 가져오기
+// 카테고리 조회
 fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
   method: "GET",
 })
@@ -63,7 +58,7 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
     if (!res.ok) {
       console.error(res.status, res.statusText);
     }
-    res.json();
+    return res.json();
   })
   .then((categoryList) => {
     // 카테고리 categoryTabList에 넣기
@@ -79,8 +74,6 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
 // 제품
 const productList = document.querySelector(".productList");
 const createProduct = (item) => {
-  const productId = item["categories._id"];
-
   return `<li class="productItem">
   <div
     class="productItemThumb h-[360px] w-full rounded-2xl overflow-hidden relative"
@@ -109,11 +102,15 @@ const createProduct = (item) => {
 };
 
 // 제품 JSON으로 가져오기
-fetch("product.json")
+fetch("http://kdt-sw-7-team03.elicecoding.com/api/products", {
+  method: "GET",
+})
   .then((res) => {
+    if (!res.ok) {
+      console.error(res.status, res.statusText);
+    }
     return res.json();
   })
-  // 제품 productList에 넣기
   .then((productLiList) => {
     productLiList.forEach((product) => {
       const productLi = createProduct(product);
@@ -122,7 +119,6 @@ fetch("product.json")
 
     return productLiList;
   })
-  // 카테고리별로 해당 제품 보이게
   .then((productLiList) => {
     const categoryLi = document.querySelectorAll(".categoryTab");
 
@@ -143,28 +139,7 @@ fetch("product.json")
 
         const searchByCategoryProduct = [];
         const clickedCategoryTab = e.target.id;
-
-        // 카테고리와 연관된 상품을 searchByCategoryProduct 배열에 담기
-        if (clickedCategoryTab === "63620bfed246d98cfee9ad70") {
-          searchByCategoryProduct.push(...productLiList);
-        } else {
-          productLiList.forEach((product) => {
-            const productId = product["categories._id"];
-            if (productId === clickedCategoryTab) {
-              searchByCategoryProduct.push(product);
-            }
-          });
-        }
-
-        // searchByCategoryProduct 배열에 상품이 있는지 없는지
-        if (searchByCategoryProduct.length === 0) {
-          productList.innerHTML = `<div class="text-center text-gray400 absolute left-2/4 translate-x-[-50%] ">상품이 없습니다.<div>`;
-        } else {
-          const newProduct = searchByCategoryProduct
-            .map((product) => createProduct(product))
-            .join("");
-          productList.innerHTML = newProduct;
-        }
+        console.log(e);
 
         showCartIcon();
       });

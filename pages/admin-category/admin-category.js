@@ -12,6 +12,7 @@ const changeCategoryList = (category) => {
     class="text-xl w-[500px] mr-[52px] py-2 rounded-2xl"
   />
   <button 
+    data-category-id="${category._id}"
     class="categoryUpdateBtn w-[98px] h-[38px] bg-white rounded-[50px] border border-black mr-4 hover:border-red hover:text-red"
   >
     수정
@@ -29,9 +30,6 @@ const changeCategoryList = (category) => {
 function fetchCategories() {
   fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
     method: "GET",
-    headers: {
-      Authorization: `Bearer ${adminToken}`,
-    },
   })
     .then((res) => {
       if (!res.ok) {
@@ -50,7 +48,7 @@ function fetchCategories() {
 }
 fetchCategories();
 
-// 카테고리 렌더링 함수
+// 카테고리 나열
 function renderCategories(categories) {
   categoryList.innerHTML = "";
   categories.forEach((category) => {
@@ -67,10 +65,10 @@ function updateBtnEvent() {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
 
-      const _id = "수정될 카테고리의 아이디값";
+      const _id = e.target.dataset.categoryId;
       const inputValue = e.target.previousElementSibling.value;
 
-      fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories${_id}`, {
+      fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories/${_id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -102,11 +100,10 @@ function updateBtnEvent() {
 function deleteBtnEvent() {
   const categoryDelBtn = document.querySelectorAll(".categoryDelBtn");
 
-  categoryDelBtn.forEach((categoryDelBtn) => {
-    categoryDelBtn.addEventListener("click", (e) => {
+  categoryDelBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
       e.preventDefault();
 
-      // 데이터 속성에서 _id를 가져옵니다
       const _id = e.target.dataset.categoryId;
 
       fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories/${_id}`, {
@@ -115,6 +112,9 @@ function deleteBtnEvent() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${adminToken}`,
         },
+        body: JSON.stringify({
+          _id: _id,
+        }),
       })
         .then((res) => {
           if (!res.ok) {
@@ -125,7 +125,6 @@ function deleteBtnEvent() {
         .then((data) => {
           console.log("서버 응답 데이터", data);
           alert("카테고리가 삭제되었습니다.");
-          // UI를 업데이트하거나 카테고리를 다시 가져오는 등의 작업을 수행할 수 있습니다
           fetchCategories();
         })
         .catch((err) => {
