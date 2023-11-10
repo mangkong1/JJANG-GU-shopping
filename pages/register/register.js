@@ -1,5 +1,7 @@
 import "../../index.css";
 
+let itemCategory = "";
+
 const inputItem = document.getElementById("inputItem");
 const showItem = document.getElementById("showItem");
 
@@ -29,21 +31,44 @@ inputInfo.addEventListener("change", (e) => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  // 여기서 selectElement를 정의하고 가져오기
+  const selectElement = document.querySelector(".itemCategory");
+
+  // Fetch 카테고리 정보
+  fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((categories) => {
+      // 카테고리 정보를 받아온 후 옵션을 생성하여 select에 추가
+      categories.forEach((category) => {
+        const optionElement = document.createElement("option");
+        optionElement.value = category._id;
+        optionElement.text = category.name;
+        selectElement.appendChild(optionElement);
+      });
+      // 카테고리 선택 변경 이벤트 리스너 추가
+      selectElement.addEventListener("change", function () {
+        itemCategory = selectElement.value;
+      });
+    })
+    .catch((error) => {
+      alert("카테고리 정보를 가져오는 중 오류 발생");
+    });
+
   const registerBtn = document.querySelector(".registerBtn");
 
   registerBtn.addEventListener("click", function () {
-    const productName = document.querySelector(".itemName").value; // 상품 이름 입력 필드 값 가져오기
-    const productPrice = parseInt(document.querySelector(".itemPrice").value); // 가격 입력 필드 값 가져오기
-    const stock = parseInt(document.querySelector(".itemStock").value); // 재고 입력 필드 값 가져오기
-    const description = document.querySelector(".itemDes").value; // 설명 입력 필드 값 가져오기
+    const itemName = document.querySelector(".itemName").value; // 상품 이름 입력 필드 값 가져오기
+    const itemPrice = parseInt(document.querySelector(".itemPrice").value); // 가격 입력 필드 값 가져오기
+    const itemStock = parseInt(document.querySelector(".itemStock").value); // 재고 입력 필드 값 가져오기
 
     const data = {
-      "categories._id": 111,
-      name: productName,
-      price: productPrice,
-      stock: stock,
-      description: description,
-      images: [showItem.src, showInfo.src],
+      name: itemName,
+      price: itemPrice,
+      stock: itemStock,
+      category: itemCategory,
+      images: ["", ""],
     };
 
     const token =

@@ -1,5 +1,5 @@
 import "../../index.css";
-import { removeItem, removeAllItems, updateChecked, updateAmount, getisCheckedPrice, getisCheckedAmount } from "./localStorage.js";
+import { addItem, removeItem, removeAllItems, updateChecked, updateAmount, getisCheckedPrice, getisCheckedAmount } from "./localStorage.js";
 
 const deleteAllBtn = document.getElementById("deleteAllBtn");
 const deleteChosenBtn = document.getElementById("deleteChosenBtn");
@@ -12,9 +12,18 @@ const shipPriceElem = document.getElementById("shipPrice");
 const totalPriceElem = document.getElementById("totalPrice");
 const cartItemElems = document.getElementsByClassName("cartItems");
 
-if (!localStorage.getItem("cart")) {
-  localStorage.setItem("cart", "[]");
-}
+fetch("../cart/product.json")
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    localStorage.setItem("items", JSON.stringify(data));
+    if (!localStorage.getItem("cart")) {
+      localStorage.setItem("cart", "[]");
+    }
+  });
+
+let items = JSON.parse(localStorage.getItem("items"));
 let cart = JSON.parse(localStorage.getItem("cart"));
 
 const formattedNumber = new Intl.NumberFormat().format();
@@ -161,6 +170,10 @@ for (let item of checkBoxElems) {
   item.addEventListener("change", updateCartChecked);
 }
 
+// window.addEventListener("load", () => {
+
+// });
+
 document.addEventListener("DOMContentLoaded", function () {
   showtotalItemPrice();
   showtotalAmount();
@@ -169,9 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let orderButton = document.getElementById("orderBtn");
 
   orderButton.addEventListener("click", function () {
-    if (sessionStorage.getItem("btn") !== null) {
-      sessionStorage.removeItem("btn");
-    }
     if (getisCheckedPrice() === 0) {
       alert("구매할 제품을 선택해주세요.");
     } else {
