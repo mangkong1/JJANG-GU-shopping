@@ -1,13 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch(
-    `http://kdt-sw-7-team03.elicecoding.com/api/products/654d03e1a9da399b694ceee6`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
+  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
       const buyList = document.querySelector(".buyList");
@@ -118,15 +115,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function deleteItem(_id) {
-  fetch(
-    `http://kdt-sw-7-team03.elicecoding.com/api/products/654d03e1a9da399b694ceee6`,
-    {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
+  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
       alert("상품 삭제가 완료되었습니다!");
@@ -151,8 +145,8 @@ function modifyItem(_id) {
     images: [showItem, showInfo],
   };
 
-  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/654d03e1a9da399b694ceee6`, {
-    method: "GET",
+  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/`, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },

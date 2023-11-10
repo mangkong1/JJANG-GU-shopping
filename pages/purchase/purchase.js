@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch(" http://kdt-sw-7-team03.elicecoding.com/api/orders/{_id}", {
+  fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
