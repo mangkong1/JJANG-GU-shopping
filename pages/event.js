@@ -2,6 +2,9 @@ import "../style.css";
 import "../index.css";
 import { addItem } from "./cart/localStorage.js";
 
+const adminToken =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
+
 // 배너 슬라이드
 function initSlide(time) {
   let currentIndex = 0;
@@ -53,9 +56,14 @@ const createCategoryTab = (category) => {
 };
 
 // 카테고리 JSON으로 가져오기
-fetch("./category.json")
+fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
+  method: "GET",
+})
   .then((res) => {
-    return res.json();
+    if (!res.ok) {
+      console.error(res.status, res.statusText);
+    }
+    res.json();
   })
   .then((categoryList) => {
     // 카테고리 categoryTabList에 넣기
@@ -65,22 +73,19 @@ fetch("./category.json")
     });
   })
   .catch((err) => {
-    alert(`에러 : ${err}`);
+    alert("error:" + err);
   });
 
 // 제품
 const productList = document.querySelector(".productList");
-let counter = 0;
 const createProduct = (item) => {
-  counter += 1;
   const productId = item["categories._id"];
 
-  return `<li class="productItem" id="${productId}">
+  return `<li class="productItem">
   <div
-    id="productItemThumb${counter}" class="productItemThumb h-[360px] w-full rounded-2xl overflow-hidden relative"
+    class="productItemThumb h-[360px] w-full rounded-2xl overflow-hidden relative"
   >
     <i
-      id="addCart${counter}"
       data-id="${item._id}"
       class="addCart fa-solid fa-cart-shopping text-2xl text-red w-14 h-14 bg-white90 flex justify-center items-center rounded-full hidden cursor-pointer block absolute left-[50%] bottom-[40px] translate-x-[-50%]"
     ></i>
@@ -104,7 +109,7 @@ const createProduct = (item) => {
 };
 
 // 제품 JSON으로 가져오기
-fetch("./product.json")
+fetch("product.json")
   .then((res) => {
     return res.json();
   })
@@ -155,9 +160,12 @@ fetch("./product.json")
         if (searchByCategoryProduct.length === 0) {
           productList.innerHTML = `<div class="text-center text-gray400 absolute left-2/4 translate-x-[-50%] ">상품이 없습니다.<div>`;
         } else {
-          const newProduct = searchByCategoryProduct.map((product) => createProduct(product)).join("");
+          const newProduct = searchByCategoryProduct
+            .map((product) => createProduct(product))
+            .join("");
           productList.innerHTML = newProduct;
         }
+
         showCartIcon();
       });
     });
@@ -169,23 +177,23 @@ fetch("./product.json")
 // 아이템 마우스 올렸을 때 장바구니 아이콘 보이고, 사라지고
 function showCartIcon() {
   const productItemThumbElList = document.querySelectorAll(".productItemThumb");
-  console.log(productItemThumbElList);
+
   for (let i = 0; i < productItemThumbElList.length; i++) {
     const targetEl = productItemThumbElList[i];
     const viewCartEl = targetEl.children[0];
 
     viewCartEl.addEventListener("click", (e) => {
-      // addItem(e.target.dataset.id);
-      addItem("654d03e1a9da399b694ceee7");
-      let isconfirm = confirm("아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?");
+      addItem(e.target.dataset.id);
+      let isconfirm = confirm(
+        "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
+      );
       if (isconfirm) {
         window.location.href = "/cart/";
       }
     });
 
     targetEl.addEventListener("click", (e) => {
-      sessionStorage.setItem("idTemp", "654d03e1a9da399b694ceee7");
-      // sessionStorage.setItem("idTemp", e.target.dataset.id);
+      localStorage.setItem("idTemp", e.target.dataset.id);
     });
 
     targetEl.addEventListener("mouseover", () => {
@@ -195,31 +203,6 @@ function showCartIcon() {
       viewCartEl.classList.add("hidden");
     });
   }
-
-  // for (let i = 1; i <= counter; i++) {
-  //   let productItemThumb = document.getElementById(`productItemThumb${i}`);
-  //   let viewCart = document.getElementById(`addCart${i}`);
-  //   viewCart.addEventListener("click", (e) => {
-  //     addItem(e.target.dataset.id);
-  //     let isconfirm = confirm(
-  //       "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
-  //     );
-  //     if (isconfirm) {
-  //       window.location.href = "/cart/";
-  //     }
-  //   });
-  //
-  //   productItemThumb.addEventListener("click", (e) => {
-  //     localStorage.setItem("idTemp", e.target.dataset.id);
-  //   });
-  //
-  //   productItemThumb.addEventListener("mouseover", () => {
-  //     viewCart.classList.remove("hidden");
-  //   });
-  //   productItemThumb.addEventListener("mouseout", () => {
-  //     viewCart.classList.add("hidden");
-  //   });
-  // }
 }
 
 localStorage.removeItem("idTemp");

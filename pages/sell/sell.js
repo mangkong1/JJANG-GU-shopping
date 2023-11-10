@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("http://kdt-sw-7-team03.elicecoding.com/api/products/{_id}", {
+  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function deleteItem(_id) {
-  fetch("http://kdt-sw-7-team03.elicecoding.com/api/products/${_id}", {
+  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -145,7 +145,7 @@ function modifyItem(_id) {
     images: [showItem, showInfo],
   };
 
-  fetch("http://kdt-sw-7-team03.elicecoding.com/api/products/${_id}", {
+  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
