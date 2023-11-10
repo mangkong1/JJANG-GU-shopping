@@ -1,81 +1,177 @@
 import "../../index.css";
 
-// 관리자페이지 모듈
-document.querySelector("#adminList").innerHTML = `<div id="adminPageLeft">
-<h2 class="text-4xl font-semibold pb-6">관리자 페이지</h2>
-<div
-  class="userInfoList w-[236px] h-[528px] border border-gray200 rounded-2xl px-[25px] py-[36px] box-border"
->
-  <ul>
-    <li class="font-semibold text-2xl mb-[87px]">
-      상품
-      <ul class="mt-[10px]">
-        <li>
-          <a class="text-xl font-normal text-gray400" href=""
-            >상품 목록</a
-          >
-        </li>
-        <li>
-          <a class="text-xl font-normal text-gray400" href=""
-            >상품 추가</a
-          >
-        </li>
-      </ul>
-    </li>
-    <li class="font-semibold text-2xl mb-[87px]">
-      배송
-      <ul class="mt-[10px]">
-        <li>
-          <a class="text-xl font-normal text-gray400" href=""
-            >배송 관리</a
-          >
-        </li>
-      </ul>
-    </li>
-    <li class="font-semibold text-2xl">
-      카테고리
-      <ul class="mt-[10px]">
-        <li>
-          <a class="text-xl font-normal text-gray400" href=""
-            >카테고리 관리</a
-          >
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
-</div>`;
+const adminToken =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
 
-// 추가, 수정, 삭제 버튼 클릭 시
-const categoryUpdateBtn = document.querySelector(".categoryUpdateBtn");
-const categoryDelBtn = document.querySelector(".categoryDelBtn");
+const categoryList = document.querySelector(".categoryList");
+const changeCategoryList = (category) => {
+  return `<li class="border-b border-gray200 grid-cols-3 py-4">
+  <input
+    type="text"
+    value="${category.name}"
+    class="text-xl w-[500px] mr-[52px] py-2 rounded-2xl"
+  />
+  <button 
+    data-category-id="${category._id}"
+    class="categoryUpdateBtn w-[98px] h-[38px] bg-white rounded-[50px] border border-black mr-4 hover:border-red hover:text-red"
+  >
+    수정
+  </button>
+  <button 
+    data-category-id="${category._id}"
+    class="categoryDelBtn w-[98px] h-[38px] bg-white rounded-[50px] border border-black hover:border-red hover:text-red"
+  >
+    삭제
+  </button>
+</li>`;
+};
+
+// 카테고리 조회
+function fetchCategories() {
+  fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
+    method: "GET",
+  })
+    .then((res) => {
+      if (!res.ok) {
+        console.error(res.status, res.statusText);
+      }
+      return res.json();
+    })
+    .then((categories) => {
+      renderCategories(categories);
+      deleteBtnEvent();
+      updateBtnEvent();
+    })
+    .catch((err) => {
+      alert("error:" + err);
+    });
+}
+fetchCategories();
+
+// 카테고리 나열
+function renderCategories(categories) {
+  categoryList.innerHTML = "";
+  categories.forEach((category) => {
+    const categoryLi = changeCategoryList(category);
+    categoryList.innerHTML += categoryLi;
+  });
+}
+
+// 카테고리 수정
+function updateBtnEvent() {
+  const categoryUpdateBtn = document.querySelectorAll(".categoryUpdateBtn");
+
+  categoryUpdateBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const _id = e.target.dataset.categoryId;
+      const inputValue = e.target.previousElementSibling.value;
+
+      fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories/${_id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${adminToken}`,
+        },
+        body: JSON.stringify({
+          _id: _id,
+          name: inputValue,
+        }),
+      })
+        .then((res) => {
+          if (!res.ok) {
+            console.error(res.status, res.statusText);
+          }
+          return res.json();
+        })
+        .then((data) => {
+          console.log("서버 응답 데이터:", data);
+          alert(`${inputValue}로 수정되었습니다.`);
+        })
+        .catch((err) => {
+          alert("error " + err);
+        });
+    });
+  });
+}
+
+// 카테고리 삭제
+function deleteBtnEvent() {
+  const categoryDelBtn = document.querySelectorAll(".categoryDelBtn");
+
+  categoryDelBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const _id = e.target.dataset.categoryId;
+      console.log(_id);
+
+      fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories/${_id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${adminToken}`,
+        },
+        body: JSON.stringify({
+          _id: _id,
+        }),
+      })
+        .then((res) => {
+          if (!res.ok) {
+            console.error(res.status, res.statusText);
+          }
+          return res.json();
+        })
+        .then((data) => {
+          console.log("서버 응답 데이터", data);
+          alert("카테고리가 삭제되었습니다.");
+          fetchCategories();
+        })
+        .catch((err) => {
+          alert("error:" + err);
+        });
+    });
+  });
+}
+
+// 카테고리 추가
 const categoryAddBtn = document.querySelector(".categoryAddBtn");
 
 categoryAddBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const categoryName = document.querySelector(".categoryName");
+  const inputEl = e.target.previousElementSibling;
+  const inputElValue = inputEl.value;
 
-  if (categoryName.value === "") {
-    alert("카테고리명을 입력해주세요.");
+  if (inputElValue) {
+    fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${adminToken}`,
+      },
+      body: JSON.stringify({
+        name: inputElValue,
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          console.error(res.status, res.statusText);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("서버 응답 데이터:", data);
+        alert(`${inputElValue} 카테고리가 추가되었습니다.`);
+        // 다시 카테고리 조회
+        fetchCategories();
+        inputEl.value = "";
+      })
+      .catch((err) => {
+        alert("error " + err);
+      });
   } else {
-    alert("카테고리가 추가되었습니다.");
-
-    categoryName.value = "";
+    alert("카테고리명을 입력해주세요.");
   }
-});
-
-categoryDelBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  if (confirm("카테고리를 삭제하시겠습니까?")) {
-    const category = e.target.parentElement;
-    category.classList.add("hidden");
-  }
-});
-
-categoryUpdateBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  confirm("카테고리를 수정하시겠습니까?");
 });
