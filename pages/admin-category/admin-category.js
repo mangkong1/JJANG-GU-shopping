@@ -17,6 +17,7 @@ const changeCategoryList = (category) => {
     수정
   </button>
   <button 
+    data-category-id="${category._id}"
     class="categoryDelBtn w-[98px] h-[38px] bg-white rounded-[50px] border border-black hover:border-red hover:text-red"
   >
     삭제
@@ -28,19 +29,18 @@ const changeCategoryList = (category) => {
 function fetchCategories() {
   fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
     method: "GET",
+    headers: {
+      Authorization: `Bearer ${adminToken}`,
+    },
   })
     .then((res) => {
       if (!res.ok) {
         console.error(res.status, res.statusText);
       }
-      res.json();
+      return res.json();
     })
     .then((categories) => {
-      categories.forEach((category) => {
-        const categoryLi = changeCategoryList(category);
-        categoryList.innerHTML += categoryLi;
-      });
-
+      renderCategories(categories);
       deleteBtnEvent();
       updateBtnEvent();
     })
@@ -50,9 +50,17 @@ function fetchCategories() {
 }
 fetchCategories();
 
+// 카테고리 렌더링 함수
+function renderCategories(categories) {
+  categoryList.innerHTML = "";
+  categories.forEach((category) => {
+    const categoryLi = changeCategoryList(category);
+    categoryList.innerHTML += categoryLi;
+  });
+}
+
 // 카테고리 수정
 function updateBtnEvent() {
-  console.log(sessionStorage.getItem(adminToken));
   const categoryUpdateBtn = document.querySelectorAll(".categoryUpdateBtn");
 
   categoryUpdateBtn.forEach((btn) => {
@@ -66,9 +74,10 @@ function updateBtnEvent() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionStorage.getItem(adminToken)}`,
+          Authorization: `Bearer ${adminToken}`,
         },
         body: JSON.stringify({
+          _id: _id,
           name: inputValue,
         }),
       })
@@ -76,13 +85,11 @@ function updateBtnEvent() {
           if (!res.ok) {
             console.error(res.status, res.statusText);
           }
-          res.json();
+          return res.json();
         })
         .then((data) => {
           console.log("서버 응답 데이터:", data);
           alert(`${inputValue}로 수정되었습니다.`);
-          // 다시 카테고리 조회
-          fetchCategories();
         })
         .catch((err) => {
           alert("error " + err);
@@ -99,26 +106,26 @@ function deleteBtnEvent() {
     categoryDelBtn.addEventListener("click", (e) => {
       e.preventDefault();
 
-      // 삭제될 카테고리의 아이디값 가져오기
-      const _id = "삭제될 카테고리의 아이디값";
+      // 데이터 속성에서 _id를 가져옵니다
+      const _id = e.target.dataset.categoryId;
 
-      fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories${_id}`, {
+      fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories/${_id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionStorage.getItem(adminToken)}`,
+          Authorization: `Bearer ${adminToken}`,
         },
       })
         .then((res) => {
           if (!res.ok) {
             console.error(res.status, res.statusText);
           }
-          res.json();
+          return res.json();
         })
         .then((data) => {
           console.log("서버 응답 데이터", data);
           alert("카테고리가 삭제되었습니다.");
-          // 다시 카테고리 조회
+          // UI를 업데이트하거나 카테고리를 다시 가져오는 등의 작업을 수행할 수 있습니다
           fetchCategories();
         })
         .catch((err) => {
@@ -142,7 +149,7 @@ categoryAddBtn.addEventListener("click", (e) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${sessionStorage.getItem(adminToken)}`,
+        Authorization: `Bearer ${adminToken}`,
       },
       body: JSON.stringify({
         name: inputElValue,
@@ -152,7 +159,7 @@ categoryAddBtn.addEventListener("click", (e) => {
         if (!res.ok) {
           console.error(res.status, res.statusText);
         }
-        res.json();
+        return res.json();
       })
       .then((data) => {
         console.log("서버 응답 데이터:", data);

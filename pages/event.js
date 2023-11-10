@@ -2,6 +2,9 @@ import "../style.css";
 import "../index.css";
 import { addItem } from "./cart/localStorage.js";
 
+const adminToken =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
+
 // 배너 슬라이드
 function initSlide(time) {
   let currentIndex = 0;

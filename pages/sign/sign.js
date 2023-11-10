@@ -32,7 +32,6 @@ import "../../index.css";
 //     check = false
 //   }
 
-
 //   // 이름확인
 //   if(name===""){
 //     document.getElementById("nameError").innerHTML="이름이 올바르지 않습니다."
@@ -40,7 +39,6 @@ import "../../index.css";
 //   }else{
 //     document.getElementById("nameError").innerHTML=""
 //   }
-
 
 //   // 비밀번호 확인
 //   if(password !== passwordCheck){
@@ -76,4 +74,3 @@ import "../../index.css";
 //   },0);
 //   }
 // }
-
