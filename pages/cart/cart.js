@@ -134,7 +134,8 @@ function showtotalPrice() {
 }
 
 function updateCartAmount(e) {
-  updateAmount(getItemId(e.target.id), e.target.value);
+  console.log("typeof value", typeof e.target.value);
+  updateAmount(getItemId(e.target.id), parseInt(e.target.value));
 
   showtotalItemPrice();
   showtotalAmount();

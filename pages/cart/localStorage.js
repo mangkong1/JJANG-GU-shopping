@@ -52,16 +52,15 @@ function addItem(itemId) {
     });
 }
 
-// function findItem(itemId) {
-//   let foundItem = {};
+// function findQuantity(itemId) {
+//   let quantity = 0;
 //   cart.forEach((item) => {
 //     if (itemId === item._id) {
-//       foundItem = item;
+//       quantity = item.quantity;
 //     }
-//     return foundItem;
+//     return quantity;
 //   });
-//   console.log("item found", foundItem);
-//   return foundItem;
+//   return quantity;
 // }
 
 function removeItem(itemId) {
@@ -94,17 +93,6 @@ function updateChecked(itemId, isChecked) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function getisCheckedItemId() {
-  let temp = cart
-    .filter((item) => {
-      return item.checked === true;
-    })
-    .map((item) => {
-      return item.id;
-    });
-  return temp;
-}
-
 function getisCheckedAmount() {
   let temp = cart
     .filter((item) => {
@@ -133,4 +121,4 @@ function getisCheckedPrice() {
   return sum;
 }
 
-export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount, getisCheckedItemId };
+export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount };

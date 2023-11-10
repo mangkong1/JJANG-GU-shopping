@@ -1,5 +1,5 @@
 import "../../index.css";
-import { getisCheckedPrice, getisCheckedItemId, getisCheckedAmount } from "../cart/localStorage.js";
+import { getisCheckedPrice, getisCheckedAmount } from "../cart/localStorage.js";
 const nameInput = document.getElementById("nameInput");
 const phoneNumInput = document.getElementById("phoneNumInput");
 const postCodeInput = document.getElementById("postCodeInput");
@@ -144,10 +144,6 @@ function selectSelfInput() {
   }
 }
 
-console.log("qty:", getisCheckedAmount());
-console.log("productIds", getisCheckedItemId());
-validateInput();
-
 function doOrder() {
   const nameVal = nameInput.value;
   const phoneNumVal = phoneNumInput.value;
@@ -155,26 +151,64 @@ function doOrder() {
   const addrVal = addrInput.value;
   const detailAddrVal = detailAddrInput.value;
   const requestSelectVal = requestSelect.value;
-
+  let data = {};
   if (sessionStorage.getItem("btn") !== null) {
-    const data = {
+    const id = sessionStorage.getItem("idTemp");
+    console.log("this is id", id);
+    console.log();
+    data = {
       name: nameVal,
       phone: phoneNumVal,
       address: [postCodeVal, addrVal, detailAddrVal],
       paymentMethod: "현금",
-      email: "user5",
-      qty: 1,
-      productIds: sessionStorage.getItem("tempId"),
+      userId: "admin",
+      email: "admin@elice.com",
+      qty: 50,
+      products: [
+        {
+          productId: id,
+          qty: 1,
+        },
+      ],
     };
   } else {
-    const data = {
+    function getisCheckedPostFormat() {
+      let products = [];
+      const temp = cart.filter((item) => {
+        return item.checked === true;
+      });
+      console.log("temp", temp);
+      temp.forEach((item) => {
+        let data = {
+          productId: item._id,
+          qty: item.quantity,
+        };
+        console.log("data", data);
+        products.push(data);
+      });
+      console.log("products", products);
+      return products;
+    }
+
+    data = {
       name: nameVal,
       phone: phoneNumVal,
       address: [postCodeVal, addrVal, detailAddrVal],
       paymentMethod: "현금",
-      email: "user5",
+      userId: "admin",
+      email: "admin@elice.com",
       qty: getisCheckedAmount(),
-      productIds: getisCheckedItemId(),
+      products: getisCheckedPostFormat(),
+      // products: [
+      //   {
+      //     productId: "654d03e1a9da399b694ceee7",
+      //     qty: 1,
+      //   },
+      //   {
+      //     productId: "654d03e1a9da399b694ceee8",
+      //     qty: 1,
+      //   },
+      // ],
     };
   }
 
@@ -187,16 +221,13 @@ function doOrder() {
     body: JSON.stringify(data),
   }).then((res) => {
     if (res.status === 201) {
-      alert("카테고리 생성 완료!");
+      alert("주문 생성 완료!");
     } else if (res.status === 400) {
       alert("인증 실패");
     } else if (res.status === 500) {
       alert("서버 오류");
     } else {
-      alert("카테고리 생성에 실패했습니다.");
-    }
-    if (!res.ok) {
-      console.error(res.status, res.statusText);
+      alert("주문 생성에 실패했습니다.");
     }
     return res.json();
   });
