@@ -80,25 +80,25 @@ if (location.href.indexOf("http://localhost:8080/admin-category/") > -1) {
   categoryBtn.classList.remove("font-normal");
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders")
-    .then((response) => response.json())
-    .then((data) => {
-      const orderList = document.querySelector(".orderList");
-      data.forEach((order) => {
-        const newItem = document.createElement("li");
-        newItem.classList.add("mb-[20px]");
-        newItem.innerHTML = `
-          <a class="flex justify-between">
-            <p>${order.name}</p>
-            <span>${order.status}</span>
-          </a>
-        `;
-        orderList.appendChild(newItem);
-      });
-      console.log(data);
-    })
-    .catch((error) => {
-      alert("구매내역 요약창을 불러오는 데 오류가 발생했습니다.");
-    });
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const orderList = document.querySelector(".orderList");
+//       data.forEach((order) => {
+//         const newItem = document.createElement("li");
+//         newItem.classList.add("mb-[20px]");
+//         newItem.innerHTML = `
+//           <a class="flex justify-between">
+//             <p>${order.name}</p>
+//             <span>${order.status}</span>
+//           </a>
+//         `;
+//         orderList.appendChild(newItem);
+//       });
+//       console.log(data);
+//     })
+//     .catch((error) => {
+//       alert("구매내역 요약창을 불러오는 데 오류가 발생했습니다.");
+//     });
+// });
