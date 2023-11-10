@@ -1,5 +1,7 @@
 import '../../index.css';
 
+"use strict";
+
 const loginId = document.getElementById('loginId');
 const loginPw = document.getElementById('loginPw');
 const loginBtn = document.getElementById('loginBtn');
