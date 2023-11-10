@@ -46,7 +46,7 @@ const createCategoryTab = (category) => {
   return `<li
   class="categoryTab inline-block border border-gray400 rounded-full mr-3 mb-3 text-gray400 overflow-hidden"
   >
-    <a href="/" class="w-full block py-1.5 px-7" id="${category._id}">${category.name}</a>
+    <a class="w-full block py-1.5 px-7 cursor-pointer" id="${category._id}">${category.name}</a>
   </li>`;
 };
 
@@ -74,11 +74,12 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
 // 제품
 const productList = document.querySelector(".productList");
 const createProduct = (item) => {
+  const productId = item["categories._id"];
   return `<li class="productItem">
   <div
     class="productItemThumb h-[360px] w-full rounded-2xl overflow-hidden relative"
   >
-    <i
+    <i id="${productId}"
       data-id="${item._id}"
       class="addCart fa-solid fa-cart-shopping text-2xl text-red w-14 h-14 bg-white90 flex justify-center items-center rounded-full hidden cursor-pointer block absolute left-[50%] bottom-[40px] translate-x-[-50%]"
     ></i>
@@ -137,9 +138,31 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/products", {
         category.classList.add("clicked");
         category.children[0].classList.add("clicked");
 
+        productList.textContent = "";
         const searchByCategoryProduct = [];
         const clickedCategoryTab = e.target.id;
-        console.log(e);
+
+        // 카테고리와 연관된 상품을 searchByCategoryProduct 배열에 담기
+        if (clickedCategoryTab === "63620bfed246d98cfee9ad70") {
+          searchByCategoryProduct.push(...productLiList);
+        } else {
+          productLiList.forEach((product) => {
+            const productCategoryId = product["category"][0]["_id"];
+            if (productCategoryId === clickedCategoryTab) {
+              searchByCategoryProduct.push(product);
+            }
+          });
+        }
+
+        // searchByCategoryProduct 배열에 상품이 있는지 없는지
+        if (searchByCategoryProduct.length === 0) {
+          productList.innerHTML = `<div class="text-center text-gray400 absolute left-2/4 translate-x-[-50%] ">상품이 없습니다.<div>`;
+        } else {
+          const newProduct = searchByCategoryProduct
+            .map((product) => createProduct(product))
+            .join("");
+          productList.innerHTML = newProduct;
+        }
 
         showCartIcon();
       });
