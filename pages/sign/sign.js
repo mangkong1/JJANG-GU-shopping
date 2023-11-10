@@ -8,20 +8,20 @@ function validateForm(e) {
     const confirmPassword = document.getElementById("confirmPassword").value;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // if (!emailRegex.test(email)) {
-    //     alert("올바른 이메일 주소 형식이 아닙니다.");
-    //     return false;
-    // }
-    //
-    // if (password.length < 8) {
-    //     alert("비밀번호는 최소 8자 이상이어야 합니다.");
-    //     return false;
-    // }
-    //
-    // if (password !== confirmPassword) {
-    //     alert("비밀번호와 비밀번호 확인란이 일치하지 않습니다.");
-    //     return false;
-    // }
+    if (!emailRegex.test(email)) {
+        alert("올바른 이메일 주소 형식이 아닙니다.");
+        return false;
+    }
+    
+    if (password.length < 5) {
+        alert("비밀번호는 최소 5자 이상이어야 합니다.");
+        return false;
+    }
+    
+    if (password !== confirmPassword) {
+        alert("비밀번호와 비밀번호 확인란이 일치하지 않습니다.");
+        return false;
+    }
 
     // 유효성 검사 통과 시, 서버로 유저 정보 전송
     sendUserDataToServer({
