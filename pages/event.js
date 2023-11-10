@@ -53,9 +53,14 @@ const createCategoryTab = (category) => {
 };
 
 // 카테고리 JSON으로 가져오기
-fetch("./category.json")
+fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
+  method: "GET",
+})
   .then((res) => {
-    return res.json();
+    if (!res.ok) {
+      console.error(res.status, res.statusText);
+    }
+    res.json();
   })
   .then((categoryList) => {
     // 카테고리 categoryTabList에 넣기
@@ -65,7 +70,7 @@ fetch("./category.json")
     });
   })
   .catch((err) => {
-    alert(`에러 : ${err}`);
+    alert("error:" + err);
   });
 
 // 제품
@@ -101,7 +106,7 @@ const createProduct = (item) => {
 };
 
 // 제품 JSON으로 가져오기
-fetch("./product.json")
+fetch("product.json")
   .then((res) => {
     return res.json();
   })

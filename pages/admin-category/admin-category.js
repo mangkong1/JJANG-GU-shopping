@@ -1,5 +1,8 @@
 import "../../index.css";
 
+const adminToken =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
+
 const categoryList = document.querySelector(".categoryList");
 const changeCategoryList = (category) => {
   return `<li class="border-b border-gray200 grid-cols-3 py-4">
@@ -21,19 +24,16 @@ const changeCategoryList = (category) => {
 </li>`;
 };
 
-// 카테고리 조회 함수
+// 카테고리 조회
 function fetchCategories() {
-  fetch("https://localhost:5000/categories", {
+  fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
   })
     .then((res) => {
       if (!res.ok) {
-        throw new Error("서버 응답 오류");
+        console.error(res.status, res.statusText);
       }
-      return res.json();
+      res.json();
     })
     .then((categories) => {
       categories.forEach((category) => {
@@ -48,8 +48,11 @@ function fetchCategories() {
       alert("error:" + err);
     });
 }
+fetchCategories();
 
+// 카테고리 수정
 function updateBtnEvent() {
+  console.log(sessionStorage.getItem(adminToken));
   const categoryUpdateBtn = document.querySelectorAll(".categoryUpdateBtn");
 
   categoryUpdateBtn.forEach((btn) => {
@@ -59,10 +62,11 @@ function updateBtnEvent() {
       const _id = "수정될 카테고리의 아이디값";
       const inputValue = e.target.previousElementSibling.value;
 
-      fetch(`https://localhost:5000/categories/${_id}`, {
-        method: "PATCH",
+      fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories${_id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem(adminToken)}`,
         },
         body: JSON.stringify({
           name: inputValue,
@@ -70,9 +74,9 @@ function updateBtnEvent() {
       })
         .then((res) => {
           if (!res.ok) {
-            throw new Error("서버 응답 오류");
+            console.error(res.status, res.statusText);
           }
-          return res.json();
+          res.json();
         })
         .then((data) => {
           console.log("서버 응답 데이터:", data);
@@ -87,7 +91,7 @@ function updateBtnEvent() {
   });
 }
 
-// 삭제 버튼에 이벤트 리스너 등록 함수
+// 카테고리 삭제
 function deleteBtnEvent() {
   const categoryDelBtn = document.querySelectorAll(".categoryDelBtn");
 
@@ -98,17 +102,18 @@ function deleteBtnEvent() {
       // 삭제될 카테고리의 아이디값 가져오기
       const _id = "삭제될 카테고리의 아이디값";
 
-      fetch(`https://localhost:5000/categories/${_id}`, {
+      fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories${_id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem(adminToken)}`,
         },
       })
         .then((res) => {
           if (!res.ok) {
-            throw new Error("서버 응답 오류");
+            console.error(res.status, res.statusText);
           }
-          return res.json();
+          res.json();
         })
         .then((data) => {
           console.log("서버 응답 데이터", data);
@@ -132,29 +137,34 @@ categoryAddBtn.addEventListener("click", (e) => {
   const inputEl = e.target.previousElementSibling;
   const inputElValue = inputEl.value;
 
-  fetch("https://localhost:5000/categories", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: inputElValue,
-    }),
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("서버 응답 오류");
-      }
-      return res.json();
+  if (inputElValue) {
+    fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem(adminToken)}`,
+      },
+      body: JSON.stringify({
+        name: inputElValue,
+      }),
     })
-    .then((data) => {
-      console.log("서버 응답 데이터:", data);
-      alert(`${inputElValue} 카테고리가 추가되었습니다.`);
-      // 다시 카테고리 조회
-      fetchCategories();
-      inputEl.value = "";
-    })
-    .catch((err) => {
-      alert("error " + err);
-    });
+      .then((res) => {
+        if (!res.ok) {
+          console.error(res.status, res.statusText);
+        }
+        res.json();
+      })
+      .then((data) => {
+        console.log("서버 응답 데이터:", data);
+        alert(`${inputElValue} 카테고리가 추가되었습니다.`);
+        // 다시 카테고리 조회
+        fetchCategories();
+        inputEl.value = "";
+      })
+      .catch((err) => {
+        alert("error " + err);
+      });
+  } else {
+    alert("카테고리명을 입력해주세요.");
+  }
 });
