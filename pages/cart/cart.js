@@ -17,7 +17,6 @@ if (!localStorage.getItem("cart")) {
 }
 let cart = JSON.parse(localStorage.getItem("cart"));
 
-const formattedNumber = new Intl.NumberFormat().format();
 if (cart.length === 0) {
   const goodsContainer = document.querySelector(".goodsContainer");
   cartItemWrap.innerHTML = `<div class=" h-[225.64px] flex justify-center items-center text-gray400">장바구니가 비었습니다. 상품을 추가해 보세요!</div>`;

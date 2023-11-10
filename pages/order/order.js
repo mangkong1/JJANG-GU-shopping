@@ -1,5 +1,5 @@
 import "../../index.css";
-import { getisCheckedPrice } from "../cart/localStorage.js";
+import { getisCheckedPrice, getisCheckedItemId, getisCheckedAmount } from "../cart/localStorage.js";
 const nameInput = document.getElementById("nameInput");
 const phoneNumInput = document.getElementById("phoneNumInput");
 const postCodeInput = document.getElementById("postCodeInput");
@@ -14,6 +14,8 @@ const itemWrapper = document.getElementById("itemWrapper");
 const shipPriceElem = document.getElementById("shipPrice");
 const totalPriceElem = document.getElementById("totalPrice");
 const totalItemPriceElem = document.getElementById("totalItemPrice");
+
+const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
 
 let cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -44,6 +46,8 @@ if (sessionStorage.getItem("btn") !== null) {
     });
 } else {
   cart.forEach((item) => {
+    console.log(item);
+    console.log(item.checked);
     if (item.checked) {
       itemWrapper.innerHTML += `<p id="items" class="justify-self-end p-3"> ${item.name} / ${item.quantity}개</p>`;
     }
@@ -140,50 +144,64 @@ function selectSelfInput() {
   }
 }
 
-// async function doOrder() {
-//   const nameVal = nameInput.value;
-//   const phoneNumVal = phoneNumInput.value;
-//   const postCodeVal = postCodeInput.value;
-//   const addrVal = addrInput.value;
-//   const detailAddrVal = detailAddrInput.value;
-//   const requestSelectVal = requestSelect.value;
+console.log("qty:", getisCheckedAmount());
+console.log("productIds", getisCheckedItemId());
+validateInput();
 
-//   validateInput();
+function doOrder() {
+  const nameVal = nameInput.value;
+  const phoneNumVal = phoneNumInput.value;
+  const postCodeVal = postCodeInput.value;
+  const addrVal = addrInput.value;
+  const detailAddrVal = detailAddrInput.value;
+  const requestSelectVal = requestSelect.value;
 
-//   const data = {
-//     name: nameVal,
-//     phone: phoneNumVal,
-//     address: [postCodeVal, addrVal, detailAddrVal],
-//     paymentMethod: "현금",
-//     email: "elice@elice.com",
-//     qty: getisCheckedAmount(),
-//     password: "userpassword",
-//     productIds: getisCheckedItemId(),
-//   };
+  if (sessionStorage.getItem("btn") !== null) {
+    const data = {
+      name: nameVal,
+      phone: phoneNumVal,
+      address: [postCodeVal, addrVal, detailAddrVal],
+      paymentMethod: "현금",
+      email: "user5",
+      qty: 1,
+      productIds: sessionStorage.getItem("tempId"),
+    };
+  } else {
+    const data = {
+      name: nameVal,
+      phone: phoneNumVal,
+      address: [postCodeVal, addrVal, detailAddrVal],
+      paymentMethod: "현금",
+      email: "user5",
+      qty: getisCheckedAmount(),
+      productIds: getisCheckedItemId(),
+    };
+  }
 
-//   const dataJson = JSON.stringify(data);
-//   const apiUrl = `http://kdt-sw-7-team03.elicecoding.com/api/orders`;
-
-//   const res = await fetch(apiUrl, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: dataJson,
-//   });
-
-//   if (res.status === 201) {
-//     alert("카테고리 생성 완료!");
-//   } else if (res.status === 400) {
-//     alert("인증 실패");
-//   } else if (res.status === 500) {
-//     alert("서버 오류");
-//   } else {
-//     alert("카테고리 생성에 실패했습니다.");
-//   }
-// }
+  fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${adminToken}`,
+    },
+    body: JSON.stringify(data),
+  }).then((res) => {
+    if (res.status === 201) {
+      alert("카테고리 생성 완료!");
+    } else if (res.status === 400) {
+      alert("인증 실패");
+    } else if (res.status === 500) {
+      alert("서버 오류");
+    } else {
+      alert("카테고리 생성에 실패했습니다.");
+    }
+    if (!res.ok) {
+      console.error(res.status, res.statusText);
+    }
+    return res.json();
+  });
+}
 
 addrFindBtn.addEventListener("click", searchAddr);
-// orderBtn.addEventListener("click", doOrder);
-orderBtn.addEventListener("click", validateInput);
+orderBtn.addEventListener("click", doOrder);
 requestSelect.addEventListener("change", selectSelfInput);

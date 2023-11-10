@@ -100,7 +100,7 @@ function getisCheckedItemId() {
       return item.checked === true;
     })
     .map((item) => {
-      return parseInt(item.id);
+      return item.id;
     });
   return temp;
 }
