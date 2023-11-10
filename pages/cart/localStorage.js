@@ -1,15 +1,7 @@
-fetch("./items.json")
-  .then((res) => {
-    return res.json();
-  })
-  .then((data) => {
-    localStorage.setItem("items", JSON.stringify(data));
-    if (!localStorage.getItem("cart")) {
-      localStorage.setItem("cart", "[]");
-    }
-  });
+if (!localStorage.getItem("cart")) {
+  localStorage.setItem("cart", "[]");
+}
 
-let items = JSON.parse(localStorage.getItem("items"));
 let cart = JSON.parse(localStorage.getItem("cart"));
 
 function addItem(itemId) {
@@ -17,45 +9,66 @@ function addItem(itemId) {
     console.log("item Id need to be type string");
     return;
   }
-  let item = items.find((item) => {
-    console.log("istrue", item.id === itemId);
-    return item.id === itemId;
-  });
-  item.checked = true;
-  item.quantity = 1;
-  if (item == null) {
-    console.log("id not found");
-    return;
-  }
-
-  if (cart.length === 0) {
-    cart.push(item);
-    const updatedData = JSON.stringify(cart);
-    localStorage.setItem("cart", updatedData);
-  } else {
-    let foundItem = cart.find((item) => item.id === itemId);
-    if (foundItem === undefined) {
-      cart.push(item);
-    } else {
-      let quantityLimit = item.stock;
-      if (item.stock > 99) {
-        quantityLimit = 99;
-      }
-      if (foundItem.quantity < quantityLimit) {
-        foundItem.quantity += 1;
+  console.log(itemId);
+  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/${itemId}`)
+    .then((res) => {
+      if (res.status == 200) {
+        console.log("상품 조회 완료");
+        return res.json();
+      } else if (res.status == 400) {
+        alert("인증실패, 잘못된 요청");
+      } else if (res.status == 500) {
+        alert("서버 오류");
       } else {
-        foundItem.quantity = quantityLimit;
+        alert("상품 조회 실패");
       }
-    }
-  }
-  localStorage.setItem("cart", JSON.stringify(cart));
+      return;
+    })
+    .then((data) => {
+      console.log(data);
+      data.checked = true;
+      data.quantity = 1;
+      if (cart.length === 0) {
+        cart.push(data);
+        const updatedData = JSON.stringify(cart);
+        localStorage.setItem("cart", updatedData);
+      } else {
+        let foundItem = cart.find((item) => item._id === itemId);
+        if (foundItem === undefined) {
+          cart.push(data);
+        } else {
+          let quantityLimit = data.stock;
+          if (quantityLimit >= 99) {
+            quantityLimit = 99;
+          }
+          if (foundItem.quantity < quantityLimit) {
+            foundItem.quantity += 1;
+          } else {
+            foundItem.quantity = quantityLimit;
+          }
+        }
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+    });
 }
+
+// function findItem(itemId) {
+//   let foundItem = {};
+//   cart.forEach((item) => {
+//     if (itemId === item._id) {
+//       foundItem = item;
+//     }
+//     return foundItem;
+//   });
+//   console.log("item found", foundItem);
+//   return foundItem;
+// }
 
 function removeItem(itemId) {
   if (typeof itemId != "string") {
     console.log("id is not in string form");
   }
-  let temp = cart.filter((item) => item.id !== itemId);
+  let temp = cart.filter((item) => item._id !== itemId);
   localStorage.setItem("cart", JSON.stringify(temp));
 }
 
@@ -65,7 +78,7 @@ function removeAllItems() {
 
 function updateAmount(itemId, quantity) {
   for (let item of cart) {
-    if (item.id === itemId) {
+    if (item._id === itemId) {
       item.quantity = quantity;
     }
   }
@@ -74,11 +87,22 @@ function updateAmount(itemId, quantity) {
 
 function updateChecked(itemId, isChecked) {
   for (let item of cart) {
-    if (item.id === itemId) {
+    if (item._id === itemId) {
       item.checked = isChecked;
     }
   }
   localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function getisCheckedItemId() {
+  let temp = cart
+    .filter((item) => {
+      return item.checked === true;
+    })
+    .map((item) => {
+      return parseInt(item.id);
+    });
+  return temp;
 }
 
 function getisCheckedAmount() {
@@ -109,4 +133,4 @@ function getisCheckedPrice() {
   return sum;
 }
 
-export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount };
+export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount, getisCheckedItemId };
