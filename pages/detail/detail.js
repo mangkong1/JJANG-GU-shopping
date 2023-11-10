@@ -1,13 +1,10 @@
 import "../../index.css";
-import { addItem, findThumbImg, findProperty } from "../cart/localStorage.js";
+import { addItem } from "../cart/localStorage.js";
 
 //임시방편
-const itemId = localStorage.getItem("idTemp");
 const putCartBtn = document.getElementById("putCartBtn");
 const payInstantBtn = document.getElementById("payInstantBtn");
 
-let item = JSON.parse(localStorage.getItem("item"));
-console.log(item);
 // // 현재 페이지의 URL을 가져옴
 // const currentPageUrl = window.location.href;
 // console.log(currentPageUrl);
@@ -34,41 +31,40 @@ console.log(item);
 //   })
 //   .catch((error) => console.error("Error:", error));
 
-fetch("../product.json")
+const id = sessionStorage.getItem("idTemp");
+console.log(id);
+fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/${id}`)
   .then((res) => {
-    return res.json();
-  })
-  .then((data) => {
-    localStorage.setItem("items", JSON.stringify(data));
-    if (!localStorage.getItem("cart")) {
-      localStorage.setItem("cart", "[]");
+    if (res.status == 200) {
+      console.log("상품 조회 완료");
+    } else if (res.status == 400) {
+      alert("인증실패, 잘못된 요청");
+    } else if (res.status == 500) {
+      alert("서버 오류");
+    } else {
+      alert("상품 조회 실패");
     }
+    return res.json();
   })
   .then((res) => {
     const itemPrice = document.getElementById("itemPrice");
-
-    itemPrice.innerHTML = `${findProperty(itemId, "price")}원`;
-
+    itemPrice.innerHTML = `${res.price}원`;
     const itemName = document.getElementById("itemName");
+    itemName.innerHTML = res.name;
+    document.getElementById("detailImage").src = res.images[0];
 
-    itemName.innerHTML = findProperty(itemId, "name");
+    putCartBtn.addEventListener("click", (e) => {
+      if (sessionStorage.getItem("btn") !== null) {
+        sessionStorage.removeItem("btn");
+      }
+      addItem(res._id);
+      let isconfirm = confirm("아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?");
+      if (isconfirm) {
+        window.location.href = "/cart/";
+      }
+    });
 
-    document.getElementById("detailImage").src = findThumbImg(itemId);
-    console.log(findThumbImg(itemId));
-
-    //href값 받아오면 됨
+    payInstantBtn.addEventListener("click", (e) => {
+      sessionStorage.setItem("btn", "2");
+    });
   });
-
-putCartBtn.addEventListener("click", (e) => {
-  addItem(itemId);
-  let isconfirm = confirm(
-    "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
-  );
-  if (isconfirm) {
-    window.location.href = "/cart/";
-  }
-});
-
-payInstantBtn.addEventListener("click", (e) => {
-  localStorage.setItem("btn", "2");
-});

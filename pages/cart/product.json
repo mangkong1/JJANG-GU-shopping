@@ -1,0 +1,82 @@
+[
+  {
+    "_id": "123werjwioerjwkwerm1",
+    "category": {
+      "name": "필기류/학습용품",
+      "_id": "63620bfed246d98cfee9ad76"
+    },
+    "images": ["/imgs/test.jpg", "/imgs/test.jpg"],
+    "name": "2024 벽걸이 캘린더",
+    "price": 23000,
+    "description": "중간 사이즈의 짱구 벽걸이 캘린더입니다.",
+    "stock": 100,
+    "createdAt": "2023-11-01T03:48:48.384Z",
+    "updatedAt": "2023-11-01T04:20:38.566Z"
+  },
+  {
+    "_id": "12ewrjlwkejrlsle2",
+    "category": {
+      "name": "필기류/학습용품",
+      "_id": "63620bfed246d98cfee9ad76"
+    },
+    "images": ["/imgs/test.jpg", "/imgs/test.jpg"],
+    "name": "2024 턱걸이 캘린더",
+    "price": 23000,
+    "description": "중간 사이즈의 짱구 벽걸이 캘린더입니다.",
+    "stock": 100,
+    "createdAt": "2023-11-01T03:48:48.384Z",
+    "updatedAt": "2023-11-01T04:20:38.566Z"
+  },
+  {
+    "_id": "123werjwioerjwkwerm3",
+    "category": {
+      "name": "필기류/학습용품",
+      "_id": "63620bfed246d98cfee9ad76"
+    },
+    "images": ["/imgs/picnic.jpg", "/imgs/test.jpg"],
+    "name": "피크닉 매트(소)",
+    "price": 10000,
+    "description": "작은 사이즈의 피크닉 매트입니다.",
+    "stock": 100,
+    "createdAt": "2023-11-01T03:48:48.384Z",
+    "updatedAt": "2023-11-01T04:20:38.566Z"
+  },
+  {
+    "_id": "123werjwioerjwkwerm4",
+    "category": {
+      "name": "필기류/학습용품",
+      "_id": "63620bfed246d98cfee9ad76"
+    },
+    "images": ["/imgs/test.jpg", "/imgs/test.jpg"],
+    "name": "2024 미니 캘린더",
+    "price": 23000,
+    "description": "중간 사이즈의 짱구 벽걸이 캘린더입니다.",
+    "stock": 100,
+    "createdAt": "2023-11-01T03:48:48.384Z",
+    "updatedAt": "2023-11-01T04:20:38.566Z"
+  },
+  {
+    "_id": "123werjwioerjwkwerm5",
+    "category": {
+      "name": "필기류/학습용품",
+      "_id": "63620bfed246d98cfee9ad76"
+    },
+    "images": ["/imgs/test.jpg", "/imgs/test.jpg"],
+    "name": "짱구, 짱아 수저세트",
+    "price": 23000,
+    "description": "중간 사이즈의 짱구 벽걸이 캘린더입니다.",
+    "stock": 100
+  },
+  {
+    "_id": "123werjwioerwerlwrwerm6",
+    "category": {
+      "name": "필기류/학습용품",
+      "_id": "63620bfed246d98cfee9ad76"
+    },
+    "images": ["/imgs/test.jpg", "/imgs/test.jpg"],
+    "name": "짱구인형",
+    "price": 230000,
+    "description": "중간 사이즈의 짱구 벽걸이 캘린더입니다.",
+    "stock": 100
+  }
+]
