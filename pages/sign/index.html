@@ -14,39 +14,12 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
       rel="stylesheet"
     />
-    <script src="signup.js"></script>
     <title>떡잎마을 상점</title>
 
-    <script>
-      function validateForm() {
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("confirmPassword").value;
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!emailRegex.test(email)) {
-          alert("올바른 이메일 주소 형식이 아닙니다.");
-          return false;
-        }
-
-        if (password.length < 8) {
-          alert("비밀번호는 최소 8자 이상이어야 합니다.");
-          return false;
-        }
-
-        if (password !== confirmPassword) {
-          alert("비밀번호와 비밀번호 확인란이 일치하지 않습니다.");
-          return false;
-        }
-
-        alert("회원가입을 축하합니다!");
-      }
-    </script>
   </head>
   <body>
     <div id="headerWrap" class="w-full"></div>
-    <!-- action 주소에 뭘넣어야하는지? 백엔드 db서버인가? -->
-    <form action="/users" method="post" onsubmit="return validateForm()">
+    <form  onsubmit="return validateForm()">
       <div class="mt-[123px] flex flex-col items-center">
         <div class="mb-[38px] text-black text-[45px] font-bold">회원가입</div>
 
@@ -106,18 +79,20 @@
           </div>
           <button
             class="mt-20 text-[20px] font-semibold flex justify-center items-center text-white w-[576px] h-[61px] bg-red-500 rounded-[15px]"
+            id="signIn"
           >
             회원가입하기
           </button>
+        </form>
         </div>
       </div>
-    </form>
+   
     <div
       id="footerWrap"
       class="w-full h-[300px] flex border-t border-gray400"
     ></div>
   </body>
 </html>
-<script type="module" src="./sign.js"></script>
+<script type="module" src="./sign.js" defer=""></script>
 <script type="module" src="../main.js"></script>
 <script type="module" src="../event.js"></script>
