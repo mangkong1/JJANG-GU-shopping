@@ -34,7 +34,7 @@ const changeInputValue = (user) => {
     type="tel"
     id="phone"
     name="user_phone"
-    value="${user.phone}"
+    value=""
     class="border rounded-xl border-gray200 inline-block w-[646px] py-2 pl-3 mb-[20px]"
   />
   <label for="password" class="block text-xl pl-[5px] pb-2"
@@ -112,12 +112,13 @@ fetchUserInfo();
 
 // 수정 클릭했을 때 유저 정보 수정
 async function updateUserInfo() {
-  let currentPass = document.querySelector("#currentPassword").value;
-  console.log(currentPass);
   const modifyBtn = document.querySelector(".modifyBtn");
 
   modifyBtn.addEventListener("click", async (e) => {
     e.preventDefault();
+
+    let currentPass = document.querySelector("#currentPassword").value;
+    console.log(currentPass);
 
     const _id = e.target.previousElementSibling.firstElementChild.id;
     const modifyName = document.querySelector("#name").value;
