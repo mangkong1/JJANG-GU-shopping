@@ -34,7 +34,7 @@ const changeInputValue = (user) => {
     type="tel"
     id="phone"
     name="user_phone"
-    value=""
+    value="${user.phone}"
     class="border rounded-xl border-gray200 inline-block w-[646px] py-2 pl-3 mb-[20px]"
   />
   <label for="password" class="block text-xl pl-[5px] pb-2"
