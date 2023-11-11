@@ -15,7 +15,7 @@ const shipPriceElem = document.getElementById("shipPrice");
 const totalPriceElem = document.getElementById("totalPrice");
 const totalItemPriceElem = document.getElementById("totalItemPrice");
 
-const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
+const token = sessionStorage.getItem("data");
 
 let cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -204,7 +204,7 @@ function doOrder() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${adminToken}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     })

@@ -21,7 +21,6 @@ if (cart.length === 0) {
   const goodsContainer = document.querySelector(".goodsContainer");
   cartItemWrap.innerHTML = `<div class=" h-[225.64px] flex justify-center items-center text-gray400">장바구니가 비었습니다. 상품을 추가해 보세요!</div>`;
 } else {
-  console.log("들어있음");
   cart.forEach((item) => {
     console.log("image", item.images);
     cartItemWrap.innerHTML += ` <div id="cartItem-${item._id}" class="cartItems grid grid-cols-3 grid-cols-[4fr_1fr_2fr]  justify-items-center items-center"> 
@@ -56,7 +55,6 @@ function getItemId(itemId) {
       const splitId = itemId.split("-");
       return splitId[1];
     } else {
-      console.log("this item id doesn't include'-'");
     }
   }
 }
@@ -68,7 +66,6 @@ function getCheckedElements() {
     const cartItem = document.getElementById(`cartItem-${itemId}`);
     return cartItem;
   });
-  console.log("checkedItems", checkedItems);
   return checkedItems;
 }
 
@@ -78,8 +75,6 @@ function deleteChosenIteminCart() {
     const itemId = getItemId(element.id);
     removeItem(itemId);
   });
-  console.log("deleted Selected Item");
-  console.log("cart Now", JSON.parse(localStorage.getItem("cart")));
   showtotalItemPrice();
   showtotalAmount();
   showtotalPrice();
@@ -89,7 +84,6 @@ function deleteChosenIteminCart() {
 function deleteAllIteminCart() {
   removeAllItems();
   Array.from(cartItemElems).forEach((element) => element.remove());
-  console.log("deleted All Item");
   showtotalItemPrice();
   showtotalAmount();
   showtotalPrice();
@@ -113,12 +107,10 @@ function chooseAllItem() {
 function showtotalItemPrice() {
   const price = getisCheckedPrice();
   totalItemPriceElem.innerHTML = `${price}원`;
-  console.log("showPrice", price);
 }
 function showtotalAmount() {
   const amount = getisCheckedAmount();
   totalAmountElem.innerHTML = `${amount}개`;
-  console.log("showAmount", amount);
 }
 
 function showtotalPrice() {
@@ -134,7 +126,6 @@ function showtotalPrice() {
 }
 
 function updateCartAmount(e) {
-  console.log("typeof value", typeof e.target.value);
   updateAmount(getItemId(e.target.id), parseInt(e.target.value));
 
   showtotalItemPrice();

@@ -10,17 +10,14 @@ loginBtn.addEventListener("click", async () => {
   const password = loginPw.value;
 
   try {
-    const response = await fetch(
-      "http://kdt-sw-7-team03.elicecoding.com/api/users/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      }
-    );
+    const response = await fetch("http://kdt-sw-7-team03.elicecoding.com/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
 
     const data = await response.json();
 
