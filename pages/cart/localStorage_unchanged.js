@@ -1,6 +1,4 @@
-const idTemp = "654d03e1a9da399b694ceee8";
-
-fetch("http://kdt-sw-7-team03.elicecoding.com/api/products/${idTemp}")
+fetch("../cart/product.json")
   .then((res) => {
     return res.json();
   })
@@ -111,7 +109,7 @@ function getisCheckedItemId() {
       return item.checked === true;
     })
     .map((item) => {
-      return parseInt(item.id);
+      return item.id;
     });
   return temp;
 }

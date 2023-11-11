@@ -17,7 +17,6 @@ if (!localStorage.getItem("cart")) {
 }
 let cart = JSON.parse(localStorage.getItem("cart"));
 
-const formattedNumber = new Intl.NumberFormat().format();
 if (cart.length === 0) {
   const goodsContainer = document.querySelector(".goodsContainer");
   cartItemWrap.innerHTML = `<div class=" h-[225.64px] flex justify-center items-center text-gray400">장바구니가 비었습니다. 상품을 추가해 보세요!</div>`;
@@ -135,7 +134,8 @@ function showtotalPrice() {
 }
 
 function updateCartAmount(e) {
-  updateAmount(getItemId(e.target.id), e.target.value);
+  console.log("typeof value", typeof e.target.value);
+  updateAmount(getItemId(e.target.id), parseInt(e.target.value));
 
   showtotalItemPrice();
   showtotalAmount();
