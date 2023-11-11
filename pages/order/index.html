@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order page</title>
+    <link rel="stylesheet" href="./order.css" />
+    <script src="https://kit.fontawesome.com/a3379ca11a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div id="headerWrap" class="w-full"></div>
+    <div class="cartComponent mx-auto mt-[50px] mb-[350px] w-[1274px]">
+      <div class="flex items-baseline pl-[5px] my-4">
+        <p class="text-lg text-gray400 ml-2">장바구니</p>
+        <i class="text-sm text-gray400 front-bold mx-2 fa-solid fa-chevron-right"></i>
+        <p class="text-[40px] font-extrabold content-baseline">주문결제</p>
+        <i class="text-sm text-gray400 front-bold mx-2 fa-solid fa-chevron-right"></i>
+        <p class="text-lg text-gray400">주문완료</p>
+      </div>
+      <div class="flex justify-between items-start">
+        <div class="goods-container rounded-2xl border-solid border border-gray200 w-[889px]">
+          <div class="section1 text-xl ml-[33px] pt-4 py-2 pr-2 my-2 text-medium">배송지 정보</div>
+          <p class="border-gray200 border-solid border-t"></p>
+          <div class="grid grid-cols-2 grid-cols-[160px_auto] items-center pr-[30px] pb-[33px]">
+            <label class="label ml-[33px] inline-block font-bold" for="namePlace">이름</label>
+            <input maxlength="50" id="nameInput" class="input mt-[28px] mb-[10.5px] h-[60px] w-[690px] rounded-2xl border-solid border border-gray200 bg-white p-4 border-box" id="namePlace" type="text" placeholder="받는 분 이름을 입력해 주세요." autocomplete="on" />
+            <label class="label ml-[33px] font-bold" for="phoneNumPlace">연락처</label>
+            <input maxlength="" id="phoneNumInput" class="input h-[60px] mt-[10.5px] mb-[10.5px] w-[690px] rounded-2xl border-solid border border-gray200 bg-white p-4" id="phoneNumPlace" type="text" placeholder="전화번호를 입력해 주세요." autocomplete="on" />
+            <label class="label ml-[33px] font-bold" for="addressPlace">주소</label>
+            <div class="flex items-center">
+              <input maxlength="15" id="postCodeInput" class="input w-[580px] h-[60px] mt-[10.5px] mb-[10.5px] w-[566px] rounded-2xl border-solid border border-gray200 bg-white justify-self-stretch p-4" id="addressPlace" type="text" placeholder="주소찾기를 클릭해 주세요." readonly />
+              <button id="addrFindBtn" class="w-[100px] h-[60px] ml-[21px] bg-gray200 rounded-2xl" id="findAddressBtn">주소찾기</button>
+            </div>
+            <span></span>
+            <input maxlength="255" id="addrInput" class="input h-[60px] mt-[10.5px] mb-[10.5px] w-[690px] rounded-2xl border-solid border border-gray200 bg-white p-4" id="postalCode" type="text" readonly />
+            <span></span>
+            <input maxlength="200" id="detailAddrInput" class="input h-[60px] mt-[10.5px] mb-[10.5px] w-[690px] rounded-2xl border-solid border border-gray200 bg-white p-4" id="postalCode" type="text" placeholder="상세주소를 입력해 주세요." />
+            <label maxlength="255" class="label ml-[33px] font-bold" for="addressPlace">요청사항</label>
+            <select id="requestSelect" class="input mt-[10.5px] h-[60px] w-[690px] mb-[10.5px] rounded-2xl border-solid border border-gray200 p-4" id="postalCode" type="text" placeholder="배송시 요청사항을 선택해 주세요.">
+              <option value="배송시 요청사항을 선택해 주세요.">배송시 요청사항을 선택해 주세요.</option>
+              <option value="직접 수령하겠습니다.">직접 수령하겠습니다.</option>
+              <option value="배송 전 연락바랍니다.">배송 전 연락바랍니다.</option>
+              <option value="부재 시 경비실에 맡겨주세요.">부재 시 경비실에 맡겨주세요.</option>
+              <option value="부재 시 문 앞에 놓아주세요.">부재 시 문 앞에 놓아주세요.</option>
+              <option value="부재 시 택배함에 넣어주세요.">부재 시 택배함에 넣어주세요.</option>
+              <option value="직접 입력">직접 입력</option>
+            </select>
+            <span></span>
+            <input maxlength="200" id="requestInput" class="hidden input h-[60px] mt-[10.5px] mb-[10.5px] w-[690px] rounded-2xl border-solid border border-gray200 bg-white p-4" id="postalCode" placeholder="요청사항을 입력해 주세요." type="text" />
+          </div>
+        </div>
+        <div class="pay-container rounded-2xl border-solid border border-gray200 ml-2 flex flex-col w-[369px]">
+          <div class="section1 text-xl ml-2 pt-4 p-2 mt mb my-2 text-medium">결제 정보</div>
+          <div class="border-gray200 border-solid grid grid-rows-3 grid-rows-[auto_1fr_1fr] p-4 justify-item-center pl-2 border-y">
+            <div class="flex justify-between">
+              <p class="p-3">주문상품</p>
+              <div id="itemWrapper"></div>
+            </div>
+            <div class="flex justify-between">
+              <p class="p-3">상품 총액</p>
+              <p id="totalItemPrice" class="justify-self-end p-3">0원</p>
+            </div>
+            <div class="flex justify-between">
+              <p class="p-3">배송비</p>
+              <p id="shipPrice" class="justify-self-end p-3">3000원</p>
+            </div>
+          </div>
+          <div class="flex p-4 mb-2 justify-between">
+            <p class="ml-[0.2rem]">총 금액</p>
+            <p id="totalPrice" class="justify-self-end font-bold text-lg mr-3">0원</p>
+          </div>
+          <div class="flex justify-center items-center">
+            <button id="orderBtn" class="w-[95%] h-[50px] rounded-lg text p-2 font-bold text-white bg-red m-4">구매하기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footerWrap" class="w-full h-[300px] flex border-t border-gray400"></div>
+  </body>
+  <script type="module" src="./order.js"></script>
+  <script type="module" src=".././main.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</html>

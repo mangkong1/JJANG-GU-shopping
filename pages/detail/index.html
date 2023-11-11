@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./detail.css" />
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>상세페이지</title>
+  </head>
+  <body>
+    <div id="headerWrap" class="w-full"></div>
+
+    <div class="flex justify-center mt-[123px] mb-[288px]">
+      <img id="detailImage"
+        src="/imgs/test.jpg"
+        alt="사진"
+        class="w-[570px] h-[570px] rounded-[20px] rounded-lg mr-[50px]"
+      />
+
+      <div class="w-[570px] h-[570px] border border-0 border-t-4 relative">
+        <p id="itemName" class="text-[35px] font-bold my-[35px]">
+          짱구, 흰둥이 미니글라스
+        </p>
+        <p id="itemPrice" class="text-[30px] font-semibold my-[10px]">13,900원</p>
+        
+        <div class="flex justify-center absolute bottom-0">
+            <button
+            class="addCart w-[270px] h-[60px] border border-solid border-black rounded-[15px] flex flex-col justify-center items-center mr-[25px]"
+            >
+              <a id="putCartBtn" class="font-bold text-[20px]">장바구니 담기</a>
+            </button>
+            <button
+              class="dirPurchase w-[270px] h-[60px] border border-solid border-[#F13637] rounded-[15px] bg-[#F13637] flex flex-col justify-center items-center"
+            >
+              <a id="payInstantBtn" href="/order/" class="text-[#FFFFFF] font-bold text-[20px]">
+                바로 구매하기
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footerWrap" class="w-full h-[300px] flex border-t border-gray400"></div>  </body>
+</html>
+<script type="module" src="../main.js"></script>
+<script type="module" src="./detail.js"></script>
+

@@ -1,0 +1,13 @@
+[
+  {
+    "_id": "654ec2403dc07129526a6d1f",
+    "email": "user1@elice.com",
+    "name": "user1",
+    "password": "user1",
+    "phone": "010-1234-5678",
+    "role": "basic-user",
+    "createdAt": "2023-11-10T23:52:32.384+00:00",
+    "updatedAt": "2023-11-10T23:52:32.384+00:00",
+    "__v": "0"
+  }
+]
