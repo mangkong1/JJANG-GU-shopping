@@ -90,7 +90,7 @@ function fetchUserInfo() {
     })
     .then((data) => {
       console.log("서버 응답 데이터", data);
-      renderUserInfo(data[2]);
+      renderUserInfo(data[0]);
       updateUserInfo();
     })
     .catch((err) => {
