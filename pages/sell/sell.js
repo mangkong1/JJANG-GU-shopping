@@ -15,13 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
         newItem.innerHTML = `
               <img
                 class="mx-[40px] rounded-[15px] w-[115px] h-[115px]"
-                src="/imgs/sss.jpeg"
+                src="${item.images[0]}"
                 alt="사진"
               />
-              <p class="w-[150px] mx-[3px]">
+              <p class="w-[150px] mx-[3px] overflow-hidden whitespace-nowrap overflow-ellipsis">
                 ${item.name}
-                <br />
-                ${item.category}
               </p>
               <p class="mx-[150px]">${item.price}</p>
               <button
