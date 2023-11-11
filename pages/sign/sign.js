@@ -65,3 +65,8 @@ function sendUserDataToServer(params) {
 }
 
 document.getElementById("signIn").addEventListener("submit", validateForm);
+
+
+
+
+
