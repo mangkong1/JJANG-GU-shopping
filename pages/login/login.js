@@ -100,6 +100,7 @@ loginBtn.addEventListener("click", async () => {
       // 로그인 성공, 여기서 토큰을 저장하거나 다른 동작을 수행할 수 있습니다.
       console.log("로그인 성공:", data);
       alert("로그인에 성공하셨습니다!");
+
       //   window.location.href = '../index.html';
     } else {
       // 로그인 실패
