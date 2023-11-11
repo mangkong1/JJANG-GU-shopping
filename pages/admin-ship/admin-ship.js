@@ -40,11 +40,13 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
       newItem.innerHTML = `
         <div class="flex justify-center items-center ">
           <div class="mb-[24px] mt-[27px] w-[144px] h-[144px] bg-gray200 rounded-2xl">
-            <img class="rounded-2xl" src="${order.products[0].productId.images[0]}">
+            <img class="rounded-2xl" src="${
+              order.products[0].productId.images[0]
+            }">
           </div>
         </div>
         <p class="overflow-hidden text-ellipsis text-black text-[17px] font-normal">
-          ${formattedDate}<br />${order._id}
+        ${new Date(order.createdAt).toLocaleDateString()}<br />${order._id}
         </p>
         <p class="text-black text-[17px] font-normal">${price}원</p>
         <div class="stateContainer">
