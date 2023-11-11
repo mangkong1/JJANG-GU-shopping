@@ -1,15 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
-  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/`, {
-    method: "GET",
+const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
+function deleteItem(id) {
+  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/${id}`, {
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${adminToken}`,
     },
   })
+    .then((res) => {
+      if (!res.ok) {
+        console.error(res.status, res.statusText);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      alert("상품 삭제가 완료되었습니다!");
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("http://kdt-sw-7-team03.elicecoding.com/api/products")
     .then((response) => response.json())
     .then((data) => {
       const buyList = document.querySelector(".buyList");
 
       data.forEach((item) => {
+        console.log(item.category[0].name);
         const newItem = document.createElement("div");
         newItem.classList.add("py-[20px]", "flex", "items-center");
         newItem.innerHTML = `
@@ -20,6 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
               />
               <p class="w-[150px] mx-[3px] overflow-hidden whitespace-nowrap overflow-ellipsis">
                 ${item.name}
+                <br />
+                <span class="text-gray400">
+                ${item.category[0].name}
+                </span>
               </p>
               <p class="mx-[150px]">${item.price}</p>
               <button
@@ -38,9 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const deleteBtn = newItem.querySelector(".deleteBtn");
         deleteBtn.addEventListener("click", () => {
-          buyList.removeChild(newItem);
-          data.items = data.items.filter((i) => i.num !== item.num);
           deleteItem(item._id);
+          buyList.removeChild(newItem);
         });
 
         const modifyCheckPopup = document.querySelector("#modifyCheckPopup");
@@ -85,12 +104,8 @@ document.addEventListener("DOMContentLoaded", function () {
           reader.readAsDataURL(file);
         });
 
-        const popupBtnBack = document.querySelector(
-          ".popupBtns button:first-child"
-        );
-        const popupBtnChange = document.querySelector(
-          ".popupBtns button:last-child"
-        );
+        const popupBtnBack = document.querySelector(".popupBtns button:first-child");
+        const popupBtnChange = document.querySelector(".popupBtns button:last-child");
 
         function hiddenPopup() {
           modifyCheckPopup.classList.add("hidden");
@@ -112,43 +127,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function deleteItem(_id) {
-  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      alert("상품 삭제가 완료되었습니다!");
-    })
-    .catch((error) => {
-      alert("상품 삭제 중 오류가 발생했습니다.");
-    });
-}
-
-function modifyItem(_id) {
+function modifyItem(id) {
   const itemName = document.querySelector(".itemName").value;
   const itemPrice = document.querySelector(".itemPrice").value;
   const itemDes = document.querySelector(".itemDes").value;
   const itemCategory = document.querySelector(".itemCategory").value;
-
-  const patchData = {
+  console.log("itemCategory", itemCategory);
+  const putData = {
     categoryId: itemCategory,
     name: itemName,
     price: itemPrice,
     stock: 100,
     description: itemDes,
-    images: [showItem, showInfo],
+    // images: [showItem, showInfo],
+    //임시
+    images: ["/views/images/짱구는못말려2024미니캘린더_1.jpg", "/views/images/짱구는못말려2024미니캘린더_2.jpg"],
   };
 
-  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/`, {
-    method: "PATCH",
+  fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/${id}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${adminToken}`,
     },
-    body: JSON.stringify(patchData),
+    body: JSON.stringify(putData),
   })
     .then((response) => response.json())
     .then((data) => {
