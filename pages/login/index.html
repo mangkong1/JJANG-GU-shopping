@@ -1,43 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/a3379ca11a.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
     <title>떡잎마을 상점</title>
   </head>
+
   <body>
     <div id="headerWrap" class="w-full"></div>
-      <p class="absolute left-[898px] top-[193px] text-[45px] font-bold text-left text-black">로그인</p>
-      <div class="w-[626px] h-[377px] absolute left-[648px] top-[274px] bottom-[724px] rounded-2xl border-solid border border-gray200 bg-white "
-      ></div>
 
-
-      <div class="w-[576px] h-[61px]">
-        <p class="absolute left-[673px] top-[330px] text-xl font-semibold text-left text-black">이메일</p>
-        <div class="w-[410px] py-3 h-[60px] absolute left-[838.5px] top-[315.5px] mr-10 rounded-2xl border-solid border border-gray200 bg-white">
-          <input type="text" class="p-1.5 outline-none" name="userName" placeholder="Email" alt="" style="width:100%" ></div>
-      </div>
-      <div class="w-[576px] h-[61px]">
-        <p class="absolute left-[673px] top-[400px] text-xl font-semibold text-left text-black">
-          비밀번호
-        </p>
+    <div class="mt-[123px] mb-[288px] flex flex-col items-center">
+      <div class="mb-[38px] text-black text-[45px] font-bold">로그인</div>
+      <form id="loginForm">
         <div
-          class="w-[410px] py-3 h-[60px] absolute left-[838.5px] top-[402.5px] rounded-2xl  border-solid border border-gray200 bg-white"
-        ><input type="password" class="p-1.5 outline-none" name="userPassword" placeholder="Password" alt="" style="width:100%"></div>
-      </div>
-      <div
-      class="w-[576px] h-[66px] absolute left-[672px] top-[500px] rounded-[15px] bg-red"
+          class="relative border border-gray-200 px-[26px] py-[39px] w-[626px] h-[377px] bg-white rounded-[15px]"
+        >
+          <div class="mb-[26px] flex justify-between items-center">
+            <p class="text-black text-xl font-semibold">이메일</p>
+            <input
+              class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
+              type="text"
+              id="loginId"
+              placeholder="Email"
+            />
+          </div>
+          <div class="flex justify-between items-center">
+            <p class="text-black text-xl font-semibold">비밀번호</p>
+            <input
+              class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
+              type="password"
+              id="loginPw"
+              placeholder="Password"
+            />
+          </div>
+
+          <button
+            class="absolute bottom-[39px] text-[20px] font-semibold flex justify-center items-center text-white w-[576px] h-[61px] bg-red-500 rounded-[15px]"
+            id="loginBtn"
+            class="loginBtn"
+            type="button"
+          >
+            로그인 하기
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div
+      id="footerWrap"
+      class="w-full h-[300px] flex border-t border-gray400"
     ></div>
-    <p class="absolute left-[913px] top-[518px] text-xl font-semibold text-left text-white">
-      로그인 하기
-    </p>
-
-
-        <div id="footerWrap" class="w-full h-[300px] flex border-t border-gray400 absolute -bottom-10"></div>
-        </body>
+  </body>
 </html>
 <script type="module" src="./login.js"></script>
 <script type="module" src="../main.js"></script>
-<script type="module" src="../event.js"></script>

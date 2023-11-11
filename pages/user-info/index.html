@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./user-info.css" />
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>마이페이지</title>
+  </head>
+  <body>
+    <div id="headerWrap" class="w-full"></div>
+
+    <div
+      id="userInfoWrap"
+      class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
+    >
+      <div id="mypageMenu"></div>
+
+      <div class="userInfoRight w-[1011px] mt-[64px]">
+        <div
+          class="userBox w-full h-[222px] border border-gray200 rounded-2xl flex items-center justify-between px-[54px] box-border"
+        >
+          <div class="userProfile flex items-center">
+            <div
+              class="userThumb w-[185px] h-[185px] overflow-hidden rounded-full"
+            >
+              <img
+                class="w-full"
+                src="../../imgs/맹구.jpg"
+                alt="사용자 프로필 이미지"
+              />
+            </div>
+            <div class="userName ml-5">
+              <p class="inline-block text-[28px] font-semibold underline">
+                엘리스
+              </p>
+              <p class="inline-block text-[28px] font-semibold">님 반가워요!</p>
+              <p class="text-lg text-gray500">test@test.com</p>
+            </div>
+          </div>
+
+          <div
+            class="userType bg-test w-[152px] h-[91px] rounded-2xl bg-yellow flex items-center justify-center"
+          >
+            <span class="text-lg font-medium">일반 사용자</span>
+          </div>
+        </div>
+
+        <div class="userListBox w-full mt-10 flex justify-between">
+          <div class="userBy_list w-[494px]">
+            <div
+              class="userByTitle border-b-2 flex justify-between items-center box-border"
+            >
+              <p class="text-2xl font-medium pl-[5px] pb-3">구매내역</p>
+              <a href="/purchase/"><i class="fa-solid fa-plus text-xl"></i></a>
+            </div>
+            <ul class="orderList userByItem mt-[34px] pl-[5px]"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="footerWrap"
+      class="w-full h-[300px] flex border-t border-gray400"
+    ></div>
+  </body>
+</html>
+<script type="module" src="../main.js"></script>
+<script type="module" src="./user-info.js"></script>
