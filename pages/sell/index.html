@@ -14,7 +14,7 @@
     <title>판매내역</title>
   </head>
   <body>
-    <link rel="stylesheet" href="./userInfo.css" />
+    <link rel="stylesheet" href="./sell.css" />
     <script
       src="https://kit.fontawesome.com/a3379ca11a.js"
       crossorigin="anonymous"
@@ -38,68 +38,74 @@
     </div>
 
       <div id="modifyCheckPopup" class="hidden absolute flex top-1/2 left-1/2 z-40 translate-x-[-50%] translate-y-[-50%] w-[1011px] p-9 text-center bg-white rounded-2xl box-border">
-          <div class="mx-[41px]">
-            <img
-              class="showItem mb-[24px] w-[367px] h-[288px] bg-zinc-300 rounded-[15px]"
-              src="/imgs/upload.png"
-              alt="상품이미지사진"
-            />
-
-            <img
-              class="showInfo mb-[24px] w-[367px] h-[288px] bg-zinc-300 rounded-[15px]"
-              src="/imgs/upload.png"
-              alt="상세정보사진"
-            />
-          </div>
-
-          <div class="flex flex-col items-start">
-            <p class="itemName pl-[5px] text-xl mb-[8px]">상품 이름</p>
-            <input
-              class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
-              type="text"
-              placeholder="작성자를 입력하세요"
-            />
-            <p class="pl-[5px] text-xl mb-[8px]">상품 가격</p>
-            <input
-              class="itemPrice mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
-              type="text"
-              placeholder="상품 이름을 입력하세요"
-            />
-            <p class="pl-[5px] text-xl mb-[8px]">상품 설명</p>
-            <input
-              class="itemDes mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
-              type="text"
-              placeholder="가격을 입력하세요(숫자만)"
-            />
-            <p class="pl-[5px] text-xl mb-[8px]">카테고리</p>
-            <input
-              class="itemCategory mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
-              type="text"
-              placeholder="디자인문구"
-            />
-
-            <p class="pl-[5px] text-xl mb-[8px]">상품 이미지 업로드</p>
-            <input
-              class="inputItem mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer"
-              type="file"
-            />
-
-            <p class="pl-[5px] text-xl mb-[8px]">상세정보 이미지 업로드</p>
-            <input
-              class="inputInfo mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer"
-              type="file"
-            />
-
-              <div class="popupBtns w-full flex justify-end">
-        <button type="reset" class="mt-[20px] mr-[20px] w-[176px] border rounded-2xl h-[49px]">
-          뒤로가기
-        </button>
-        <button
-          type="submit"
-          class="mt-[20px] ml-[20px] w-[176px] bg-red text-white rounded-2xl h-[49px]"
-        >
-          수정하기
-        </button>
+        <div class="mx-[41px]">
+          <img
+            class="showItem mb-[24px] w-[367px] h-[288px] bg-zinc-300 rounded-[15px]"
+            src="/imgs/upload.png"
+            alt="상품이미지사진"
+          />
+      
+          <img
+            class="showInfo mb-[24px] w-[367px] h-[288px] bg-zinc-300 rounded-[15px]"
+            src="/imgs/upload.png"
+            alt="상세정보사진"
+          />
+        </div>
+      
+        <div class="flex flex-col items-start">
+          <p class="itemName pl-[5px] text-xl mb-[8px]">상품 이름</p>
+          <input
+            class="mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200"
+            type="text"
+            placeholder="상품 이름을 입력하세요"
+          />
+          <p class="pl-[5px] text-xl mb-[8px]">상품 가격</p>
+          <input
+            class="itemPrice mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200"
+            type="text"
+            placeholder="상품 가격을 입력하세요(숫자만)"
+          />
+          <p class="pl-[5px] text-xl mb-[8px]">상품 설명</p>
+          <input
+            class="itemDes mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200"
+            type="text"
+            placeholder="상품 설명을 입력하세요"
+          />
+          <p class="pl-[5px] text-xl mb-[8px]">카테고리</p>
+          <select
+            class="itemCategory mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200"
+            type="text"
+            placeholder="디자인문구"
+          />
+          <option value="654c4e49a9da399b694ceec5">디자인문구</option>
+          <option value="654c4e49a9da399b694ceec6">오피스용품</option>
+          <option value="654c4e49a9da399b694ceec7">패션잡화</option>
+          <option value="654c4e49a9da399b694ceec8">키친/유아식기</option>
+          <option value="654c4e49a9da399b694ceec9">완구/인형</option>
+          <option value="654c4e49a9da399b694ceeca">필기류/학습용</option>
+        </select>
+          <p class="pl-[5px] text-xl mb-[8px]">상품 이미지 업로드</p>
+          <input
+            class="inputItem mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer"
+            type="file"
+          />
+      
+          <p class="pl-[5px] text-xl mb-[8px]">상세정보 이미지 업로드</p>
+          <input
+            class="inputInfo mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer"
+            type="file"
+          />
+      
+            <div class="popupBtns w-full flex justify-end">
+      <button type="reset" class="mt-[20px] mr-[20px] w-[176px] border rounded-2xl h-[49px]">
+        뒤로가기
+      </button>
+      <button
+        type="submit"
+        class="mt-[20px] ml-[20px] w-[176px] bg-red text-white rounded-2xl h-[49px]"
+      >
+        수정하기
+      </button>
       </div>
         </div>
       </div>

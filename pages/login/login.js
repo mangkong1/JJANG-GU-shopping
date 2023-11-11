@@ -1,144 +1,112 @@
-import "../../index.css";
+// function color() {
+//     if ((loginId.value.length>4 && loginId.value.indexOf("@")!==-1)
+//              && loginPw.value.length>=8) {
+//         loginBtn.style.backgroundColor = "#F13737";
+//         loginBtn.disabled = false;
+//     } else {
+//         loginBtn.style.backgroundColor = "#F8C9C9";
+//         loginBtn.disabled = true;
+//     }
+// }
 
-("use strict");
-
-const loginId = document.getElementById('loginId');
-const loginPw = document.getElementById('loginPw');
-const loginBtn = document.getElementById('loginBtn');
-
-// fetch('/users/login', {
+// fetch('http://kdt-sw-7-team03.elicecoding.com/api/users/login', {
 //     method : "POST",
 //     headers : {
 //         'Content-Type' : 'application/json',
 //         'Accept' : 'application/json',
 //     },
-//     body : JSON.stringify({
-//         username : id,
-//         password : pwd,
+//     body: JSON.stringify({
+//         email: loginId.value,  // 이 부분을 수정
+//         password: loginPw.value
 //     })
 // })
 // .then(res => res.json())
 // .then(res => {
 //     if(res.token){
-//         localStorage.setItem("test-token", res.token)
+//         sessionStorage.setItem("test-token", res.token)
+//         alert("로그인에 성공했습니다!");
+//         console.log(res)
 //     }else{
-//         window.alert(res.msg)
-//     }}
-// )
+//        alert("아이디나 비밀번호가 틀렸습니다.")
+//     }})
+//     .catch((error) => {
+//         console.error('오류 발생:', error);
+//         if (error.response) {
+//             console.error('서버 응답:', error.response.data);
+//         }
+//     });
+// loginId.addEventListener('keyup', color);
+// loginPw.addEventListener('keyup', color);
+// document.getElementById("loginForm").addEventListener("submit");
 
-const dummyUsers = [
-	{
-		
-		"email": "sem@aol.couk",
-		"Password": "8685145"
-	},
-	{
-		
-		"email": "a.feugiat@aol.com",
-		"Password": "84843204"
-	},
-	{
-		
-		"email": "tincidunt.nibh.phasellus@outlook.ca",
-		"Password": "88237299"
-	},
-	{
-		
-		"email": "sed.molestie@icloud.ca",
-		"Password": "11267327"
-	},
-	{
-		
-		"email": "dis.parturient@google.edu",
-		"Password": "88038973"
-	}
-];
+// 3차
 
-// document.getElementById('loginForm').addEventListener('submit', function(event) {
-//     event.preventDefault();
-//     // const username = document.getElementById('username').value;
-//     // const password = document.getElementById('password').value;
+//   fetch('http://kdt-sw-7-team03.elicecoding.com/api/users/login',{
 
-//     // 더미 데이터와 비교
-//     const user = dummyUsers.find((user) => (user.email === loginId) && user.password === loginPw);
-
-//     if (user) {
-//         // 로그인 성공 시
-//         window.location.href = 'index.html';
-//     } else {
-//         document.getElementById('error-message').textContent = '잘못된 사용자명 또는 패스워드입니다.';
-//     }
-// });
-
-
-
-
-// function color() {
-//     if((loginId.value.length>5 && loginId.value.indexOf("@")!==-1) 
-//         && loginPw.value.length>=8){
-//         loginBtn.style.backgroundColor = "#F13737";
-//         loginBtn.disabled = false;
-//     }else{
-        
-//         loginBtn.style.backgroundColor = "#F8C9C9";
-//         loginBtn.disabled = true;
-//     }
-
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const email1 = loginId.value; // 사용자가 입력한 이메일
-    const password1 = loginPw.value; // 사용자가 입력한 비밀번호
-
-    // 더미 데이터와 비교
-    const user = dummyUsers.find((user) => (user.email === email1) && user.Password === password1);
-
-    if (user) {
-        // 로그인 성공 시
-        alert("로그인에 성공하였습니다.")
-        window.location.href = '../index.html';
-    } else {
-        alert('잘못된 이메일 또는 패스워드입니다.');
-    }
-});
-
-function color() {
-    if ((loginId.value.length>5 && loginId.value.indexOf("@")!==-1) 
-             && loginPw.value.length>=8) {
-        loginBtn.style.backgroundColor = "#F13737";
-        loginBtn.disabled = false;
-    } else {
-        loginBtn.style.backgroundColor = "#F8C9C9";
-        loginBtn.disabled = true;
-    }
-}
-    //fetch 부분 백엔드랑 소통하면서 다시 고치기
-//     fetch('/users/login', {
-//         method : "POST",
-//         headers : {
-//             'Content-Type' : 'application/json',
-//             'Accept' : 'application/json',
-//         },
-//         body : JSON.stringify({
-//             username : id,
-//             password : pwd,
-//         })
+//     method : "POST",
+//     headers : {
+//         'Content-Type' : 'application/json',
+//         'Accept' : 'application/json',
+//     },
+//     body: JSON.stringify({
+//         email,   // 이 부분을 수정
+//         password
 //     })
-//     .then(res => res.json())
-//     .then(res => {
-//         if(res.token){
-//             localStorage.setItem("test-token", res.token)
-//         }else{
-//             window.alert(res.msg)
-//         }}
-//     )
-    
-// }
+// })
+// const { email, password } = req.body;
+// try {
+// const user = await User.findOne({ email, password });
 
-// function moveToMain(){
-//     location.replace("../index.html");
-// }
+//       // 사용자가 존재하고 비밀번호가 일치할 경우 토큰을 생성하여 응답
+//       if (user) {
+//         // 토큰 생성 및 응답
+//         // (이 부분은 사용하는 인증 방식에 따라 다를 수 있습니다.)
+//         res.json({ token: generateToken(user) });
+//       } else {
+//         // 사용자가 존재하지 않거나 비밀번호가 일치하지 않을 경우 에러 응답
+//         res.status(400).json({ error: 'Invalid credentials' });
+//       }
+//     }catch (error) {
+//       console.error('오류 발생:', error);
+//       res.status(500).json({ error: 'Internal Server Error' });
+//     }
 
-loginId.addEventListener('keyup', color);
-loginPw.addEventListener('keyup', color);
-// loginBtn.addEventListener('click',moveToMain);
+import "../../index.css";
+
+const loginId = document.getElementById("loginId");
+const loginPw = document.getElementById("loginPw");
+const loginBtn = document.getElementById("loginBtn");
+
+loginBtn.addEventListener("click", async () => {
+  const email = loginId.value;
+  const password = loginPw.value;
+
+  try {
+    const response = await fetch(
+      "http://kdt-sw-7-team03.elicecoding.com/api/users/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // 로그인 성공, 여기서 토큰을 저장하거나 다른 동작을 수행할 수 있습니다.
+      console.log("로그인 성공:", data);
+      alert("로그인에 성공하셨습니다!");
+      //   window.location.href = '../index.html';
+    } else {
+      // 로그인 실패
+      console.error("로그인 실패:", data.error);
+      alert("아이디와 비밀번호를 확인해주세요");
+    }
+  } catch (error) {
+    console.error("오류 발생:", error);
+  }
+});

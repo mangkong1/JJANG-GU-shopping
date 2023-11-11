@@ -1,97 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script
-      src="https://kit.fontawesome.com/a3379ca11a.js"
-      crossorigin="anonymous"
+            src="https://kit.fontawesome.com/a3379ca11a.js"
+            crossorigin="anonymous"
     ></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./sign.css" />
+    <link rel="stylesheet" href="./sign.css"/>
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+            rel="stylesheet"
     />
     <title>떡잎마을 상점</title>
-  </head>
-  <body>
-    <div id="headerWrap" class="w-full"></div>
-    <form onsubmit="return validateForm()">
-      <div class="mt-[123px] flex flex-col items-center">
+
+</head>
+<body>
+<div id="headerWrap" class="w-full"></div>
+<form id="signIn">
+    <div class="mt-[123px] flex flex-col items-center">
         <div class="mb-[38px] text-black text-[45px] font-bold">회원가입</div>
 
-        <div
-          class="relative border border-gray-200 px-[26px] py-[39px] w-[626px] h-[551px] mb-[288px] bg-white rounded-[15px]"
-        >
-          <div class="mb-[26px] flex justify-between items-center">
-            <p class="text-black text-xl font-semibold">
-              <label for="username">이름</label>
-            </p>
-            <input
-              class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
-              type="text"
-              placeholder="Name"
-              required
-            />
-          </div>
-          <div class="mb-[26px] flex justify-between items-center">
-            <p class="text-black text-xl font-semibold">
-              <label for="email"> 이메일 </label>
-            </p>
-            <input
-              class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
-              type="email"
-              name="email"
-              id="email"
-              size="12"
-              placeholder="Email"
-              required
-            />
-          </div>
-          <div class="mb-[26px] flex justify-between items-center">
-            <p class="text-black text-xl font-semibold">
-              <label for="password">비밀번호</label>
-            </p>
-            <input
-              class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-          </div>
-          <div class="mb-[26px] flex justify-between items-center">
-            <p class="text-black text-xl font-semibold">
-              <label for="confirmPassword">비밀번호 확인</label>
-            </p>
-            <input
-              class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Confirm password"
-              required
-            />
-          </div>
-          <button
-            class="mt-20 text-[20px] font-semibold flex justify-center items-center text-white w-[576px] h-[61px] bg-red-500 rounded-[15px]"
-            id="signIn"
-          >
-            회원가입하기
-          </button>
+        <div class="relative border border-gray-200 px-[26px] py-[39px] w-[626px] h-[551px] mb-[288px] bg-white rounded-[15px]">
+            <div class="mb-[26px] flex justify-between items-center">
+                <p class="text-black text-xl font-semibold">
+                    <label for="username">이름</label>
+                </p>
+                <input
+                        id="username"
+                        class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
+                        type="text"
+                        placeholder="Name"
+                        required
+                />
+            </div>
+            <div class="mb-[26px] flex justify-between items-center">
+                <p class="text-black text-xl font-semibold">
+                    <label for="email"> 이메일 </label>
+                </p>
+                <input
+                        class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
+                        type="email"
+                        name="email"
+                        id="email"
+                        size="12"
+                        placeholder="Email"
+                        required
+                />
+            </div>
+            <div class="mb-[26px] flex justify-between items-center">
+                <p class="text-black text-xl font-semibold">
+                    <label for="password">비밀번호</label>
+                </p>
+                <input
+                        class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                />
+            </div>
+            <div class="mb-[26px] flex justify-between items-center">
+                <p class="text-black text-xl font-semibold">
+                    <label for="confirmPassword">비밀번호 확인</label>
+                </p>
+                <input
+                        class="pl-5 w-[410px] h-[61px] bg-white rounded-[15px] border border-gray-200"
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="confirmPassword"
+                        required
+                />
+            </div>
+            <button
+                    class="mt-20 text-[20px] font-semibold flex justify-center items-center text-white w-[576px] h-[61px] bg-red-500 rounded-[15px]"
+            >
+                회원가입하기
+            </button>
         </div>
-      </div>
-    </form>
+    </div>
+</form>
 
-    <div
-      id="footerWrap"
-      class="w-full h-[300px] flex border-t border-gray400"
-    ></div>
-  </body>
+<div
+        id="footerWrap"
+        class="w-full h-[300px] flex border-t border-gray400"
+></div>
+</body>
 </html>
 <script type="module" src="./sign.js" defer=""></script>
 <script type="module" src="../main.js"></script>
-<script type="module" src="../event.js"></script>
