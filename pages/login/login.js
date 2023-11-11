@@ -1,6 +1,4 @@
-import "../../index.css";
-
-("use strict");
+import '../../index.css';
 
 const loginId = document.getElementById('loginId');
 const loginPw = document.getElementById('loginPw');

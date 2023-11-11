@@ -105,6 +105,7 @@ function deleteBtnEvent() {
       e.preventDefault();
 
       const _id = e.target.dataset.categoryId;
+      console.log(_id);
 
       fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories/${_id}`, {
         method: "DELETE",
