@@ -33,15 +33,21 @@ document.addEventListener("DOMContentLoaded", function () {
       data.forEach((item) => {
         const newItem = document.createElement("div");
         newItem.classList.add(
-          "py-[20px]",
           "bg-white",
           "grid",
-          "grid-cols-4",
+          "grid-cols-5",
           "gap-4",
           "flex",
           "items-center"
         );
         newItem.innerHTML = `
+        <div class="flex justify-center items-center ">
+          <div class="mb-[24px] mt-[27px] w-[144px] h-[144px] bg-gray200 rounded-2xl">
+            <img class="rounded-2xl" src="${
+              item.products[0].productId.images[0]
+            }">
+          </div>
+        </div>
         <p class="overflow-hidden text-ellipsis text-black text-[17px] font-normal">
           ${new Date(item.createdAt).toLocaleDateString()}<br />${item._id}
         </p>

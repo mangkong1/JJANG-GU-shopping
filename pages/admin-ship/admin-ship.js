@@ -25,7 +25,13 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
       console.log("formatDate", formattedDate); // "2023-01-01"
       console.log("images", order.products);
       const newItem = document.createElement("div");
-      newItem.classList.add("grid", "grid-cols-5", "gap-4", "flex", "items-center");
+      newItem.classList.add(
+        "grid",
+        "grid-cols-5",
+        "gap-4",
+        "flex",
+        "items-center"
+      );
       let price = 0;
 
       order.products.forEach((item) => {
@@ -51,16 +57,20 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
       buyList.appendChild(newItem);
 
       const deleteBtn = newItem.querySelector(".deleteBtn");
-      const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
+      const adminToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
 
       deleteBtn.addEventListener("click", () => {
-        fetch(`http://kdt-sw-7-team03.elicecoding.com/api/orders/${order._id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${adminToken}`,
-          },
-        })
+        fetch(
+          `http://kdt-sw-7-team03.elicecoding.com/api/orders/${order._id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${adminToken}`,
+            },
+          }
+        )
           .then((res) => {
             if (res.status == 200) {
               console.log("주문 삭제 완료");
