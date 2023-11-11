@@ -6,7 +6,6 @@ let cart = JSON.parse(localStorage.getItem("cart"));
 
 function addItem(itemId) {
   if (typeof itemId !== "string") {
-    console.log("item Id need to be type string");
     return;
   }
   console.log(itemId);
@@ -52,18 +51,6 @@ function addItem(itemId) {
     });
 }
 
-// function findItem(itemId) {
-//   let foundItem = {};
-//   cart.forEach((item) => {
-//     if (itemId === item._id) {
-//       foundItem = item;
-//     }
-//     return foundItem;
-//   });
-//   console.log("item found", foundItem);
-//   return foundItem;
-// }
-
 function removeItem(itemId) {
   if (typeof itemId != "string") {
     console.log("id is not in string form");
@@ -94,17 +81,6 @@ function updateChecked(itemId, isChecked) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function getisCheckedItemId() {
-  let temp = cart
-    .filter((item) => {
-      return item.checked === true;
-    })
-    .map((item) => {
-      return parseInt(item.id);
-    });
-  return temp;
-}
-
 function getisCheckedAmount() {
   let temp = cart
     .filter((item) => {
@@ -133,4 +109,4 @@ function getisCheckedPrice() {
   return sum;
 }
 
-export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount, getisCheckedItemId };
+export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount };

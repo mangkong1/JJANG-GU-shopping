@@ -1,5 +1,5 @@
 import "../../index.css";
-import { getisCheckedPrice } from "../cart/localStorage.js";
+import { getisCheckedPrice, getisCheckedAmount } from "../cart/localStorage.js";
 const nameInput = document.getElementById("nameInput");
 const phoneNumInput = document.getElementById("phoneNumInput");
 const postCodeInput = document.getElementById("postCodeInput");
@@ -14,6 +14,8 @@ const itemWrapper = document.getElementById("itemWrapper");
 const shipPriceElem = document.getElementById("shipPrice");
 const totalPriceElem = document.getElementById("totalPrice");
 const totalItemPriceElem = document.getElementById("totalItemPrice");
+
+const token = sessionStorage.getItem("data");
 
 let cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -44,6 +46,8 @@ if (sessionStorage.getItem("btn") !== null) {
     });
 } else {
   cart.forEach((item) => {
+    console.log(item);
+    console.log(item.checked);
     if (item.checked) {
       itemWrapper.innerHTML += `<p id="items" class="justify-self-end p-3"> ${item.name} / ${item.quantity}개</p>`;
     }
@@ -90,12 +94,8 @@ function isWrittenAll() {
   const postCodeVal = postCodeInput.value;
   const addrVal = addrInput.value;
 
-  if (!nameVal || !phoneNumVal || !postCodeVal || !addrVal) {
-    console.log(nameVal);
-    console.log(phoneNumVal);
-    console.log(postCodeVal);
-    console.log(addrVal);
-    alert("필수 배송지 정보를 모두 입력해 주세요.");
+  if (!nameVal || !phoneNumVal || !addrVal) {
+    alert("필수 배송 정보를 모두 입력해 주세요.");
     return false;
   }
   return true;
@@ -120,10 +120,11 @@ function validatePhoneNumber() {
 function validateInput() {
   if (isWrittenAll()) {
     if (validatePhoneNumber()) {
-      return;
+      return true;
     }
+    return false;
   }
-  return;
+  return false;
 }
 
 function selectSelfInput() {
@@ -140,50 +141,91 @@ function selectSelfInput() {
   }
 }
 
-// async function doOrder() {
-//   const nameVal = nameInput.value;
-//   const phoneNumVal = phoneNumInput.value;
-//   const postCodeVal = postCodeInput.value;
-//   const addrVal = addrInput.value;
-//   const detailAddrVal = detailAddrInput.value;
-//   const requestSelectVal = requestSelect.value;
+function doOrder() {
+  const nameVal = nameInput.value;
+  const phoneNumVal = phoneNumInput.value;
+  const postCodeVal = postCodeInput.value;
+  const addrVal = addrInput.value;
+  const detailAddrVal = detailAddrInput.value;
+  const requestSelectVal = requestSelect.value;
+  let data = {};
 
-//   validateInput();
+  if (validateInput()) {
+    if (sessionStorage.getItem("btn") !== null) {
+      const id = sessionStorage.getItem("idTemp");
+      console.log("this is id", id);
+      console.log();
+      data = {
+        name: nameVal,
+        phone: phoneNumVal,
+        address: [postCodeVal, addrVal, detailAddrVal],
+        paymentMethod: "현금",
+        email: "admin@elice.com",
+        qty: 50,
+        products: [
+          {
+            productId: id,
+            qty: 1,
+          },
+        ],
+      };
+    } else {
+      function getisCheckedPostFormat() {
+        let products = [];
+        const temp = cart.filter((item) => {
+          return item.checked === true;
+        });
+        console.log("temp", temp);
+        temp.forEach((item) => {
+          let data = {
+            productId: item._id,
+            qty: item.quantity,
+          };
+          console.log("data", data);
+          products.push(data);
+        });
+        console.log("products", products);
+        return products;
+      }
 
-//   const data = {
-//     name: nameVal,
-//     phone: phoneNumVal,
-//     address: [postCodeVal, addrVal, detailAddrVal],
-//     paymentMethod: "현금",
-//     email: "elice@elice.com",
-//     qty: getisCheckedAmount(),
-//     password: "userpassword",
-//     productIds: getisCheckedItemId(),
-//   };
+      data = {
+        name: nameVal,
+        phone: phoneNumVal,
+        address: [postCodeVal, addrVal, detailAddrVal],
+        paymentMethod: "현금",
+        userId: "admin",
+        email: "admin@elice.com",
+        qty: getisCheckedAmount(),
+        products: getisCheckedPostFormat(),
+      };
+    }
 
-//   const dataJson = JSON.stringify(data);
-//   const apiUrl = `http://kdt-sw-7-team03.elicecoding.com/api/orders`;
-
-//   const res = await fetch(apiUrl, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: dataJson,
-//   });
-
-//   if (res.status === 201) {
-//     alert("카테고리 생성 완료!");
-//   } else if (res.status === 400) {
-//     alert("인증 실패");
-//   } else if (res.status === 500) {
-//     alert("서버 오류");
-//   } else {
-//     alert("카테고리 생성에 실패했습니다.");
-//   }
-// }
+    fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.status === 201) {
+          alert("주문 생성 완료!");
+        } else if (res.status === 400) {
+          alert("인증 실패");
+        } else if (res.status === 500) {
+          alert("서버 오류");
+        } else {
+          alert("주문 생성에 실패했습니다.");
+        }
+        return res.json();
+      })
+      .then(() => {
+        window.location.href = "/order-finish/";
+      });
+  }
+}
 
 addrFindBtn.addEventListener("click", searchAddr);
-// orderBtn.addEventListener("click", doOrder);
-orderBtn.addEventListener("click", validateInput);
+orderBtn.addEventListener("click", doOrder);
 requestSelect.addEventListener("change", selectSelfInput);

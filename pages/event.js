@@ -187,11 +187,13 @@ function showCartIcon() {
       );
       if (isconfirm) {
         window.location.href = "/cart/";
+      } else {
+        window.location.href = "/";
       }
     });
 
     targetEl.addEventListener("click", (e) => {
-      localStorage.setItem("idTemp", e.target.dataset.id);
+      sessionStorage.setItem("idTemp", e.target.dataset.id);
     });
 
     targetEl.addEventListener("mouseover", () => {
