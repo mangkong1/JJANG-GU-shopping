@@ -9,9 +9,6 @@ function deleteItem(id) {
     },
   })
     .then((res) => {
-      if (!res.ok) {
-        console.error(res.status, res.statusText);
-      }
       return res.json();
     })
     .then((data) => {
