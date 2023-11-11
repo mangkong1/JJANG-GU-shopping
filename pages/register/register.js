@@ -1,53 +1,50 @@
-import "../../index.css";
-
-let itemCategory = "";
-
-const inputItem = document.getElementById("inputItem");
-const showItem = document.getElementById("showItem");
-
-inputItem.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  const reader = new FileReader();
-
-  reader.onload = (e) => {
-    showItem.src = e.target.result;
-  };
-
-  reader.readAsDataURL(file);
-});
-
-const inputInfo = document.getElementById("inputInfo");
-const showInfo = document.getElementById("showInfo");
-
-inputInfo.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  const reader = new FileReader();
-
-  reader.onload = (e) => {
-    showInfo.src = e.target.result;
-  };
-
-  reader.readAsDataURL(file);
-});
+// register.js
 
 document.addEventListener("DOMContentLoaded", function () {
-  // 여기서 selectElement를 정의하고 가져오기
+  let itemCategory = "";
+
+  const inputItem = document.getElementById("inputItem");
+  const showItem = document.getElementById("showItem");
+
+  inputItem.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      showItem.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+  const inputInfo = document.getElementById("inputInfo");
+  const showInfo = document.getElementById("showInfo");
+
+  inputInfo.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      showInfo.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  });
+
   const selectElement = document.querySelector(".itemCategory");
 
-  // Fetch 카테고리 정보
   fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
     method: "GET",
   })
     .then((response) => response.json())
     .then((categories) => {
-      // 카테고리 정보를 받아온 후 옵션을 생성하여 select에 추가
       categories.forEach((category) => {
         const optionElement = document.createElement("option");
         optionElement.value = category._id;
         optionElement.text = category.name;
         selectElement.appendChild(optionElement);
       });
-      // 카테고리 선택 변경 이벤트 리스너 추가
+
       selectElement.addEventListener("change", function () {
         itemCategory = selectElement.value;
       });
@@ -68,7 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
       price: itemPrice,
       stock: itemStock,
       category: itemCategory,
-      images: ["", ""],
+      images: [
+        "/views/images/짱구는못말려미니사각봉제필통_1.jpg",
+        "/views/images/짱구는못말려미니사각봉제필통_2.jpg",
+      ],
     };
 
     const token =
@@ -77,13 +77,12 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("http://kdt-sw-7-team03.elicecoding.com/api/products/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then((responseData) => {
         alert("상품 등록이 완료되었습니다!");
       })
       .catch((error) => {

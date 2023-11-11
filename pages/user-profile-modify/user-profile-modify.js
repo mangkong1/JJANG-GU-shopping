@@ -112,12 +112,13 @@ fetchUserInfo();
 
 // 수정 클릭했을 때 유저 정보 수정
 async function updateUserInfo() {
-  let currentPass = document.querySelector("#currentPassword").value;
-  console.log(currentPass);
   const modifyBtn = document.querySelector(".modifyBtn");
 
   modifyBtn.addEventListener("click", async (e) => {
     e.preventDefault();
+
+    let currentPass = document.querySelector("#currentPassword").value;
+    console.log(currentPass);
 
     const _id = e.target.previousElementSibling.firstElementChild.id;
     const modifyName = document.querySelector("#name").value;
