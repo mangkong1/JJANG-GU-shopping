@@ -219,18 +219,22 @@ function doOrder() {
       Authorization: `Bearer ${adminToken}`,
     },
     body: JSON.stringify(data),
-  }).then((res) => {
-    if (res.status === 201) {
-      alert("주문 생성 완료!");
-    } else if (res.status === 400) {
-      alert("인증 실패");
-    } else if (res.status === 500) {
-      alert("서버 오류");
-    } else {
-      alert("주문 생성에 실패했습니다.");
-    }
-    return res.json();
-  });
+  })
+    .then((res) => {
+      if (res.status === 201) {
+        alert("주문 생성 완료!");
+      } else if (res.status === 400) {
+        alert("인증 실패");
+      } else if (res.status === 500) {
+        alert("서버 오류");
+      } else {
+        alert("주문 생성에 실패했습니다.");
+      }
+      return res.json();
+    })
+    .then(() => {
+      window.location.href = "/order-finish/";
+    });
 }
 
 addrFindBtn.addEventListener("click", searchAddr);
