@@ -10,7 +10,6 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
     return res.json();
   })
   .then((data) => {
-    console.log(data);
     const buyList = document.querySelector(".buyList");
     data.forEach((order, i) => {
       const date = new Date(order.createdAt);
@@ -20,17 +19,8 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
       const day = date.getDate().toString().padStart(2, "0");
 
       const formattedDate = `${year}-${month}-${day}`;
-      console.log(date);
-      console.log("formatDate", formattedDate); // "2023-01-01"
-      console.log("images", order.products);
       const newItem = document.createElement("div");
-      newItem.classList.add(
-        "grid",
-        "grid-cols-5",
-        "gap-4",
-        "flex",
-        "items-center"
-      );
+      newItem.classList.add("grid", "grid-cols-5", "gap-4", "flex", "items-center");
       let price = 0;
 
       order.products.forEach((item) => {
@@ -39,9 +29,7 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
       newItem.innerHTML = `
         <div class="flex justify-center items-center ">
           <div class="mb-[24px] mt-[27px] w-[144px] h-[144px] bg-gray200 rounded-2xl">
-            <img class="rounded-2xl" src="${
-              order.products[0].productId.images[0]
-            }">
+            <img class="rounded-2xl" src="${order.products[0].productId.images[0]}">
           </div>
         </div>
         <p class="overflow-hidden text-ellipsis text-black text-[17px] font-normal">
@@ -58,42 +46,32 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
       buyList.appendChild(newItem);
 
       const deleteBtn = newItem.querySelector(".deleteBtn");
-      const adminToken =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
+      const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
 
       deleteBtn.addEventListener("click", () => {
-        fetch(
-          `http://kdt-sw-7-team03.elicecoding.com/api/orders/${order._id}`,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${adminToken}`,
-            },
+        fetch(`http://kdt-sw-7-team03.elicecoding.com/api/orders/${order._id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${adminToken}`,
+          },
+        }).then((res) => {
+          if (res.status == 200) {
+          } else if (res.status == 400) {
+            alert("인증실패, 잘못된 요청");
+          } else if (res.status == 500) {
+            alert("서버 오류");
+          } else {
+            alert("주문 삭제 실패");
           }
-        )
-          .then((res) => {
-            if (res.status == 200) {
-              console.log("주문 삭제 완료");
-            } else if (res.status == 400) {
-              alert("인증실패, 잘못된 요청");
-            } else if (res.status == 500) {
-              alert("서버 오류");
-            } else {
-              alert("주문 삭제 실패");
-            }
-            return res.json();
-          })
-          .then((data) => {
-            console.log("서버 응답 데이터", data);
-          });
+          return res.json();
+        });
       });
 
       const stateContainer = newItem.querySelector(".stateContainer");
       let selectBtn = newItem.querySelector(".selectBtn");
 
       let putData = order;
-      console.log("data", putData);
       selectBtn.addEventListener("click", () => {
         const id = order._id;
         if (selectBtn.textContent === "수정") {
@@ -111,11 +89,9 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
           `;
           stateContainer.innerHTML = "";
           stateContainer.appendChild(stateSelect);
-          console.log("this is", putData);
         } else {
-          console.log("data", data);
           const stateSelect = document.getElementById("stateSelect");
-          console.log(stateSelect.value);
+
           putData.status = stateSelect.value;
           fetch(`http://kdt-sw-7-team03.elicecoding.com/api/orders/${id}`, {
             method: "PUT",
@@ -127,7 +103,6 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
           })
             .then((res) => {
               if (res.status == 200) {
-                console.log("주문 수정 완료");
               } else if (res.status == 400) {
                 alert("인증실패, 잘못된 요청");
               } else if (res.status == 500) {

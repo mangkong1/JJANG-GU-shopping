@@ -6,7 +6,6 @@ let cart = JSON.parse(localStorage.getItem("cart"));
 
 function addItem(itemId) {
   if (typeof itemId !== "string") {
-    console.log("item Id need to be type string");
     return;
   }
   console.log(itemId);
@@ -51,17 +50,6 @@ function addItem(itemId) {
       localStorage.setItem("cart", JSON.stringify(cart));
     });
 }
-
-// function findQuantity(itemId) {
-//   let quantity = 0;
-//   cart.forEach((item) => {
-//     if (itemId === item._id) {
-//       quantity = item.quantity;
-//     }
-//     return quantity;
-//   });
-//   return quantity;
-// }
 
 function removeItem(itemId) {
   if (typeof itemId != "string") {
