@@ -94,12 +94,8 @@ function isWrittenAll() {
   const postCodeVal = postCodeInput.value;
   const addrVal = addrInput.value;
 
-  if (!nameVal || !phoneNumVal || !postCodeVal || !addrVal) {
-    console.log(nameVal);
-    console.log(phoneNumVal);
-    console.log(postCodeVal);
-    console.log(addrVal);
-    alert("필수 배송지 정보를 모두 입력해 주세요.");
+  if (!nameVal || !phoneNumVal || !addrVal) {
+    alert("필수 배송 정보를 모두 입력해 주세요.");
     return false;
   }
   return true;
@@ -124,10 +120,11 @@ function validatePhoneNumber() {
 function validateInput() {
   if (isWrittenAll()) {
     if (validatePhoneNumber()) {
-      return;
+      return true;
     }
+    return false;
   }
-  return;
+  return false;
 }
 
 function selectSelfInput() {
@@ -152,89 +149,81 @@ function doOrder() {
   const detailAddrVal = detailAddrInput.value;
   const requestSelectVal = requestSelect.value;
   let data = {};
-  if (sessionStorage.getItem("btn") !== null) {
-    const id = sessionStorage.getItem("idTemp");
-    console.log("this is id", id);
-    console.log();
-    data = {
-      name: nameVal,
-      phone: phoneNumVal,
-      address: [postCodeVal, addrVal, detailAddrVal],
-      paymentMethod: "현금",
-      userId: "admin",
-      email: "admin@elice.com",
-      qty: 50,
-      products: [
-        {
-          productId: id,
-          qty: 1,
-        },
-      ],
-    };
-  } else {
-    function getisCheckedPostFormat() {
-      let products = [];
-      const temp = cart.filter((item) => {
-        return item.checked === true;
-      });
-      console.log("temp", temp);
-      temp.forEach((item) => {
-        let data = {
-          productId: item._id,
-          qty: item.quantity,
-        };
-        console.log("data", data);
-        products.push(data);
-      });
-      console.log("products", products);
-      return products;
+
+  if (validateInput()) {
+    if (sessionStorage.getItem("btn") !== null) {
+      const id = sessionStorage.getItem("idTemp");
+      console.log("this is id", id);
+      console.log();
+      data = {
+        name: nameVal,
+        phone: phoneNumVal,
+        address: [postCodeVal, addrVal, detailAddrVal],
+        paymentMethod: "현금",
+        email: "admin@elice.com",
+        qty: 50,
+        products: [
+          {
+            productId: id,
+            qty: 1,
+          },
+        ],
+      };
+    } else {
+      function getisCheckedPostFormat() {
+        let products = [];
+        const temp = cart.filter((item) => {
+          return item.checked === true;
+        });
+        console.log("temp", temp);
+        temp.forEach((item) => {
+          let data = {
+            productId: item._id,
+            qty: item.quantity,
+          };
+          console.log("data", data);
+          products.push(data);
+        });
+        console.log("products", products);
+        return products;
+      }
+
+      data = {
+        name: nameVal,
+        phone: phoneNumVal,
+        address: [postCodeVal, addrVal, detailAddrVal],
+        paymentMethod: "현금",
+        userId: "admin",
+        email: "admin@elice.com",
+        qty: getisCheckedAmount(),
+        products: getisCheckedPostFormat(),
+      };
     }
 
-    data = {
-      name: nameVal,
-      phone: phoneNumVal,
-      address: [postCodeVal, addrVal, detailAddrVal],
-      paymentMethod: "현금",
-      userId: "admin",
-      email: "admin@elice.com",
-      qty: getisCheckedAmount(),
-      products: getisCheckedPostFormat(),
-      // products: [
-      //   {
-      //     productId: "654d03e1a9da399b694ceee7",
-      //     qty: 1,
-      //   },
-      //   {
-      //     productId: "654d03e1a9da399b694ceee8",
-      //     qty: 1,
-      //   },
-      // ],
-    };
-  }
-
-  fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${adminToken}`,
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => {
-      if (res.status === 201) {
-        alert("주문 생성 완료!");
-      } else if (res.status === 400) {
-        alert("인증 실패");
-      } else if (res.status === 500) {
-        alert("서버 오류");
-      } else {
-        alert("주문 생성에 실패했습니다.");
-      }
-      return res.json();
+    fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${adminToken}`,
+      },
+      body: JSON.stringify(data),
     })
-    .then(() => {
-      window.location.href = "/order-finish/";
-    });
+      .then((res) => {
+        if (res.status === 201) {
+          alert("주문 생성 완료!");
+        } else if (res.status === 400) {
+          alert("인증 실패");
+        } else if (res.status === 500) {
+          alert("서버 오류");
+        } else {
+          alert("주문 생성에 실패했습니다.");
+        }
+        return res.json();
+      })
+      .then(() => {
+        window.location.href = "/order-finish/";
+      });
+  }
 }
 
 addrFindBtn.addEventListener("click", searchAddr);

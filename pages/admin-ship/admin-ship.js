@@ -18,7 +18,6 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
       const year = date.getFullYear();
       const month = (date.getMonth() + 1).toString().padStart(2, "0");
       const day = date.getDate().toString().padStart(2, "0");
-      console.log("갑자기왜이래", order.products[0].images);
 
       const formattedDate = `${year}-${month}-${day}`;
       console.log(date);
