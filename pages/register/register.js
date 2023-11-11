@@ -56,22 +56,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const registerBtn = document.querySelector(".registerBtn");
 
   registerBtn.addEventListener("click", function () {
-    const itemName = document.querySelector(".itemName").value;
-    const itemPrice = parseInt(document.querySelector(".itemPrice").value);
-    const itemStock = parseInt(document.querySelector(".itemStock").value);
+    const itemName = document.querySelector(".itemName").value; // 상품 이름 입력 필드 값 가져오기
+    const itemPrice = parseInt(document.querySelector(".itemPrice").value); // 가격 입력 필드 값 가져오기
+    const itemStock = parseInt(document.querySelector(".itemStock").value); // 재고 입력 필드 값 가져오기
 
-    const formData = new FormData();
-    formData.append("name", itemName);
-    formData.append("price", itemPrice);
-    formData.append("stock", itemStock);
-    formData.append("category", itemCategory);
-
-    const imageInput = document.querySelector("#inputItem");
-    const imageFile = imageInput.files[0];
-
-    if (imageFile) {
-      formData.append("image", imageFile);
-    }
+    const data = {
+      name: itemName,
+      price: itemPrice,
+      stock: itemStock,
+      category: itemCategory,
+      images: [
+        "/views/images/짱구는못말려미니사각봉제필통_1.jpg",
+        "/views/images/짱구는못말려미니사각봉제필통_2.jpg",
+      ],
+    };
 
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE - w";
@@ -81,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      body: formData,
+      body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((responseData) => {
