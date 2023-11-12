@@ -54,15 +54,11 @@ document.querySelector("#footerWrap").innerHTML = `
       </div>
     </div>`;
 
-// 버튼 클릭시 최상단으로 스크롤
 const scrollTopBtn = document.querySelector(".Scroll_top");
 
 scrollTopBtn.addEventListener("click", () => {
   window.scroll({ top: 0, behavior: "smooth" });
 });
-
-const token = JSON.parse(sessionStorage.getItem("data")).token;
-// const token = "a";
 
 const loginMenu = document.getElementById("loginMenu");
 const logoutMenu = document.getElementById("logoutMenu");
@@ -71,11 +67,11 @@ const adminMenu = document.getElementById("adminMenu");
 const myPageMenu = document.getElementById("myPageMenu");
 
 if (sessionStorage.getItem("data") !== null) {
+  const token = JSON.parse(sessionStorage.getItem("data")).token;
   loginMenu.classList.add("hidden");
   signinMenu.classList.add("hidden");
 
-  //토큰값을 보낼 수 있는 방법이 없어서
-  // 관리자만 접근 가능한 api인 카테고리에 삭제 접근 성공하면 (1234는 없는 카테고리) 관리자 메뉴가 뜨고
+  //임시로 관리자만 접근 가능한 api에 삭제 접근 성공하면 관리자 메뉴가 뜨고
   // 아니면 안뜨는 식으로 해뒀습니다.
   fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories/1234", {
     method: "DELETE",
