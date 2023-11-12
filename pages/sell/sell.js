@@ -9,9 +9,6 @@ function deleteItem(id) {
     },
   })
     .then((res) => {
-      if (!res.ok) {
-        console.error(res.status, res.statusText);
-      }
       return res.json();
     })
     .then((data) => {
@@ -52,31 +49,32 @@ document.addEventListener("DOMContentLoaded", function () {
         const newItem = document.createElement("div");
         newItem.classList.add("py-[20px]", "flex", "items-center");
         newItem.innerHTML = `
-              <img
-                class="mx-[40px] rounded-[15px] w-[115px] h-[115px]"
-                src="${item.images[0]}"
-                alt="사진"
-              />
-              <p class="w-[150px] mx-[3px] overflow-hidden whitespace-nowrap overflow-ellipsis">
-                ${item.name}
-                <br />
-                <span class="text-gray400">
-                ${item.category[0].name}
-                </span>
-              </p>
-              <p class="mx-[150px]">${item.price}</p>
-              <button
-                type="submit"
-                class="modifyBtn mx-[15px] w-[98px] h-[38px] bg-white rounded-[50px] border border-black"
-              >
-                수정
-              </button>
-              <button
-                class="deleteBtn mx-[15px] w-[98px] h-[38px] bg-white rounded-[50px] border border-black"
-              >
-                삭제
-              </button>
-            `;
+            <img
+              class="mx-[40px] rounded-[15px] w-[115px] h-[115px]"
+              src="${item.images[0]}"
+              alt="사진"
+            />
+            <p class="w-[150px] mx-[3px] overflow-hidden whitespace-nowrap overflow-ellipsis">
+              ${item.name}
+              <br />
+              <span class="text-gray400">
+              ${item.category[0].name}
+              </span>
+            </p>
+            <p class="mx-[150px]">${item.price}</p>
+            <button
+              id="${item._id}"
+              type="submit"
+              class="modifyBtn mx-[15px] w-[98px] h-[38px] bg-white rounded-[50px] border border-black"
+            >
+              수정
+            </button>
+            <button
+              class="deleteBtn mx-[15px] w-[98px] h-[38px] bg-white rounded-[50px] border border-black"
+            >
+              삭제
+            </button>
+          `;
         buyList.appendChild(newItem);
 
         const deleteBtn = newItem.querySelector(".deleteBtn");
@@ -159,15 +157,12 @@ function modifyItem(id) {
   const itemPrice = document.querySelector(".itemPrice").value;
   const itemDes = document.querySelector(".itemDes").value;
   const itemCategory = document.querySelector(".itemCategory").value;
-  console.log("itemCategory", itemCategory);
   const putData = {
     categoryId: itemCategory,
     name: itemName,
     price: itemPrice,
     stock: 100,
     description: itemDes,
-    // images: [showItem, showInfo],
-    //임시
     images: [
       "/views/images/짱구는못말려2024미니캘린더_1.jpg",
       "/views/images/짱구는못말려2024미니캘린더_2.jpg",

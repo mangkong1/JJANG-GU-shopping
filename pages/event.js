@@ -161,7 +161,9 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/products", {
         if (searchByCategoryProduct.length === 0) {
           productList.innerHTML = `<div class="text-center text-gray400 absolute left-2/4 translate-x-[-50%] ">상품이 없습니다.<div>`;
         } else {
-          const newProduct = searchByCategoryProduct.map((product) => createProduct(product)).join("");
+          const newProduct = searchByCategoryProduct
+            .map((product) => createProduct(product))
+            .join("");
           productList.innerHTML = newProduct;
         }
 
@@ -183,9 +185,13 @@ function showCartIcon() {
 
     viewCartEl.addEventListener("click", (e) => {
       addItem(e.target.dataset.id);
-      let isconfirm = confirm("아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?");
+      let isconfirm = confirm(
+        "아이템이 장바구니에 담겼습니다. 확인해보시겠습니까?"
+      );
       if (isconfirm) {
         window.location.href = "/cart/";
+      } else {
+        window.location.href = "/";
       }
     });
 
