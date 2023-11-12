@@ -54,7 +54,6 @@ function sendUserDataToServer(params) {
       if (data) {
         // 서버 응답 처리 (예: 회원가입 완료 메시지 표시)
         alert("회원가입을 축하합니다!!");
-        console.log(data);
       } else {
         alert("서버 응답에 데이터가 없습니다.");
       }

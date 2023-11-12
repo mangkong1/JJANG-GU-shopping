@@ -106,9 +106,7 @@ function validatePhoneNumber() {
   const phoneRegex = /^\d{2,3}-\d{3,4}-\d{4}$/;
   const phoneRegexnodash = /^\d{9,11}$/;
   if (phoneRegexnodash.test(phoneNumVal)) {
-    console.log("beforeformat", phoneNumVal);
     phoneNumVal = phoneNumVal.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, "$1-$2-$3");
-    console.log("reformatted", phoneNumVal);
   }
   if (!phoneRegex.test(phoneNumVal)) {
     alert("올바른 형식이 아닙니다. 한국 번호를 입력해주세요.");
@@ -132,11 +130,9 @@ function selectSelfInput() {
   const requestInput = document.getElementById("requestInput");
 
   if (requestSelectVal === "직접 입력") {
-    console.log(requestSelectVal);
     requestInput.classList.remove("hidden");
     requestInput.focus();
   } else {
-    console.log(requestSelectVal);
     requestInput.classList.add("hidden");
   }
 }
@@ -153,8 +149,6 @@ function doOrder() {
   if (validateInput()) {
     if (sessionStorage.getItem("btn") !== null) {
       const id = sessionStorage.getItem("idTemp");
-      console.log("this is id", id);
-      console.log();
       data = {
         name: nameVal,
         phone: phoneNumVal,
@@ -175,16 +169,15 @@ function doOrder() {
         const temp = cart.filter((item) => {
           return item.checked === true;
         });
-        console.log("temp", temp);
+
         temp.forEach((item) => {
           let data = {
             productId: item._id,
             qty: item.quantity,
           };
-          console.log("data", data);
           products.push(data);
         });
-        console.log("products", products);
+
         return products;
       }
 

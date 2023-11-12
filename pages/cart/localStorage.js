@@ -24,7 +24,6 @@ function addItem(itemId) {
       return;
     })
     .then((data) => {
-      console.log(data);
       data.checked = true;
       data.quantity = 1;
       if (cart.length === 0) {
