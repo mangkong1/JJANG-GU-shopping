@@ -2,6 +2,9 @@ import "../style.css";
 import "../index.css";
 import { addItem } from "./cart/localStorage.js";
 
+if (!localStorage.getItem("cart")) {
+  localStorage.setItem("cart", "[]");
+}
 // 배너 슬라이드
 function initSlide(time) {
   let currentIndex = 0;

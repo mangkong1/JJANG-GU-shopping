@@ -1,6 +1,10 @@
 import "../style.css";
 import "../index.css";
 
+if (!localStorage.getItem("cart")) {
+  localStorage.setItem("cart", "[]");
+}
+
 let cart = JSON.parse(localStorage.getItem("cart"));
 let cartNum = cart.length;
 
