@@ -4,22 +4,19 @@ const loginId = document.getElementById("loginId");
 const loginPw = document.getElementById("loginPw");
 const loginBtn = document.getElementById("loginBtn");
 
-loginBtn.addEventListener("click", async () => {
+loginBtn.addEventListener("click", async (e) => {
   const email = loginId.value;
   const password = loginPw.value;
-
+  e.preventDefault();
   try {
-    const response = await fetch(
-      "http://kdt-sw-7-team03.elicecoding.com/api/users/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      }
-    );
+    const response = await fetch("http://kdt-sw-7-team03.elicecoding.com/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
 
     const data = await response.json();
 
