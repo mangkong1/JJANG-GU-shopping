@@ -126,12 +126,13 @@ function deleteBtnEvent() {
           if (!res.ok) {
             console.error(res.status, res.statusText);
             alert("권한이 없습니다.");
+          } else {
+            alert("카테고리가 삭제되었습니다.");
           }
           return res.json();
         })
         .then((data) => {
           console.log("서버 응답 데이터", data);
-          alert("카테고리가 삭제되었습니다.");
           fetchCategories();
         })
         .catch((err) => {
