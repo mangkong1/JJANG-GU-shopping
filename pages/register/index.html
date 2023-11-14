@@ -5,98 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="./register.css" />
-    <script
-      src="https://kit.fontawesome.com/a3379ca11a.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/a3379ca11a.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>상품등록</title>
   </head>
   <body>
     <div id="headerWrap" class="w-full"></div>
 
-    <div
-      id="userInfo_container"
-      class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
-    >
+    <div id="userInfo_container" class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]">
       <div id="adminList"></div>
 
       <div class="w-[1011px]">
-        <div
-          class="py-[36px] flex mt-[64px] w-[1011px] bg-white border border-gray200 rounded-2xl"
-        >
+        <div class="py-[36px] flex mt-[64px] w-[1011px] bg-white border border-gray200 rounded-2xl">
           <div class="mx-[41px]">
-            <img
-              id="showItem"
-              class="mb-[24px] w-[367px] h-[288px] bg-zinc-300 rounded-[15px]"
-              src="/imgs/upload.png"
-              alt="상품이미지사진"
-            />
+            <img id="showItem" class="mb-[24px] w-[367px] h-[288px] bg-zinc-300 rounded-[15px]" src="/imgs/upload.png" alt="상품이미지사진" />
 
-            <img
-              id="showInfo"
-              class="mb-[24px] w-[367px] h-[288px] bg-zinc-300 rounded-[15px]"
-              src="/imgs/upload.png"
-              alt="상세정보사진"
-            />
+            <img id="showInfo" class="mb-[24px] w-[367px] h-[288px] bg-zinc-300 rounded-[15px]" src="/imgs/upload.png" alt="상세정보사진" />
           </div>
 
           <div>
             <p class="pl-[5px] text-xl mb-[8px]">상품 이름</p>
-            <input
-              class="itemName mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
-              type="text"
-              placeholder="상품 이름을 입력하세요"
-            />
+            <input class="itemName mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200" type="text" placeholder="상품 이름을 입력하세요" />
             <p class="pl-[5px] text-xl mb-[8px]">상품 가격</p>
-            <input
-              class="itemPrice mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
-              type="text"
-              placeholder="상품 가격을 입력하세요"
-            />
+            <input class="itemPrice mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200" type="text" placeholder="상품 가격을 입력하세요" />
             <p class="pl-[5px] text-xl mb-[8px]">재고</p>
-            <input
-              class="itemStock mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
-              type="text"
-              placeholder="재고를 입력하세요"
-            />
+            <input class="itemStock mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200" type="text" placeholder="재고를 입력하세요" />
             <p class="pl-[5px] text-xl mb-[8px]">카테고리</p>
-            <select
-              class="itemCategory mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200 text-gray-400"
-            >
+            <select class="itemCategory mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200">
               <option value="">카테고리를 선택하세요</option>
             </select>
 
             <p class="pl-[5px] text-xl mb-[8px]">상품 이미지 업로드</p>
-            <input
-              class="mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer"
-              id="inputItem"
-              type="file"
-            />
+            <input class="mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer" id="inputItem" type="file" />
 
             <p class="pl-[5px] text-xl mb-[8px]">상세정보 이미지 업로드</p>
-            <input
-              class="mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer"
-              id="inputInfo"
-              type="file"
-            />
+            <input class="mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer" id="inputInfo" type="file" />
 
             <div class="flex justify-end">
-              <button
-                class="registerBtn my-[50px] w-[255px] h-[49px] bg-[#F13737] rounded-[10px] border border-[#F13737] text-white cursor-pointer bg-gray"
-              >
-                상품 등록하기
-              </button>
+              <button class="registerBtn my-[50px] w-[255px] h-[49px] bg-[#F13737] rounded-[10px] border border-[#F13737] text-white cursor-pointer bg-gray">상품 등록하기</button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div
-      id="footerWrap"
-      class="w-full h-[300px] flex border-t border-gray400"
-    ></div>
+    <div id="footerWrap" class="w-full h-[300px] flex border-t border-gray400"></div>
   </body>
 </html>
 <script type="module" src="../main.js"></script>
