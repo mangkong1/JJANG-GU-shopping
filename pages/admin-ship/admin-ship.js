@@ -46,8 +46,11 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
       buyList.appendChild(newItem);
 
       const deleteBtn = newItem.querySelector(".deleteBtn");
-      const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
+      if (!sessionStorage.getItem("data")) {
+        sessionStorage.setItem("data", "[]");
+      }
 
+      const adminToken = JSON.parse(sessionStorage.getItem("data")).token;
       deleteBtn.addEventListener("click", () => {
         fetch(`http://kdt-sw-7-team03.elicecoding.com/api/orders/${order._id}`, {
           method: "DELETE",
