@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.json())
     .then((data) => {
       const buyList = document.querySelector(".buyList");
+      let itemCategory = "";
 
       data.forEach((item) => {
         const newItem = document.createElement("div");
@@ -177,7 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const itemName = document.querySelector(".itemName").value;
             const itemPrice = document.querySelector(".itemPrice").value;
             const itemDes = document.querySelector(".itemDes").value;
-            const itemCategory = document.querySelector(".itemCategory").value;
             const putData = {
               categoryId: itemCategory,
               name: itemName,
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
               description: itemDes,
               images: ["/views/images/짱구는못말려2024미니캘린더_1.jpg", "/views/images/짱구는못말려2024미니캘린더_2.jpg"],
             };
-
+            console.log("itemCategory", itemCategory);
             fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/${id}`, {
               method: "PUT",
               headers: {
