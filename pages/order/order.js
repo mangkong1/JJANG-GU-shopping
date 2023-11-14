@@ -15,7 +15,13 @@ const shipPriceElem = document.getElementById("shipPrice");
 const totalPriceElem = document.getElementById("totalPrice");
 const totalItemPriceElem = document.getElementById("totalItemPrice");
 
-const token = JSON.parse(sessionStorage.getItem("data")).token;
+if (!localStorage.getItem("cart")) {
+  localStorage.setItem("cart", "[]");
+}
+if (!localStorage.getItem("data")) {
+  localStorage.setItem("data", "[]");
+}
+
 
 let cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -188,7 +194,8 @@ function doOrder() {
         qty: getisCheckedAmount(),
         products: getisCheckedPostFormat(),
       };
-    }
+  
+    const token = JSON.parse(sessionStorage.getItem("data")).token;
 
     fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders", {
       method: "POST",

@@ -4,6 +4,12 @@ import { addItem } from "../cart/localStorage.js";
 const putCartBtn = document.getElementById("putCartBtn");
 const payInstantBtn = document.getElementById("payInstantBtn");
 
+if (!localStorage.getItem("cart")) {
+  localStorage.setItem("cart", "[]");
+}
+if (!localStorage.getItemd("idTemp")) {
+  localStorage.setItem("idTemp", "654d03e1a9da399b694ceefe");
+}
 const id = sessionStorage.getItem("idTemp");
 console.log(id);
 fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/${id}`)
