@@ -60,9 +60,11 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
           },
         }).then((res) => {
           if (res.status == 200) {
-          } else if (res.status == 400) {
+          } else if (res.status === 403) {
+            alert("권한 없음");
+          } else if (res.status === 400) {
             alert("인증실패, 잘못된 요청");
-          } else if (res.status == 500) {
+          } else if (res.status === 500) {
             alert("서버 오류");
           } else {
             alert("주문 삭제 실패");
