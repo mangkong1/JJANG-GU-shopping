@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
           popupBtnChange.addEventListener("click", () => {
             hiddenPopup();
             console.log("modal's item", item._id);
-            // modifyItem(item._id);
+            modifyItem(item._id);
           });
 
           function modifyItem(id) {
