@@ -104,6 +104,28 @@ document.addEventListener("DOMContentLoaded", function () {
           popupBg.classList.remove("hidden");
           window.scroll({ top: 0, behavior: "smooth" });
 
+          const selectElement = document.querySelector(".itemCategory");
+
+          fetch("http://kdt-sw-7-team03.elicecoding.com/api/categories", {
+            method: "GET",
+          })
+            .then((response) => response.json())
+            .then((categories) => {
+              categories.forEach((category) => {
+                const optionElement = document.createElement("option");
+                optionElement.value = category._id;
+                optionElement.text = category.name;
+                selectElement.appendChild(optionElement);
+              });
+
+              selectElement.addEventListener("change", function () {
+                itemCategory = selectElement.value;
+              });
+            })
+            .catch((error) => {
+              alert("카테고리 정보를 가져오는 중 오류 발생");
+            });
+
           const inputInfo = document.querySelector(".inputInfo");
           const showInfo = document.querySelector(".showInfo");
 
