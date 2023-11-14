@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./sell.css" />
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>판매내역</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="./sell.css" />
+    <script
+      src="https://kit.fontawesome.com/a3379ca11a.js"
+      crossorigin="anonymous"
+    ></script>
+    <div id="headerWrap" class="w-full"></div>
+    <div
+      id="userInfo_container"
+      class="w-[1274px] mx-auto flex justify-between mt-[115px] mb-[288px]"
+    >
+      <div id="adminList"></div>
+
+      <div class="w-[1011px] pd-[10px]">
+        <h2 class="pb-6 text-4xl text-black font-semibold">상품 목록</h2>
+
+        <div
+          class="p-[15px] w-[1011px] bg-white border border-gray200 rounded-2xl"
+        >
+          <div class="buyList"></div>
+        </div>
+      </div>
+    </div>
+
+      <div id="modifyCheckPopup" class="hidden absolute flex top-1/2 left-1/2 z-40 translate-x-[-50%] translate-y-[-50%] w-[1011px] p-9 text-center bg-white rounded-2xl box-border">
+        <div class="mx-[41px]">
+          <img
+            class="showItem mb-[24px] w-[367px] h-[288px] bg-zinc-300 rounded-[15px]"
+            src="/imgs/upload.png"
+            alt="상품이미지사진"
+          />
+      
+          <img
+            class="showInfo mb-[24px] w-[367px] h-[288px] bg-zinc-300 rounded-[15px]"
+            src="/imgs/upload.png"
+            alt="상세정보사진"
+          />
+        </div>
+      
+        <div class="flex flex-col items-start">
+          <p class="pl-[5px] text-xl mb-[8px]">상품 이름</p>
+          <input
+            class="itemName mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200"
+            type="text"
+            placeholder="상품 이름을 입력하세요"
+          />
+          <p class="pl-[5px] text-xl mb-[8px]">상품 가격</p>
+          <input
+            class="itemPrice mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200"
+            type="text"
+            placeholder="상품 가격을 입력하세요(숫자만)"
+          />
+          <p class="pl-[5px] text-xl mb-[8px]">상품 설명</p>
+          <input
+            class="itemDes mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200"
+            type="text"
+            placeholder="상품 설명을 입력하세요"
+          />
+          <p class="pl-[5px] text-xl mb-[8px]">카테고리</p>
+          <select
+            class="itemCategory mb-[13px] px-[20px] w-[519px] h-[49px] bg-white rounded-[15px] border border-gray-200"
+          >
+          <option value="">카테고리를 선택하세요</option>
+        </select>
+          <p class="pl-[5px] text-xl mb-[8px]">상품 이미지 업로드</p>
+          <input
+            class="inputItem mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer"
+            type="file"
+          />
+      
+          <p class="pl-[5px] text-xl mb-[8px]">상세정보 이미지 업로드</p>
+          <input
+            class="inputInfo mb-[13px] p-[10px] w-[519px] text-md text-gray-400 border border-gray-200 rounded-[15px] cursor-pointer"
+            type="file"
+          />
+      
+            <div class="popupBtns w-full flex justify-end">
+      <button type="reset" class="mt-[20px] mr-[20px] w-[176px] border rounded-2xl h-[49px]">
+        뒤로가기
+      </button>
+      <button
+      id="changeDataBtn"
+        type="submit"
+        class="modifyItem mt-[20px] ml-[20px] w-[176px] bg-[#F13737] text-white rounded-2xl h-[49px]"
+      >
+        수정하기
+      </button>
+      </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="popupBg hidden w-full h-[185%] bg-black/50 absolute left-0 top-0 z-0"
+    ></div>
+
+    <div
+      id="footerWrap"
+      class="w-full h-[300px] flex border-t border-gray400"
+    ></div>
+  </body>
+</html>
+<script type="module" src="../main.js"></script>
+<script type="module" src="../admin-info/admin-info.js"></script>
+<script type="module" src="./sell.js"></script>
+

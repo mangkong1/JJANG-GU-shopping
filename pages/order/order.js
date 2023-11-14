@@ -15,7 +15,7 @@ const shipPriceElem = document.getElementById("shipPrice");
 const totalPriceElem = document.getElementById("totalPrice");
 const totalItemPriceElem = document.getElementById("totalItemPrice");
 
-const token = sessionStorage.getItem("data");
+const token = JSON.parse(sessionStorage.getItem("data")).token;
 
 let cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -28,7 +28,6 @@ if (sessionStorage.getItem("btn") !== null) {
   fetch(`http://kdt-sw-7-team03.elicecoding.com/api/products/${id}`)
     .then((res) => {
       if (res.status == 200) {
-        console.log("상품 조회 완료");
         return res.json();
       } else if (res.status == 400) {
         alert("인증실패, 잘못된 요청");
@@ -46,8 +45,6 @@ if (sessionStorage.getItem("btn") !== null) {
     });
 } else {
   cart.forEach((item) => {
-    console.log(item);
-    console.log(item.checked);
     if (item.checked) {
       itemWrapper.innerHTML += `<p id="items" class="justify-self-end p-3"> ${item.name} / ${item.quantity}개</p>`;
     }
