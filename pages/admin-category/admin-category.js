@@ -1,6 +1,10 @@
 import "../../index.css";
 
-const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRkMGIxOWQ5NDExN2E1ZTJlMzk3YTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk1NTA2NTJ9.td4t4QMCj8U3A923THtanJLEfBLSbrggONfdKjOnE-w";
+if (!sessionStorage.getItem("data")) {
+  sessionStorage.setItem("data", "[]");
+}
+
+const adminToken = JSON.parse(sessionStorage.getItem("data")).token;
 
 const categoryList = document.querySelector(".categoryList");
 const changeCategoryList = (category) => {
@@ -81,12 +85,14 @@ function updateBtnEvent() {
         .then((res) => {
           if (!res.ok) {
             console.error(res.status, res.statusText);
+            alert("권한이 없습니다.");
+          } else {
+            alert(`${inputValue}로 수정되었습니다.`);
           }
           return res.json();
         })
         .then((data) => {
           console.log("서버 응답 데이터:", data);
-          alert(`${inputValue}로 수정되었습니다.`);
         })
         .catch((err) => {
           alert("error " + err);
@@ -119,6 +125,7 @@ function deleteBtnEvent() {
         .then((res) => {
           if (!res.ok) {
             console.error(res.status, res.statusText);
+            alert("권한이 없습니다.");
           }
           return res.json();
         })
@@ -157,12 +164,14 @@ categoryAddBtn.addEventListener("click", (e) => {
       .then((res) => {
         if (!res.ok) {
           console.error(res.status, res.statusText);
+          alert("권한이 없습니다.");
+        } else {
+          alert(`${inputElValue} 카테고리가 추가되었습니다.`);
         }
         return res.json();
       })
       .then((data) => {
         console.log("서버 응답 데이터:", data);
-        alert(`${inputElValue} 카테고리가 추가되었습니다.`);
         // 다시 카테고리 조회
         fetchCategories();
         inputEl.value = "";
