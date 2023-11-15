@@ -44,7 +44,6 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
       }
 
       const adminToken = JSON.parse(sessionStorage.getItem("data")).token;
-      console.log(adminToken);
       deleteBtn.addEventListener("click", () => {
         fetch(`http://kdt-sw-7-team03.elicecoding.com/api/orders/${order._id}`, {
           method: "DELETE",
