@@ -86,7 +86,7 @@ if (sessionStorage.getItem("data") !== null) {
     } else if (!res.ok) {
       console.error(res.status, res.statusText);
     }
-    if (res.status === 400) {
+    if (res.status === 400 || res.status === 200) {
       //없는 카테고리이기때문에 bad request가 뜰것
       adminMenu.classList.remove("hidden");
       logoutMenu.classList.remove("hidden");

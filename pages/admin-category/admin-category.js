@@ -91,9 +91,7 @@ function updateBtnEvent() {
           }
           return res.json();
         })
-        .then((data) => {
-          console.log("서버 응답 데이터:", data);
-        })
+        .then((data) => {})
         .catch((err) => {
           alert("error " + err);
         });
@@ -110,7 +108,6 @@ function deleteBtnEvent() {
       e.preventDefault();
 
       const _id = e.target.dataset.categoryId;
-      console.log(_id);
 
       fetch(`http://kdt-sw-7-team03.elicecoding.com/api/categories/${_id}`, {
         method: "DELETE",
@@ -123,16 +120,18 @@ function deleteBtnEvent() {
         }),
       })
         .then((res) => {
+          if (res === 403) {
+            alert("권한이 없습니다.");
+          }
           if (!res.ok) {
             console.error(res.status, res.statusText);
-            alert("권한이 없습니다.");
+            //main.js에서 임시로 사용중인 api와 겹쳐서 무조건 오류남
           } else {
             alert("카테고리가 삭제되었습니다.");
           }
           return res.json();
         })
         .then((data) => {
-          console.log("서버 응답 데이터", data);
           fetchCategories();
         })
         .catch((err) => {
@@ -172,8 +171,6 @@ categoryAddBtn.addEventListener("click", (e) => {
         return res.json();
       })
       .then((data) => {
-        console.log("서버 응답 데이터:", data);
-        // 다시 카테고리 조회
         fetchCategories();
         inputEl.value = "";
       })
