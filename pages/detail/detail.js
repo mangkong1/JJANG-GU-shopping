@@ -7,7 +7,7 @@ const payInstantBtn = document.getElementById("payInstantBtn");
 if (!localStorage.getItem("cart")) {
   localStorage.setItem("cart", "[]");
 }
-if (!localStorage.getItemd("idTemp")) {
+if (!localStorage.getItem("idTemp")) {
   localStorage.setItem("idTemp", "654d03e1a9da399b694ceefe");
 }
 const id = sessionStorage.getItem("idTemp");

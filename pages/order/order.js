@@ -158,7 +158,8 @@ function doOrder() {
         phone: phoneNumVal,
         address: [postCodeVal, addrVal, detailAddrVal],
         paymentMethod: "현금",
-        email: "admin@elice.com",
+        userId: "user",
+        email: "user@elice.com",
         qty: 50,
         products: [
           {
@@ -190,8 +191,8 @@ function doOrder() {
         phone: phoneNumVal,
         address: [postCodeVal, addrVal, detailAddrVal],
         paymentMethod: "현금",
-        userId: "admin",
-        email: "admin@elice.com",
+        userId: "user",
+        email: "user@elice.com",
         qty: getisCheckedAmount(),
         products: getisCheckedPostFormat(),
       };
