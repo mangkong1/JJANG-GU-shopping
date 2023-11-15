@@ -12,13 +12,6 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
   .then((data) => {
     const buyList = document.querySelector(".buyList");
     data.forEach((order, i) => {
-      const date = new Date(order.createdAt);
-
-      const year = date.getFullYear();
-      const month = (date.getMonth() + 1).toString().padStart(2, "0");
-      const day = date.getDate().toString().padStart(2, "0");
-
-      const formattedDate = `${year}-${month}-${day}`;
       const newItem = document.createElement("div");
       newItem.classList.add("grid", "grid-cols-5", "gap-4", "flex", "items-center");
       let price = 0;
@@ -51,6 +44,7 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
       }
 
       const adminToken = JSON.parse(sessionStorage.getItem("data")).token;
+      console.log(adminToken);
       deleteBtn.addEventListener("click", () => {
         fetch(`http://kdt-sw-7-team03.elicecoding.com/api/orders/${order._id}`, {
           method: "DELETE",
@@ -58,19 +52,24 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
             "Content-Type": "application/json",
             Authorization: `Bearer ${adminToken}`,
           },
-        }).then((res) => {
-          if (res.status == 200) {
-          } else if (res.status === 403) {
-            alert("권한 없음");
-          } else if (res.status === 400) {
-            alert("인증실패, 잘못된 요청");
-          } else if (res.status === 500) {
-            alert("서버 오류");
-          } else {
-            alert("주문 삭제 실패");
-          }
-          return res.json();
-        });
+        })
+          .then((res) => {
+            if (res.status == 200) {
+            } else if (res.status === 403) {
+              alert("권한 없음");
+            } else if (res.status === 400) {
+              alert("인증실패, 잘못된 요청");
+            } else if (res.status === 500) {
+              alert("서버 오류");
+            } else {
+              alert("주문 삭제 실패");
+            }
+            return res.json();
+          })
+          .then((data) => {
+            alert("주문 삭제가 완료되었습니다!");
+            buyList.removeChild(newItem);
+          });
       });
 
       const stateContainer = newItem.querySelector(".stateContainer");
