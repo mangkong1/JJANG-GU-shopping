@@ -68,7 +68,8 @@ fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders/")
           .then((data) => {
             alert("주문 삭제가 완료되었습니다!");
             buyList.removeChild(newItem);
-          });
+          })
+          .catch((err) => console.error(err));
       });
 
       const stateContainer = newItem.querySelector(".stateContainer");
