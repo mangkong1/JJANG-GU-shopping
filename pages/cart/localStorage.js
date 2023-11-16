@@ -58,6 +58,14 @@ function removeItem(itemId) {
   localStorage.setItem("cart", JSON.stringify(temp));
 }
 
+function removeCheckedItem() {
+  let temp = cart.filter((item) => {
+    return item.checked === false;
+  });
+  console.log(temp);
+  localStorage.setItem("cart", JSON.stringify(temp));
+}
+
 function removeAllItems() {
   localStorage.setItem("cart", "[]");
 }
@@ -108,4 +116,4 @@ function getisCheckedPrice() {
   return sum;
 }
 
-export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount };
+export { addItem, removeItem, removeAllItems, updateAmount, updateChecked, getisCheckedPrice, getisCheckedAmount, removeCheckedItem };

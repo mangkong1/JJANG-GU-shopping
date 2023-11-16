@@ -1,5 +1,5 @@
 import "../../index.css";
-import { getisCheckedPrice, getisCheckedAmount } from "../cart/localStorage.js";
+import { getisCheckedPrice, getisCheckedAmount, removeCheckedItem } from "../cart/localStorage.js";
 const nameInput = document.getElementById("nameInput");
 const phoneNumInput = document.getElementById("phoneNumInput");
 const postCodeInput = document.getElementById("postCodeInput");
@@ -165,13 +165,34 @@ function doOrder() {
           },
         ],
       };
+      fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => {
+          if (res.status === 201) {
+            alert("주문 생성 완료!");
+          } else if (res.status === 400) {
+            alert("인증 실패");
+          } else if (res.status === 500) {
+            alert("서버 오류");
+          } else {
+            alert("주문 생성에 실패했습니다.");
+          }
+          return res.json();
+        })
+        .then(() => {
+          window.location.href = "/order-finish/";
+        });
     } else {
       function getisCheckedPostFormat() {
         let products = [];
         const temp = cart.filter((item) => {
           return item.checked === true;
         });
-
         temp.forEach((item) => {
           let data = {
             productId: item._id,
@@ -179,7 +200,6 @@ function doOrder() {
           };
           products.push(data);
         });
-
         return products;
       }
 
@@ -193,30 +213,31 @@ function doOrder() {
         qty: getisCheckedAmount(),
         products: getisCheckedPostFormat(),
       };
-    }
 
-    fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        if (res.status === 201) {
-          alert("주문 생성 완료!");
-        } else if (res.status === 400) {
-          alert("인증 실패");
-        } else if (res.status === 500) {
-          alert("서버 오류");
-        } else {
-          alert("주문 생성에 실패했습니다.");
-        }
-        return res.json();
+      fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       })
-      .then(() => {
-        window.location.href = "/order-finish/";
-      });
+        .then((res) => {
+          if (res.status === 201) {
+            alert("주문 생성 완료!");
+          } else if (res.status === 400) {
+            alert("인증 실패");
+          } else if (res.status === 500) {
+            alert("서버 오류");
+          } else {
+            alert("주문 생성에 실패했습니다.");
+          }
+          return res.json();
+        })
+        .then(() => {
+          removeCheckedItem();
+          window.location.href = "/order-finish/";
+        });
+    }
   }
 }
 
