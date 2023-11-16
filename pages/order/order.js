@@ -19,9 +19,6 @@ if (!localStorage.getItem("cart")) {
   localStorage.setItem("cart", "[]");
 }
 
-if (!localStorage.getItem("data")) {
-  localStorage.setItem("data", "[]");
-}
 //여기부터 마저 이어서
 
 let cart = JSON.parse(localStorage.getItem("cart"));
@@ -198,13 +195,10 @@ function doOrder() {
       };
     }
 
-    const token = JSON.parse(sessionStorage.getItem("data")).token;
-
     fetch("http://kdt-sw-7-team03.elicecoding.com/api/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     })

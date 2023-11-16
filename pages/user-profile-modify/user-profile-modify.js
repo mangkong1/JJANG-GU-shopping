@@ -63,7 +63,7 @@ const changeUserName = (user) => {
 };
 
 // 유저 정보 조회
-fetch("user.json")
+fetch("/user.json")
   .then((res) => {
     if (!res.ok) {
       console.error(res.status, res.statusText);
